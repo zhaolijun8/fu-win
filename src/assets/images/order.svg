@@ -1,1 +1,33 @@
-<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1585908774565" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="846" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64"><defs><style type="text/css"></style></defs><path d="M835.5 67.5H342.3c-106.3 0-193.2 87-193.2 193.2v619.7c0 42.1 34.5 76.6 76.6 76.6h460c106.3 0 193.2-87 193.2-193.2V110.9c0-23.9-19.5-43.4-43.4-43.4zM662.8 719.6H365.2c-24.4 0-44.4-20-44.4-44.4s20-44.4 44.4-44.4h297.6c24.4 0 44.4 20 44.4 44.4s-20 44.4-44.4 44.4z m0-196.8H365.2c-24.4 0-44.4-20-44.4-44.4s20-44.4 44.4-44.4h297.6c24.4 0 44.4 20 44.4 44.4s-20 44.4-44.4 44.4z m0-197.7H365.2c-24.4 0-44.4-20-44.4-44.4s20-44.4 44.4-44.4h297.6c24.4 0 44.4 20 44.4 44.4s-20 44.4-44.4 44.4z" fill="#1296db" p-id="847"></path></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="92px" height="80px" viewBox="0 0 92 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>编组 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="1190" height="500"></rect>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="9关于我们" transform="translate(-1263.000000, -911.000000)">
+            <rect id="矩形" fill="#F4F4F4" x="0" y="0" width="1925" height="5745"></rect>
+            <g id="核心实力" transform="translate(365.000000, 704.000000)">
+                <g id="矩形备份-2">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="蒙版" fill="#FFFFFF" xlink:href="#path-1"></use>
+                </g>
+                <g id="编组-9" transform="translate(184.000000, 60.000000)">
+                    <g id="内容" transform="translate(0.000000, 138.000000)">
+                        <g id="3" transform="translate(672.000000, 9.000000)">
+                            <g id="编组-8" transform="translate(42.000000, 0.000000)">
+                                <path d="M4.5,0 C6.43299662,-3.55085719e-16 8,1.56700338 8,3.5 L8,79.5 L8,79.5 L0.955780029,79.5 L0.998053209,3.49999946 C0.999128567,1.5666883 2.56668854,3.55143553e-16 4.5,0 Z" id="矩形" fill="#1138FF"></path>
+                                <path d="M46.5,31 C48.4329966,31 50,32.5670034 50,34.5 L50,121 L50,121 L43,121 L43,34.5 C43,32.5670034 44.5670034,31 46.5,31 Z" id="矩形备份-3" fill="#1138FF" transform="translate(46.500000, 76.000000) rotate(90.000000) translate(-46.500000, -76.000000) "></path>
+                                <polyline id="路径-3" stroke="#889BFF" stroke-width="7" stroke-linecap="round" points="18 55.453125 39.1279312 28.9273995 52.7679584 40.0604813 74.3789063 13"></polyline>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
