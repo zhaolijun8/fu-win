@@ -10,7 +10,7 @@
                 src="../../../assets/images/abount-banner.jpg"
             )
         .about-content
-          .about-title 关于我们
+          .about-title  关于我们
             .about-descript 更高端/更合规/更专业
           .about-statistics
             .about-statistics-item
@@ -149,16 +149,36 @@ export default {
     position: relative
     top: -74px
     padding-top: 60px
+    text-align: center
   &-title
       text-align: center
       font-size: 36px
       color: #333
       line-height: 50px
+      display: inline-block
+      positon: relative
+      &:before,&:after
+        position: absolute
+        content: ''
+        display:inline-block
+        top: 0
+        width: 149px
+        height: 30px
+      &:before
+        left: -190px
+        background: url(../../../assets/images/nav_left.png) no-repeat
+        background-size: cover
+      &:after
+        right: -190px
+        background: url(../../../assets/images/nav_right.png) no-repeat
+        background-size: cover
   &-descript
+      position: relative
       font-size: 20px
       color: #666
       line-height: 28px
       letter-spacing: 3px
+      
   &-statistics
     padding: 63px 15% 0 15%
     display: flex
