@@ -30,7 +30,7 @@ export default {
 
 <style lang="sass" scoped>
 #e-logo
-  flex: 0 0 236px
+  flex: 0 0 240px
   a
     display: flex
     flex-direction: row
