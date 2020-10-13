@@ -1,7 +1,7 @@
 <template lang="pug">
   #e-about
     BaseLayout(
-      :navTransparent="true"
+      :navTransparent="false"
     )
       .about-container
         .about-header
