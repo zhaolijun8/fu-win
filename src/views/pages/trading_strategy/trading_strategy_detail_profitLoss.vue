@@ -1,11 +1,20 @@
 <template lang="pug">
-   <div>
-        <div id="profitCharts" ref="profitCharts" style="width: 900px;height:400px;"></div>
-        <br/>
-        <div id="profitLossCharts" ref="profitLossCharts" style="width: 900px;height:400px;"></div>
+   .trading-detail-content
+        .trading-detail-content-box
+            .trading-detail-content-title
+              .trading-detail-content-title-name.summary 收益
+              <span>（按日统计）</span>
+            //- <div class="trading-profitLoss-box-title"><span></span>（按日统计）</div>
+            <div id="profitCharts" ref="profitCharts" style="width: 1100px;margin:0 auto;height:400px;"></div>
+        .trading-detail-content-box
+            .trading-detail-content-title
+              .trading-detail-content-title-name.summary 盈亏分析
+              <span>（按日统计）</span>
+            //- <div class="trading-profitLoss-box-title"><span>盈亏分析</span>（按日统计）</div>
+            <div id="profitLossCharts" ref="profitLossCharts" style="width: 1100px;margin:0 auto;height:400px;"></div>
    </div>
 </template>
-
+ 
 <script>
 import E from "../../../utils"
 import moment from "moment";
@@ -133,10 +142,10 @@ export default {
             // let myCharts = this.$echarts.init(this.$refs.profitLossCharts)
             let myCharts = this.$echarts.init(document.getElementById('profitCharts'))
             let options = {
-                title: {
-                    text: '收益',   //图表顶部的标题
-                    subtext: '按日统计'    //副标题
-                },
+                // title: {
+                //     text: '收益',   //图表顶部的标题
+                //     subtext: '按日统计'    //副标题
+                // },
                 tooltip: {   //鼠标悬浮框的提示文字
                     trigger: 'axis'
                 },
@@ -193,6 +202,44 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.trading-detail-content
+    flex: 1
+    &-box
+        margin-top: 20px
+        background: #ffffff
+        padding: 0 20px 40px
+    &-title
+        display: flex
+        // justify-content: space-between
+        // align-items: center
+        height: 28px
+        line-height: 28px
+        padding: 11px 0
+        border-bottom: 1px solid #eee
+        box-sizing: content-box
+        margin-bottom: 20px
+        span
+            font-size: 14px
+            color: #999
+        &-name
+            font-size: 14px
+            color: #333
+            font-weight: 500
+            padding-left: 10px
+            position: relative
+
+            &.summary:after
+                content: ""
+                display: block
+                position: absolute
+                top: 7px
+                left: 0
+                width: 3px;
+                height: 14px;
+                background: #1138FF;
+                border-radius: 2px
+        
+
 .trading-detail
 
   &-summary

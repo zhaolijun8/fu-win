@@ -8,43 +8,44 @@
           ) 免费订阅
         .trading-detail-content-header-title 交易员
         .trading-detail-content-header-body
-          .trading-detail-content-header-body-left
-            .trading-detail-content-header-body-title 近13周账户评级
-            .trading-detail-content-header-body-charts
-              EchartsRadar(
-                v-if="valuation !== null"
-                :chartsRadarData="chartsRadarData"
-              )
-              .trading-detail-content-header-body-level(
-                v-if="valuation !== null"
-              ) {{getLevel(valuation.level)}}
-          .trading-detail-content-header-body-right
-            .trading-detail-content-header-body-item
-              .trading-detail-content-header-body-item-title 账户信息
-              .trading-detail-content-header-body-item-context
-                span.label 最大回撤
-                span.value {{getPersent(summary.withdrawMaxRate)}}
-                span.label 最大回撤金额
-                span.value {{summary.withdraw}}
-            .trading-detail-content-header-body-item
-              .trading-detail-content-header-body-item-title 信号源简介
-              .trading-detail-content-header-body-item-context {{summary.signalDesc}}
+          .trading-detail-content-header-body-title 近13周账户评级
+          .trading-detail-content-header-body-box
+            .trading-detail-content-header-body-left
+              .trading-detail-content-header-body-charts
+                EchartsRadar(
+                  v-if="valuation !== null"
+                  :chartsRadarData="chartsRadarData"
+                )
+                .trading-detail-content-header-body-level(
+                  v-if="valuation !== null"
+                ) {{getLevel(valuation.level)}}
+            .trading-detail-content-header-body-right
+              .trading-detail-content-header-body-item
+                .trading-detail-content-header-body-item-title 账户信息
+                .trading-detail-content-header-body-item-context
+                  span.label 最大回撤
+                  span.value {{getPersent(summary.withdrawMaxRate)}}
+                  span.label 最大回撤金额
+                  span.value {{summary.withdraw}}
+              .trading-detail-content-header-body-item
+                .trading-detail-content-header-body-item-title 信号源简介
+                .trading-detail-content-header-body-item-context {{summary.signalDesc}}
         .trading-detail-content-header-footer
           .trading-detail-content-header-footer-item
-            .trading-detail-content-header-footer-value {{getPersent(orderSumData.orderIncome/summary.deposit)}}
             .trading-detail-content-header-footer-label 绝对收益
+            .trading-detail-content-header-footer-value {{getPersent(orderSumData.orderIncome/summary.deposit)}}
           .trading-detail-content-header-footer-item
-            .trading-detail-content-header-footer-value {{getPersent(orderSumData.orderProfitRate)}}
             .trading-detail-content-header-footer-label 准确率
+            .trading-detail-content-header-footer-value {{getPersent(orderSumData.orderProfitRate)}}
           .trading-detail-content-header-footer-item
-            .trading-detail-content-header-footer-value {{getPersent(summary.profit/summary.balance)}}
             .trading-detail-content-header-footer-label 实时盈利率
+            .trading-detail-content-header-footer-value {{getPersent(summary.profit/summary.balance)}}
           .trading-detail-content-header-footer-item
-            .trading-detail-content-header-footer-value {{getDay(orderSumData.beginDate)}}
             .trading-detail-content-header-footer-label 开始交易时间
+            .trading-detail-content-header-footer-value {{getDay(orderSumData.beginDate)}}
           .trading-detail-content-header-footer-item
-            .trading-detail-content-header-footer-value {{orderSumData.tradeDaySum}}
             .trading-detail-content-header-footer-label 实际交易天数
+            .trading-detail-content-header-footer-value {{orderSumData.tradeDaySum}}
       .trading-detail-content-body
         .trading-detail-content-tab
           .trading-detail-content-tab-item(
@@ -63,10 +64,10 @@
               Summary(
                 :summary="summary"
               )
-            .trading-detail-content-body-report
-              ProfitLoss(
-                :summary="summary"
-              )
+        .trading-detail-content-body-report
+          ProfitLoss(
+            :summary="summary"
+          )
         .trading-detail-content-tab-context(
           v-if="tabSelected === 1"
         )
@@ -301,7 +302,6 @@ export default {
 <style lang="sass" scoped>
 #e-trading-strategy-detail-content
   flex: 1
-  margin-left: 20px
 
 .trading-detail-content
 
@@ -345,19 +345,26 @@ export default {
             color: #fff
 
     &-body
-      display: flex
       padding: 25px 30px
-
+      &-box
+        display: flex
+        align-items: center
       &-left
-        width: 40%
+        margin-left: 100px
+        // width: 60%
+        // text-align: right
 
       &-right
-        width: 60%
+        width: 40%
         padding-left: 20px
 
       &-title
         font-weight: 600
         margin-bottom: 10px
+        font-size: 16px
+        color: #333
+        margin-bottom: 25px
+        text-align: center
 
       &-charts
         position: relative
@@ -378,6 +385,7 @@ export default {
         &-title
           font-weight: 600
           margin-bottom: 10px
+          color: #1138FF
 
         &-context
           font-size: 12px
@@ -385,15 +393,18 @@ export default {
 
           .label
             margin-right: 8px
+            color: #333
 
           .value
             font-weight: 500
             font-size: 20px
             margin-right: 20px
+            color: #1138FF
 
     &-footer
       display: flex
       padding: 16px 0
+      margin: 0 20px
       border-top: 1px solid #f0f0f0
 
       &-item
@@ -403,30 +414,30 @@ export default {
       &-value
         font-size: 20px
         font-weight: 500
-        color: #555
+        color: #1138FF
 
       &-label
         font-size: 12px
         color: #999
 
   &-body
-    background-color: #fff
     &-report
       display: flex
       line-height: 50px
-      padding: 50px 0 0 30px
+      // padding: 0px 20px 40px
+      // margin-top: 20px
       font-size: 16px
       font-weight: 600
       border-bottom: 1px solid #e9e9e9
+      // background: #fff
 
   &-tab
     display: flex
     height: 40px
-    line-height: 40px
+    line-height: 40px 
     font-size: 14px
     color: #333
     background: #eee
-
     &-item
       padding: 0 17px
       cursor: pointer
@@ -438,7 +449,7 @@ export default {
 
   &-tab-context
     padding: 20px 20px 18px
-
+    background: #fff
   &-title
     display: flex
     justify-content: space-between
@@ -451,7 +462,7 @@ export default {
       font-size: 14px
       color: #333
       font-weight: 500
-      padding-left: 7px
+      padding-left: 10px
       position: relative
 
       &.summary:after
