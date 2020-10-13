@@ -70,16 +70,16 @@ export default {
     display: flex
     align-items: center
     height: 100%
-
+  
+  &-btn:nth-child(1)
+    margin-right: 10px
   &-btn
     display: block
     height: 34px
     line-height: 34px
     padding: 0 24px
-    margin: 0 4px
     border-radius: 18px
     cursor: pointer
-
     &.register
       color: #409EFF
       border: 1px solid #409EFF

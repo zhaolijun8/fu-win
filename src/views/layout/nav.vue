@@ -4,8 +4,8 @@
       :class="transparentClass"
     )
       .nav-content
+        navLogo
         .nav-left
-          navLogo
           navMenu
         .nav-right
           NavUser(

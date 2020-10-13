@@ -156,20 +156,20 @@ export default {
       color: #333
       line-height: 50px
       display: inline-block
-      positon: relative
+      position: relative
       &:before,&:after
         position: absolute
         content: ''
         display:inline-block
-        top: 0
+        top: 20px
         width: 149px
         height: 30px
       &:before
-        left: -190px
+        left: -180px
         background: url(../../../assets/images/nav_left.png) no-repeat
         background-size: cover
       &:after
-        right: -190px
+        right: -180px
         background: url(../../../assets/images/nav_right.png) no-repeat
         background-size: cover
   &-descript

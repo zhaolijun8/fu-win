@@ -140,9 +140,11 @@ export default {
 .menu
 
   &-container
+    max-width: 1190px
+    min-width: 700px
     display: flex
     margin: 0 60px
-    justify-content: space-evenly
+    justify-content: space-between
   &-item
     height: 70px
     line-height: 70px
