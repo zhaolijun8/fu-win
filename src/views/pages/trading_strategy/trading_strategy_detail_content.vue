@@ -39,7 +39,7 @@
             .trading-detail-content-header-footer-value {{getPersent(orderSumData.orderProfitRate)}}
           .trading-detail-content-header-footer-item
             .trading-detail-content-header-footer-label 实时盈利率
-            .trading-detail-content-header-footer-value {{getPersent(summary.profit/summary.balance)}}
+            .trading-detail-content-header-footer-value {{getPersent(summary.profit/summary.balance || 0)}}
           .trading-detail-content-header-footer-item
             .trading-detail-content-header-footer-label 开始交易时间
             .trading-detail-content-header-footer-value {{getDay(orderSumData.beginDate)}}
@@ -350,13 +350,13 @@ export default {
         display: flex
         align-items: center
       &-left
-        margin-left: 100px
-        // width: 60%
-        // text-align: right
+        flex: 1
+        display: flex
+        justify-content: flex-end
 
       &-right
-        width: 40%
-        padding-left: 20px
+        flex: 1
+        margin-left: 150px
 
       &-title
         font-weight: 600
@@ -367,6 +367,7 @@ export default {
         text-align: center
 
       &-charts
+        width: 287px
         position: relative
 
       &-level
@@ -380,7 +381,8 @@ export default {
         text-shadow: 1px 0 0 rgba(255,98,0,.7), -1px 0 0 rgba(255,98,0,.7), 0 1px 0 rgba(255,98,0,.7), 0 -1px 0 rgba(255,98,0,.7)
 
       &-item
-        margin-bottom: 30px
+        &:first-child
+          margin-bottom: 30px
 
         &-title
           font-weight: 600
@@ -417,6 +419,7 @@ export default {
         color: #1138FF
 
       &-label
+        margin-bottom: 8px
         font-size: 12px
         color: #999
 
