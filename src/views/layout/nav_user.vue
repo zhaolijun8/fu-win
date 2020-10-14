@@ -4,7 +4,8 @@
       v-if="userInfo === null"
     )
       router-link.nav-user-btn.register(to="/user/registe") 注册
-      router-link.nav-user-btn.login(to="/user/login") 登录
+      //- router-link.nav-user-btn.login(to="/user/login") 登录
+      div.nav-user-btn.login 登录
     .nav-user-container(
       v-else
     )
@@ -75,14 +76,16 @@ export default {
     margin-right: 10px
   &-btn
     display: block
-    height: 34px
-    line-height: 34px
-    padding: 0 24px
+    height: 36px
+    line-height: 36px
+    padding: 0 30px
     border-radius: 18px
     cursor: pointer
+    
     &.register
-      color: #409EFF
-      border: 1px solid #409EFF
+      color: #1138FF
+      border: 1px solid #A5B2F4
+      box-sizing: border-box
 
       &:hover
         background-color: #f05102
@@ -90,11 +93,13 @@ export default {
         color: #fff
 
     &.login
-      background-color: #409EFF
+      border: 1px solid #1138FF
+      background-color: #1138FF
       color: #fff
 
       &:hover
         background-color: #f05102
+        border: 1px solid #f05102
 
   &-content
     display: flex

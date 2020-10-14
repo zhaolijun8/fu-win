@@ -5,7 +5,6 @@
     )
       img.logo(
         src="../../assets/images/fengxian.svg"
-        :style='logoStyle'
       )
       div.logo_msg Bole Trade 交易社区
 </template>
@@ -30,7 +29,7 @@ export default {
 
 <style lang="sass" scoped>
 #e-logo
-  flex: 0 0 240px
+  flex: 0 0 250px
   a
     display: flex
     flex-direction: row

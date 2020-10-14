@@ -85,7 +85,7 @@ export default {
   &-left
     flex: 1
   &-right
-    flex: 0 0 170px
+    flex: 0 0 190px
 #e-nav
 
   /deep/
