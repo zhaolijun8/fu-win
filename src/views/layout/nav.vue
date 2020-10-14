@@ -109,4 +109,37 @@ export default {
         &:hover
           background-color: #ccc
           border-color: #ccc
+
+
+</style>
+<style lang="sass">
+.trade 
+  &-title
+    text-align: center
+    font-size: 36px
+    color: #333
+    line-height: 50px
+    display: inline-block
+    position: relative
+    &:before,&:after
+      position: absolute
+      content: ''
+      display:inline-block
+      top: 20px
+      width: 149px
+      height: 30px
+    &:before
+      left: -180px
+      background: url(../../assets/images/nav_left.png) no-repeat
+      background-size: cover
+    &:after
+      right: -180px
+      background: url(../../assets/images/nav_right.png) no-repeat
+      background-size: cover
+  &-descript
+      position: relative
+      font-size: 20px
+      color: #666
+      line-height: 28px
+      letter-spacing: 3px
 </style>

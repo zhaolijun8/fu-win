@@ -9,6 +9,14 @@
           :broker="filterBroker"
           @filter="filterHandler"
         )
+        .trading-name(   
+          :class="{hide:!show}"      
+        ) 
+          i.el-icon-close( 
+            @click="show = !show"
+          )
+          .trading-name-txt 明星交易员收益率>20.00%，当前实盘订阅人数>10；近三个月收益>$1000.00;复制视频规模>$5000.00;
+            
         .trading-list.e-flex
           TradingItem.trading-list-item(
             v-for="(item, index) in tradingList"
@@ -16,18 +24,28 @@
             :info="item"
             type="trading"
           )
-        .trading-title
-          .trading-title-left 跟随大师
-          router-link.trading-title-right(
-            to="/trading_strategy/follow"
-          ) 查看更多
-        .trading-list.e-flex
-          TradingItem.trading-list-item(
-            v-for="(item, index) in followList"
-            :key="index"
-            :info="item"
-            type="follow"
+        //- .trading-title
+        //-   .trading-title-left 跟随大师
+        //-   router-link.trading-title-right(
+        //-     to="/trading_strategy/follow"
+        //-   ) 查看更多
+        //- .trading-list.e-flex
+        //-   TradingItem.trading-list-item(
+        //-     v-for="(item, index) in followList"
+        //-     :key="index"
+        //-     :info="item"
+        //-     type="follow"
+        //-   )
+        .trading-section
+          .trade-title  交易英雄榜
+            .trade-descript 数英雄人物还看今朝
+        .trading-name(   
+          :class="{hide:!show}"      
+        ) 
+          i.el-icon-close( 
+            @click="show = !show"
           )
+          .trading-name-txt 提示：如发现广告或虚假账号，或对账号统计数据有疑问请联系右侧客服QQ进行举报或处理。
 </template>
 
 <script>
@@ -100,7 +118,8 @@ export default {
       brokerList: [],
       filterLevel,
       filterProfitRate,
-      filterBroker: []
+      filterBroker: [],
+      show: true
     }
   },
   components: {
@@ -206,11 +225,37 @@ export default {
 
 <style lang="sass" scoped>
 .trading
-
+  &-section 
+    width: 1190px
+    margin: 30px auto
   &-container
     width: 1200px
     margin: 0 auto
-
+    // text-align: center
+  &-section
+    text-align: center
+  &-name
+    margin-bottom: 10px
+    padding: 10px 12px 9px 20px
+    line-height: 17px
+    height: 36px
+    font-size: 12px
+    color: #333
+    background: #FEFCEC
+    border: 1px solid #FFFAD4
+    transition: height 0.2s,padding 0.4s
+    .el-icon-close
+      margin-top: 2px
+      float: right
+      font-weight: bold
+      cursor: pointer  
+  &-name.hide
+    opcity: 0
+    height: 0
+    margin: 0
+    border: 0 none
+    padding: 0
+    overflow: hidden
   &-list
     flex-wrap: wrap
 

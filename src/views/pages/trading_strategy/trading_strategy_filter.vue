@@ -210,7 +210,7 @@ export default {
 .trading-filter
 
   &-container
-    margin: 20px auto
+    margin: 10px auto
     background-color: #fff
 
   &-top

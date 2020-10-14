@@ -250,6 +250,7 @@ export default {
         font-weight: 500
         text-align: center
         padding: 50px 0 20px
+
 </style>
 
 

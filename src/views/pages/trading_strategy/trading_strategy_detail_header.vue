@@ -141,7 +141,7 @@ export default {
           font-size: 12px
           color: hsla(0,0%,100%,.8)
     &-tips 
-      margin: 30px 30px 0
+      margin: 14px 30px 0
       padding: 20px 20px 20px 30px
       line-height: 17px
       color: #fff

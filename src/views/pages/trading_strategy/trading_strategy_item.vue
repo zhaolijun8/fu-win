@@ -25,7 +25,7 @@
             .trading-list-card-list-label 账户余额
             .trading-list-card-list-balue ${{info.balance}}
           .trading-list-card-list-item
-            .trading-list-card-list-label 账户收益
+            .trading-list-card-list-label 收益率
             .trading-list-card-list-balue {{orderProfitRate}}
           .trading-list-card-list-item
             .trading-list-card-list-label 累计收益
@@ -39,7 +39,7 @@
         v-if="type === 'trading'"
       )
         .trading-list-card-footer-left
-          span 累计订阅数
+          span 订阅模式
           span.num {{info.followsHistory}}
         .trading-list-card-footer-right
           .trading-list-card-footer-btn 免费订阅
@@ -148,8 +148,8 @@ export default {
 
 <style lang="sass" scoped>
 #e-trading-strategy-item
-  width: calc((100% - 36px) / 4)
-  margin: 0 12px 15px 0
+  width: calc((100% - 30px) / 4)
+  margin: 0 10px 10px 0
 
   &:nth-child(4n)
     margin-right: 0
@@ -170,30 +170,34 @@ export default {
       justify-content: space-between
 
     &-nickname
-      font-size: 16px
+      font-size: 14px
       font-weight: 600
       color: #333
+      line-height: 20px
 
     &-level
-      width: 20px
-      height: 14px
-      line-height: 14px
+      width: 26px
+      height: 18px
+      line-height: 18px
       margin: 4px 0
-      border-radius: 4px 2px 4px 2px
+      border-radius: 2px
       color: #fff
-      background-color: #aaa
+      background-color: #ccc
       text-align: center
-      font-size: 12px
+      font-size: 14px
 
     &-server
       font-size: 12px
-      color: #999
+      line-height: 17px
+      color: #ccc
 
     &-avatar
-      width: 50px
-      height: 50px
+      width: 64px
+      height: 64px
       border-radius: 50%
       overflow: hidden
+      border: 2px solid #fff
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3)
       background-color: #eee
 
       img
@@ -212,9 +216,13 @@ export default {
         margin-bottom: 10px
 
       &-label
-        font-size: 12px
+        font-size: 14px
+        line-height: 20px
         color: #999
-
+      &-balue
+        font-size: 14px
+        font-weight: bold
+        color: #333
       &-value
         font-size: 14px
         color: #666
@@ -228,14 +236,15 @@ export default {
       display: flex
       height: 50px
       border-top: 1px solid #f0f0f0
-
+      background: #F8F8F8
       &.trading
         justify-content: space-between
         align-items: center
         padding: 0 20px
 
       &-left
-        font-size: 12px
+        font-size: 14px
+        line-height: 20px
         color: #999
 
         .num
@@ -247,10 +256,11 @@ export default {
 
       &-btn
         font-size: 14px
-        color: #409EFF
-        border-radius: 16px
-        border: 1px solid #409EFF
-        padding: 5px 12px
+        color: #1138FF
+        line-height: 20px
+        border-radius: 13px
+        border: 1px solid #A5B2F4
+        padding: 2px 11px
         cursor: pointer
         transition: all ease .3s
 
