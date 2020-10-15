@@ -243,7 +243,7 @@ export default {
     color: #333
     background: #FEFCEC
     border: 1px solid #FFFAD4
-    transition: height 0.2s,padding 0.4s
+    transition: height 0.2s , padding 0.3s , opcity 0.4s
     .el-icon-close
       margin-top: 2px
       float: right

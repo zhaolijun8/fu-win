@@ -82,7 +82,7 @@ export default {
       padding: 0 100px
       &:after,&:before
         position: absolute
-        top: 10px
+        top: 6px
         content: ''
         display: block 
         width: 1px
