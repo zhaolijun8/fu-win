@@ -10,19 +10,23 @@
         .nav-right
           NavUser(
             type="index"
+            @loginIn="loginIn"
           )
+    SignBox(v-if="loginShow") 
 </template>
 
 <script>
 import navMenu from './nav_menu.vue'
 import NavUser from './nav_user.vue'
 import NavLogo from './nav_logo.vue'
+import SignBox from './sign_box.vue'
 import logo from '../../assets/images/logo_index.svg'
 
 export default {
   data () {
     return {
-      logo
+      logo,
+      loginShow:false
     }
   },
   props: {
@@ -34,7 +38,8 @@ export default {
   components: {
     NavLogo,
     navMenu,
-    NavUser
+    NavUser,
+    SignBox
   },
   computed: {
     transparentClass() {
@@ -45,6 +50,11 @@ export default {
       }
 
       return res
+    }
+  },
+  methods:{
+    loginIn(res){
+      this.loginShow = res
     }
   },
   mounted() {
