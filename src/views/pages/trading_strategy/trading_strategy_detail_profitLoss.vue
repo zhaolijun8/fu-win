@@ -205,9 +205,9 @@ export default {
 .trading-detail-content
     flex: 1
     &-box
-        margin-top: 20px
+        // margin-top: 20px
         background: #ffffff
-        padding: 0 20px 40px
+        padding: 10px 0px 40px
     &-title
         display: flex
         // justify-content: space-between

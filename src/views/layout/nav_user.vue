@@ -5,7 +5,7 @@
     )
       router-link.nav-user-btn.register(to="/user/registe") 注册
       //- router-link.nav-user-btn.login(to="/user/login") 登录
-      div.nav-user-btn.login(@click="loginIn") 登录
+      div.nav-user-btn.login(@click="loginLayer") 登录
     .nav-user-container(
       v-else
     )
@@ -41,10 +41,11 @@ export default {
   computed: {
 
   },
+  watch:{
+  },
   methods: {
-    loginIn(){
-      console.log(1);
-      this.$emit('loginIn',true);
+    loginLayer(){
+      this.$emit('loginLayer',true);
     },
     logout() {
         let userInfo = window.localStorage.getItem('follow_user_info')

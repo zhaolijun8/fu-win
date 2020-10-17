@@ -108,6 +108,8 @@ export default {
           color: #ccc
           line-height: 17px
           cursor: pointer
+          &:hover
+              text-decoration: underline
 
     &-right
       width: 158px

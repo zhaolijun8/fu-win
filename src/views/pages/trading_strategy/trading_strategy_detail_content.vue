@@ -64,10 +64,10 @@
               Summary(
                 :summary="summary"
               )
-        .trading-detail-content-body-report
-          ProfitLoss(
-            :summary="summary"
-          )
+          .trading-detail-content-body-report
+            ProfitLoss(
+              :summary="summary"
+            )
         .trading-detail-content-tab-context(
           v-if="tabSelected === 1"
         )

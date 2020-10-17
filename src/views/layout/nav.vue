@@ -10,9 +10,9 @@
         .nav-right
           NavUser(
             type="index"
-            @loginIn="loginIn"
+            @loginLayer="loginLayer"
           )
-    SignBox(v-if="loginShow") 
+    SignBox(v-if="loginShow" @loginLayer="loginLayer") 
 </template>
 
 <script>
@@ -53,7 +53,7 @@ export default {
     }
   },
   methods:{
-    loginIn(res){
+    loginLayer(res){
       this.loginShow = res
     }
   },

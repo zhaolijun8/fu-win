@@ -176,5 +176,13 @@ export default [
     meta: {
       title: '用户留言'
     }
-  }
+  },
+  {
+    path: '/plan',
+    component: () => import('../views/pages/plan/plan.vue'),
+    name: 'plan',
+    meta: {
+      title: '联盟计划'
+    }
+  },
 ]
