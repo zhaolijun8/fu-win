@@ -185,4 +185,28 @@ export default [
       title: '联盟计划'
     }
   },
+  {
+    path: '/quantizations',
+    component: () => import('../views/pages/quantizations/quantizations.vue'),
+    name: 'quantization',
+    meta: {
+      title: '量化交易新版'
+    }
+  },
+  {
+    path: '/fund',
+    component: () => import('../views/pages/fund/fund.vue'),
+    name: 'fund',
+    meta: {
+      title: '汇币基金'
+    }
+  },
+  {
+    path: '/follow',
+    component: () => import('../views/pages/follow/follow.vue'),
+    name: 'follow',
+    meta: {
+      title: '期货跟投'
+    }
+  }
 ]

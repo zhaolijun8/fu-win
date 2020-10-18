@@ -1,0 +1,147 @@
+.quant
+    &-page
+        width: 1190px
+        margin: 20px auto
+    &-top 
+        background: #ffffff
+        padding: 40px 0
+        text-align: center
+        display: flex
+        align-items: center
+        justify-content: center
+        span 
+            color: #666
+            font-size: 16px 
+            line-height: 22px
+    &-trade
+        margin: 30px auto
+        text-align: center
+    &-filter
+        margin-bottom: 20px
+        padding: 22px 30px
+        font-size: 14px
+        color: #999999
+        line-height: 20px
+        background: #ffffff
+        &-item
+            // dis
+            padding: 0 25px
+            color: #333
+            cursor: pointer
+        &-item.active
+            color: #1138FF
+        
+    &-uploader
+        /deep/ 
+        .el-button
+            width: 130px
+            height: 50px
+            margin-left: 50px
+            color: #fff !important
+            &--primary
+                font-size: 16px
+                background: #1138FF 
+                &:hover 
+                    color: #fff
+                    background: #1138FF !important
+
+    &-canvas
+        &-list 
+            padding: 10px 22px
+            margin-bottom: 20px
+            background: #fff
+        &-title
+            padding: 0 0 7px
+            text-align: right
+            color: #333333
+            font-size: 14px
+            border-bottom: 1px solid #eee
+            span
+                font-size: 18px
+                font-weight: 500
+                line-height: 40px
+                float: left
+            .author
+                width: 200px
+                display: inline-flex
+                justify-content: center
+                align-items: center
+                font-weight: 400
+            .avatar
+                width: 40px
+                height: 40px
+                margin: 0 12px
+                border-radius: 50%
+            .name
+                flex: 1
+                overflow: hidden
+                text-overflow: ellipsis
+                
+        &-desc
+            display: flex
+            justify-content: center
+            align-items: center
+        &-left
+            flex: 1
+        &-right
+            flex: 0 0 280px
+            margin: 16px 17px 0 0
+            label
+                display: inline-block
+                margin-bottom: 6px
+                color: #999999
+                font-size: 12px
+                line-height: 17px
+            .balue
+                color: #333
+                font-size: 26px
+                line-height: 30px
+                font-weight: bold
+
+        &-income
+            margin-bottom: 20px
+            text-align: center
+            .balue
+                font-size: 36px
+                line-height: 42px
+                color: #1138FF
+        &-attrs
+            // width: 280px
+            margin: 0 auto
+            padding-bottom: 20px
+            display: flex
+            flex-wrap: wrap      
+            border-bottom: 1px dashed #ccc
+            &-a
+                width: 50%
+                height: 70px
+                text-align: center
+                &:nth-child(2n+1)
+                    border-right: 1px dashed #ccc
+                &:nth-child(1),&:nth-child(2)
+                    border-bottom: 1px dashed #ccc
+                &:nth-child(3),&:nth-child(4)
+                    padding-top: 14px
+        &-total
+            padding: 15px 0
+            color: #FB3F41
+            line-height: 20px
+            font-size: 14px
+            font-weight: 500
+            text-align: center
+            span 
+                color: #333 
+        &-btns
+            .btn1,.btn2
+                display: inline-block
+                width: 130px
+                height: 50px
+                line-height: 50px
+                color: #fff
+                font-size: 16px
+                text-align: center
+            .btn1
+                margin-right: 20px
+                background: #1138FF
+            .btn2
+                background: #FB3F41

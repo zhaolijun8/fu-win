@@ -193,7 +193,7 @@ export default {
         &-item
             display: inline-block
             line-height: 38px
-            padding: 0 17px
+            padding: 0 24px
             cursor: pointer
             border-top: 2px solid #eee
             &.active
