@@ -17,16 +17,32 @@
                 .plan-title
                     .trade-title  全民经纪人计划
                         .trade-descript National broker program
-                .plan-union-img(
-                    style="margin-bottom:40px"
-                )
-                    img(
-                        src="../../../assets/images/union_top3.jpg"
-                    )
-                .plan-union-img
-                    img(
-                        src="../../../assets/images/union_top4.jpg"
-                    )
+                //- .plan-union-img(
+                //-     style="margin-bottom:40px"
+                //- )
+                //-     img(
+                //-         src="../../../assets/images/union_top3.jpg"
+                //-     )
+                //- .plan-union-img
+                //-     img(
+                //-         src="../../../assets/images/union_top4.jpg"
+                //-     )
+                .plan-title
+                    .trade-title  全民经纪人计划
+                        .trade-descript National broker program
+                .plan-union-box.num1
+                    img(src="../../../assets/images/union_top3.jpg")
+                    .desc 
+                        .label-1 实现财富自由
+                        .label-2 未来所有的利润都变成共享利润
+                            span 未来所有的金融都变成共享金融     
+                        .label-2 抓住共享经济人模式
+                            span 坐享丰厚佣金制度
+                .plan-union-box.num2
+                    img(src="../../../assets/images/union_top4.jpg")
+                    .desc 
+                        .title 分享经济时代 全民总动员
+                        .txt 分享经济时代的到来，在外汇投资行业中意味着：未来没有公司，只有平台。这为所有想介入外汇投资趋势的普通人提供了“大众创业、万众创新”的机会，打破传统代理模式，增加多管道收入。
                 .plan-title
                     .trade-title  和我们合作的6大优势
                         .trade-descript 6 advantages of working with us
@@ -96,56 +112,5 @@
     }
 </script>
 <style lang="sass" scoped>
-
-    .plan 
-        &-contain
-            width: 1190px
-            margin: 0 auto 20px
-
-        &-union-img
-            position: relative
-        &-union-link-1,&-union-link-2
-            position: absolute
-            width: 133px
-            height: 53px
-            display: block
-            cursor: pointer
-        &-union-link-1
-            top: 316px
-            left: 110px
-        &-union-link-2
-            top: 873px
-            left: 150px
-        &-title
-            text-align: center
-            margin: 40px auto
-        &-list
-            display: flex 
-            margin: 0 -10px
-            flex-flow: wrap
-            &-box
-                margin: 0 10px 20px
-                flex: 0 0 383px
-                height: 400px
-                background: #fff
-                &-img
-                    height: 270px
-                    transition: all 0.1s
-                    overflow: hidden
-                    &:hover
-                      opacity: 0.9 
-                &-title
-                    margin: 24px 30px 10px
-                    font-size: 16px
-                    color: #333
-                    line-height: 22px
-                    font-weight: bold
-                &-desc
-                    margin: 0px 30px 0
-                    font-size: 14px
-                    color: #666
-                    line-height: 20px
-
-
-
+    @import './plan.sass'
 </style>

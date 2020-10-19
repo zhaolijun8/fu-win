@@ -33,6 +33,16 @@
                                     .name rexouyarexouya
                             .quant-canvas-desc
                                 .quant-canvas-left
+                                    .quant-canvas-legend
+                                        .legend-box
+                                            span.legend-symbol
+                                            span.legend-text 策略收益                                       
+                                        .legend-box
+                                            span.legend-symbol
+                                            span.legend-text 泸深300
+                                    .quant-canvas-img
+                                        //- router-link()
+                                        img(src="https://image.joinquant.com/backtest_1b31d87a7ca4775a171fcffdb59a69af.png?date=3c6d5daf2bb9702fdfd3d91cc7c8dac1")
                                 .quant-canvas-right
                                     .quant-canvas-income 
                                         label 累计收益

@@ -3,6 +3,7 @@
     BaseLayout
       .e-container
         .index-header
+          img(src="../../../assets/images/index_1.png")
         .index-trading
           .index-trading-box
             .index-trade
@@ -166,6 +167,11 @@
             .index-trade
               .trade-title 合作伙伴
                   .trade-descript 强大源于汇聚
+          .index-part
+            .index-part-list
+              .index-part-list-item(v-for="(i,index) in 10")
+                router-link()
+                  img()
       
 </template>
 
@@ -177,7 +183,7 @@ import E from "../../../utils"
 import _config from '../../../base_config'
 
 import avatar from '../../../assets/images/avatar-default.svg'
-
+// import partImg_1 from '../../../assets/images/partImg_1.jpg'
 export default {
   components: {
     BaseLayout,
@@ -187,6 +193,11 @@ export default {
     data() {
         return {
             avatar,
+            partList:[
+              {
+                hrefUrl:'',
+              }
+            ],
             tradingList: [],
             questionList: [
                 {
@@ -388,4 +399,20 @@ export default {
     &-child-box
       width: 1500px
       margin: 0 auto
+    &-part
+      width: 1500px
+      margin: 0 auto
+      &-list 
+        display: flex
+        align-items: center
+        flex-flow: wrap
+        justify-content: center
+        &-item 
+          flex: 0 0 220px
+          height: 100px
+          background: #666
+          margin: 0 50px 100px 0
+
+
+
 </style>

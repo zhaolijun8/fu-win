@@ -83,6 +83,36 @@
             align-items: center
         &-left
             flex: 1
+            margin-right: 60px
+        &-legend
+            height: 40px
+            line-height: 40px
+            .legend-box
+                margin-right: 50px
+                color: #333333
+                font-size: 14px
+                line-height: 20px
+                display: inline-block
+                &:nth-child(2)
+                    .legend-symbol
+                        background: #FB3F41
+
+            .legend-symbol
+                width: 10px
+                height: 10px
+                margin-right: 8px
+                display: inline-block
+                background: #02C04A
+        &-img 
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 300px  
+            img
+                width: 103%;
+                height: 128%;
+                position: absolute;
+                top: -52px;
         &-right
             flex: 0 0 280px
             margin: 16px 17px 0 0

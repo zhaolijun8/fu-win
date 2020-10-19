@@ -57,10 +57,15 @@
                         .fund-moduler-ous-btm 联系我们，咨询更多基金详情
                             router-link(to="/" class="to") 去认证
                 Trader
-                .fund-moduler-strade
-                    .fund-moduler-strade-l
-                        
-                    .fund-moduler-strade-r
+                .trader-policy
+                    .trader-policy-l
+                        .trander-tt 
+                            span.title 策略信息
+                        traderPolicy
+                    .trader-policy-r
+                        .trander-tt 
+                            span.title 模拟交易收益率
+                        traderYield
 
 
                 
@@ -68,6 +73,8 @@
 <script>
     import BaseLayout from '../../layout/base_layout.vue'
     import Trader from '../../layout/trader.vue'
+    import traderPolicy from '../../layout/trader_policy.vue'
+    import traderYield from '../../layout/trader_yield.vue'
     import avatar from '../../../assets/images/avatar-default.svg'
     const tabs = [
         {
@@ -99,7 +106,9 @@
         },
         components: {
         BaseLayout,
-        Trader
+        Trader,
+        traderPolicy,
+        traderYield
         },
         methods: {
             tabActive(val) {
