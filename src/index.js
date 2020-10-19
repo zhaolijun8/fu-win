@@ -3,7 +3,9 @@ import App from './views/app.vue'
 import router from './router/router'
 import store from './store/store'
 import ElementUI from 'element-ui'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(VueAwesomeSwiper)
 Vue.use(ElementUI)
 // 基础样式
 import './assets/styles/global.sass'
