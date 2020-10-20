@@ -35,8 +35,8 @@
                     .desc 
                         .label-1 实现财富自由
                         .label-2 未来所有的利润都变成共享利润
-                            span 未来所有的金融都变成共享金融     
-                        .label-2 抓住共享经济人模式
+                            span 抓住共享经济人模式    
+                        .label-2 未来所有的金融都变成共享金融 
                             span 坐享丰厚佣金制度
                 .plan-union-box.num2
                     img(src="../../../assets/images/union_top4.jpg")
