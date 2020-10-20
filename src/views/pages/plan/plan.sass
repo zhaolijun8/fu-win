@@ -52,6 +52,185 @@
         &-box 
             position: relative
             margin-bottom: 20px
+            &-top1 
+                height: 539px
+                background: red
+                position: relative
+                .agent-arrow
+                    position: absolute
+                    left: 45%
+                    bottom: 139px      
+                    width: 90px
+                    height: 90px
+                    background: #000
+                .left 
+                    display: inline-block
+                    padding: 138px 0 0 109px
+                    .desc 
+                        
+                        width: 380px
+                        font-size: 20px;
+                        font-weight: 400;
+                        color: #FFFFFF;
+                        line-height: 28px;
+
+                    .btn 
+                        margin-top: 33px
+                        display: inline-block
+                        padding: 14px 33px
+                        line-height: 22px
+                        background: #FFFFFF;
+                        border-radius: 4px;
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: #1138FF;
+                        cursor: pointer
+                .right 
+                    float: right
+                    margin: 200px 40px 0 0
+                    text-align: right
+                    .img 
+                        display: inline-block
+                    .desc 
+                        width: 448px
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: #666666;
+                        line-height: 22px;
+                .title                      
+                    font-size: 30px;
+                    color: #FFFFFF;
+                    line-height: 60px;
+                    font-weight: 600
+                    position: relative
+                    .s1              
+                        &:before 
+                        content: ''
+                        display: block
+                        position: absolute
+                        top: 0px
+                        left: 0
+                        width: 30px
+                        height: 6px
+                        border-radius: 3px
+                        background: #fff
+
+                    &.s2
+                        color: #333
+
+            &-top2
+                padding: 72px 150px 119px
+                background: #fff
+                display: flex
+                justify-content: space-between
+                .title
+                    margin-bottom: 15px
+                    font-size: 30px;
+                    font-weight: 600;
+                    color: #333333;
+                    line-height: 42px; 
+                .desc 
+
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #666666;
+                    line-height: 22px;
+                    .line 
+                        margin-bottom: 10px
+                        &:before ,&:after
+                            // content: ''
+                            display: inline-block
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 50%
+                            vertical-align: 3px
+                            background: #1138FF;
+                .left
+                    flex: 1
+                    margin-right: 50px
+                    .desc
+                        padding-bottom: 18px
+                        .line
+                            &:before 
+                                content: ''
+                                margin-right: 8px
+                    .btn 
+                        margin-bottom: 46px
+                        display: inline-block
+                        padding: 14px 33px
+                        background: #1138FF;
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: #FFFFFF;
+                        line-height: 22px;
+                        cursor: pointer
+
+                .right 
+                    flex: 1
+                    text-align: right
+                    .desc 
+                        .line 
+                            &:after 
+                                content: ''
+                                margin-left: 8px
+                                // display: inline-block
+                                // width: 6px;
+                                // height: 6px;
+                                // margin-right: 8px
+                                // border-radius: 50%
+                                // vertical-align: 3px
+                .top2-nion 
+                    display: flex                   
+                    margin-bottom: 46px
+                    padding-top: 50px
+                    &-img
+                        width: 200px
+                        height: 380px
+                        background: red 
+                        &:nth-child(1)
+                            margin-right: 20px
+                    
+            &-top4
+                overflow: hidden 
+                background: #fff
+                padding-bottom: 60px
+                .agent-box 
+                    position: relative
+                    height: 400px
+                    background: #c00
+                    .agent-container
+                        position: absolute
+                        top: 118px
+                        right: 60px
+                        width: 460px
+                    .title 
+                        font-size: 30px;
+                        font-weight: normal;
+                        color: #FFFFFF;
+                        line-height: 70px;
+                        position: relative
+                        &:before 
+                            content: ''
+                            display: block
+                            position: absolute
+                            top: 0px
+                            left: 0
+                            width: 30px
+                            height: 6px
+                            border-radius: 3px
+                            background: #fff
+                    .descript
+                        font-size: 12px;
+                        font-weight: 400;
+                        color: #FFFFFF;
+                        line-height: 17px;
+                    .agent-arrow
+                        position: absolute
+                        width: 90px
+                        height: 90px
+                        bottom: -45px
+                        right: 83px
+                        background: red
             &.num1 
                 .desc
                     bottom: 30px
@@ -95,4 +274,37 @@
                 position: absolute
                 color: #fff 
             
+.about
+    background: #fff
+    &-statistics
+        padding: 20px 8% 0 8%
+        display: flex
+
+        &-item
+            display: flex
+            flex: 1
+            align-items: center
+            flex-direction: column
+            text-align: center
+
+            &-img
+                display: flex
+                align-items: center
+                justify-content: center
+                width: 108px
+                height: 108px
+
+            &-num
+                width: 195px
+                text-align: left
+                color: #666
+                font-size: 14px
+                line-height: 20px;
+
+            &-text
+                margin: 20px 0 16px
+                color: #333
+                font-size: 16px
+                line-height: 22px
+                font-weight: 600
 
