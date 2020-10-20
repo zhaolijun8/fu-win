@@ -3,9 +3,12 @@ import App from './views/app.vue'
 import router from './router/router'
 import store from './store/store'
 import ElementUI from 'element-ui'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'element-ui/lib/theme-chalk/index.css'
-Vue.use(VueAwesomeSwiper)
+import VeRing from 'v-charts/lib/ring.common'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
+Vue.component(VeRing.name, VeRing) //引入环形图表
 Vue.use(ElementUI)
 // 基础样式
 import './assets/styles/global.sass'

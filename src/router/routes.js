@@ -122,14 +122,14 @@ export default [
 			title: '外汇百科'
 		}
 	},
-	{
-		path: '/quantization',
-		component: () => import('../views/pages/quantization/quantization.vue'),
-		name: 'quantization',
-		meta: {
-			title: '量化交易'
-		}
-	},
+	// {
+	// 	path: '/quantization',
+	// 	component: () => import('../views/pages/quantization/quantization.vue'),
+	// 	name: 'quantization',
+	// 	meta: {
+	// 		title: '量化交易'
+	// 	}
+	// },
 	{
 		path: '/futures',
 		component: () => import('../views/pages/futures/futures.vue'),

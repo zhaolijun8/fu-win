@@ -62,18 +62,34 @@ export default {
               }
           ]
         },
-          {
-              text: '交易学院',
-              name: 'school'
-          },
-          {
-              text: '量化交易',
-              name: 'quantization'
-          },
-          {
-              text: '期货跟投',
-              name: 'futures'
-          },
+        {
+            text: '交易学院',
+            name: 'school'
+        }, 
+        // {
+        //     text: '量化交易',
+        //     name: 'quantization'
+        // },
+        // {
+        //     text: '期货跟投',
+        //     name: 'futures'
+        // },
+        {
+            text: '量化交易',
+            name: 'quantization'
+        },
+        {
+            text: '汇币基金',
+            name: 'fund'
+        },
+        {
+            text: '期货跟投',
+            name: 'follow'
+        },
+        {
+            text: '联盟计划',
+            name: 'plan'
+        },
         {
           text: '关于我们',
           path: '/about',
