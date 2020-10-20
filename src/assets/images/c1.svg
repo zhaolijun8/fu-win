@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>椭圆形</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="8联盟计划" transform="translate(-1380.000000, -1962.000000)">
+            <g id="核心实力" transform="translate(363.000000, 1607.000000)">
+                <g id="编组-12" transform="translate(2.000000, 0.000000)">
+                    <g id="编组-11">
+                        <g id="箭头" transform="translate(1060.000000, 400.000000) scale(-1, 1) translate(-1060.000000, -400.000000) translate(1015.000000, 355.000000)">
+                            <circle id="椭圆形" stroke="#F2F2F2" stroke-width="2" fill="#FFFFFF" cx="45" cy="45" r="44"></circle>
+                            <g transform="translate(45.500000, 45.500000) scale(-1, 1) translate(-45.500000, -45.500000) translate(26.000000, 26.000000)" fill-rule="nonzero">
+                                <rect id="矩形" fill="#000000" opacity="0" transform="translate(19.500000, 19.500000) scale(-1, 1) translate(-19.500000, -19.500000) " x="0" y="0" width="39" height="39"></rect>
+                                <path d="M16.82119,8.37126229 L7.07110753,18.1214011 C6.30963082,18.8828822 6.30963082,20.1172692 7.07110753,20.8787503 L16.82119,30.6288892 C17.5826667,31.3903703 18.8170466,31.3903703 19.5785233,30.6288892 C20.34,29.8674081 20.34,28.6330211 19.5785233,27.87154 L13.1570898,21.4500694 L31.8499608,21.4500694 C32.92735,21.4500694 33.8,20.5774143 33.8,19.5000189 C33.8,18.4226235 32.92735,17.5499684 31.8499608,17.5499684 L13.1570898,17.5499684 L19.5785233,11.1284979 C19.9588072,10.7482496 20.1498769,10.249027 20.1498769,9.74980436 C20.1498769,9.25058174 19.9597539,8.75139699 19.5785233,8.37111083 C18.8170466,7.60962972 17.5826667,7.60962972 16.82119,8.37111083 L16.82119,8.37126229 Z" id="路径" fill="#1138FF" transform="translate(20.150000, 19.500000) scale(-1, -1) rotate(90.000000) translate(-20.150000, -19.500000) "></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
