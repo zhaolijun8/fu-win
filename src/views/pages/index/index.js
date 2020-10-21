@@ -115,9 +115,9 @@ let Index = {
       userInfo: null,
       doubtEq: 0,
       swiperOption: {
-        slidesPerView: 1,
-        spaceBetween: 0,
-        slidesPerGroup: 1,
+        // slidesPerView: 1,
+        // spaceBetween: 0,
+        // slidesPerGroup: 1,
         // loopFillGroupWithBlank: true,
         navigation: {
           nextEl: ".swiper-button-next",
@@ -126,6 +126,7 @@ let Index = {
         grabCursor:true,
         parallax:true,
         preventLinksPropagation: false,
+        swiperSlides:[],
       },
       
     };

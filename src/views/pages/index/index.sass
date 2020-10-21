@@ -250,3 +250,16 @@
             tr.el-table__row--striped 
                 td
                     background: #F4F9FF
+
+.swiper-button-prev, .swiper-button-next
+    width: 50px 
+    height: 50px 
+.swiper-button-prev
+    background: url(../../../assets/images/arrow_l.svg) no-repat;
+    &.swiper-button-disabled
+        background: url(../../../assets/images/arrow_r.svg) no-repat;
+
+.swiper-button-next
+    background: url(../../../assets/images/arrow_r.svg) no-repat;
+    &.swiper-button-disabled
+        background: url(../../../assets/images/arrow_l.svg) no-repat;

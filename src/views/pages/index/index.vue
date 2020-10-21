@@ -4,10 +4,9 @@
       .e-container
         .index-header
           //- img(src="../../../assets/images/index_1.png")
-          swiper(class="swiper" :options="swiperOption" ref="mySwiper")
+          swiper(class="swiper" :options="swiperOption" ref="mySwiper" style="height: 800px")
             swiper-slide(v-for="(i,index) in 4" :key="index")
-              .child
-                img(src="../../../assets/images/index_1.png")
+                img(src="../../../assets/images/index_1.png" width="100%")
             .swiper-button-prev(slot="button-prev")
             .swiper-button-next(slot="button-next")
         .index-trading
@@ -70,9 +69,30 @@
                       span 亏盈点数
                     .bright {{item.profit}}
                       span 盈利（元）
+                //- swiper(class="swiper" :options="swiperOption" ref="mySwiper" style="height: 800px")
+                //-   swiper-slide(v-for="(i,index) in 5" :key="index")
+                //-        .module-top-list-item(
+                //-           v-for="(item,index) in heroList"
+                //-         )
+                //-           .avatar 
+                //-             img(:src="item.url == ''? avatar : item.url" width="100%")
+                //-             .ranknum(
+                //-               :class="`color_${index+1}`"
+                //-             ) {{'0'+(index+1)}}
+                //-           .name 辣妹子
+                //-           .number 收益率
+                //-             span {{item.rate}}
+                //-           .modulebt
+                //-             .bleft {{item.pnum}}
+                //-               span 亏盈点数
+                //-             .bright {{item.profit}}
+                //-               span 盈利（元）
+                //-   .swiper-button-prev(slot="button-prev")
+                //-   .swiper-button-next(slot="button-next")
                      
         .index-trading
           //- 广告位
+          img(src="../../../assets/images/demo.png")
         .index-trading
           .index-trading-box
             .index-trade

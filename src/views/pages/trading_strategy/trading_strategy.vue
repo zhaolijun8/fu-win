@@ -53,7 +53,7 @@
               .profit-flex 获利
                 span.txt2 {{item.profit}}
               .canvas-flex 
-                img(:src="item.canvasurl == '' ? item.canvasurl : canvasUrl")
+                img(:src="item.canvasurl != '' ? item.canvasurl : canvasUrl")
           el-pagination(
             background
             layout="prev, pager, next"
@@ -77,7 +77,7 @@ import trandingFollows from './tranding_strategy_follows.vue'
 import E from "../../../utils";
 
 import avatar from '../../../assets/images/avatar-default.svg'
-import canvasUrl from '../../../assets/images/canvas-default.jpeg'
+import canvasUrl from '../../../assets/images/canvas-default.png'
 const filterLevel = [
   {
     label: "S",
