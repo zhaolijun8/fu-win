@@ -3,12 +3,12 @@
     BaseLayout
       .e-container
         .index-header
-          img(src="../../../assets/images/index_1.png")
-          swiper(class="swiper" :options="swiperOption" ref="mySwiper" style="height: 800px")
-            swiper-slide(v-for="(i,index) in 2" :key="index")
-                img(src="../../../assets/images/index_1.png" width="100%")
-            .swiper-button-prev(slot="button-prev")
-            .swiper-button-next(slot="button-next")
+          img(src="../../../assets/images/index_1.png" width="100%")
+          //- swiper(class="swiper" :options="swiperOption" ref="mySwiper" style="height: 800px")
+          //-   swiper-slide(v-for="(i,index) in 2" :key="index")
+          //-       img(src="../../../assets/images/index_1.png" width="100%")
+          //-   .swiper-button-prev(slot="button-prev")
+          //-   .swiper-button-next(slot="button-next")
         .index-trading.swad1
           .index-trading-box.bole-trade
             .index-trade
@@ -71,8 +71,9 @@
                       span 亏盈点数
                     .bright {{item.profit}}
                       span 盈利（元）
-              //- .left-btn 
-              //- .right-btn
+              .list-btn
+                .left-btn 
+                .right-btn
                 //- swiper(class="swiper" :options="swiperOption" ref="mySwiper" style="height: 800px")
                 //-   swiper-slide(v-for="(i,index) in 5" :key="index")
                 //-        .module-top-list-item(
