@@ -4,7 +4,7 @@
         .e-container
             .plan-contain 
                 .plan-union-box-top1
-                    //- img.bg(src="../../../assets/images/union_top1.jpg")
+                    img.bg(src="../../../assets/images/union_top1.png")
                     .left 
                         .title.s1 交易员
                         .desc 带领普通投资者一起赚钱的外汇投资达人，<br>我们称之为交易员
@@ -15,7 +15,7 @@
                         .title.s2 什么是交易员
                         .desc 带领普通投资者一起赚钱的外汇投资达人，我们称之为交易员。<br>交易员是个人荣耀和实力的象征。<br>他们拥有独特的标识，他们被展示在交易员排行榜，<br> 他们还能获得官方强推的机会。<br>他们是真正行走在财富和荣耀中的主角儿。
                     .agent-arrow
-
+                        img(src="../../../assets/images/arrow_pr.svg")
                 .plan-union-box-top2
                     .left 
                         .box-1 
@@ -29,12 +29,16 @@
                         .btn 现在加入
                         .top2-nion
                             .top2-nion-img
+                                img(src="../../../assets/images/p_01.jpg")
                             .top2-nion-img
+                                img(src="../../../assets/images/p_02.jpg")
                     .right
                         .box-2 
                             .top2-nion
                                 .top2-nion-img
-                                .top2-nion-img
+                                    img(src="../../../assets/images/p_03.png")
+                                .top2-nion-img                               
+                                    img(src="../../../assets/images/p_01.jpg")
                             .title 交易员的限制和责任
                             .desc.r 
                                 .line 交易员需阶段性空仓,“持仓中”建立的复制关系需要等到交易员空仓后开始生效跟单
@@ -44,12 +48,12 @@
 
                 .plan-union-box-top4
                     .agent-box 
+                        img(src="../../../assets/images/union_top2.jpg" width="100%" height="400")
                         .agent-container
-                            //- img(src="/")
                             .title 经纪人计划简介
                             .descript 作为我们的介绍经纪人，您的客户将会直接在 注册账户，在无需付出任何资本的情况下，您可以在客户每笔交易中赚取佣金，我们会管理所有客户账户及交易，包括审批新账户、跟进客户账户及提供信息科技支援。 合作伙伴计划的核心是我们先进及具弹性的交易技术，可以为不同类型及规模的合作伙伴提供合适的交易方案。为了全面了解您的业务及盈利目标以及为您设计最合适的方案，我们的业务拓展经理将会与您紧密合作。
                         .agent-arrow
-                            //- img(src="../../../assets/images/arrow_btm.png")
+                            img(src="../../../assets/images/arrow_btm.svg")
                     .plan-title
                         .trade-title  如何操作
                             .trade-descript How to operate
@@ -57,7 +61,7 @@
                         .about-statistics-item
                             .about-statistics-item-img
                                 img(
-                                    src="../../../assets/images/people.svg"
+                                    src="../../../assets/images/n3.svg"
                                 )
                             .about-statistics-item-info
                                 .about-statistics-item-text 创建新账号
@@ -65,7 +69,7 @@
                         .about-statistics-item
                             .about-statistics-item-img
                                 img(
-                                src="../../../assets/images/order.svg"
+                                src="../../../assets/images/n2.svg"
                                 )
                             .about-statistics-item-info
                                 .about-statistics-item-text 推广交易社区
@@ -73,7 +77,7 @@
                         .about-statistics-item
                             .about-statistics-item-img
                                 img(
-                                src="../../../assets/images/amount.svg"
+                                src="../../../assets/images/n1.svg"
                                 )
                             .about-statistics-item-info
                                 .about-statistics-item-text Earn Commissions
