@@ -3,14 +3,14 @@
     BaseLayout
       .e-container
         .index-header
-          //- img(src="../../../assets/images/index_1.png")
+          img(src="../../../assets/images/index_1.png")
           swiper(class="swiper" :options="swiperOption" ref="mySwiper" style="height: 800px")
-            swiper-slide(v-for="(i,index) in 4" :key="index")
+            swiper-slide(v-for="(i,index) in 2" :key="index")
                 img(src="../../../assets/images/index_1.png" width="100%")
             .swiper-button-prev(slot="button-prev")
             .swiper-button-next(slot="button-next")
-        .index-trading
-          .index-trading-box
+        .index-trading.swad1
+          .index-trading-box.bole-trade
             .index-trade
               .trade-title   Bole Trade 的核心实力
                   .trade-descript 更高端/更合规/更专业
@@ -51,8 +51,10 @@
               .module-top-head
                 .module-top-head-title 每周英雄榜TOP10
                   span 数英雄人物还看今朝
-                .module-top-head-link 查看总排行榜 >>
+                .module-top-head-link 
+                  router-link(to='/trading_strategy') 查看总排行榜 >>
               .module-top-list
+                //- .bg
                 .module-top-list-item(
                   v-for="(item,index) in heroList"
                 )
@@ -69,6 +71,8 @@
                       span 亏盈点数
                     .bright {{item.profit}}
                       span 盈利（元）
+              //- .left-btn 
+              //- .right-btn
                 //- swiper(class="swiper" :options="swiperOption" ref="mySwiper" style="height: 800px")
                 //-   swiper-slide(v-for="(i,index) in 5" :key="index")
                 //-        .module-top-list-item(

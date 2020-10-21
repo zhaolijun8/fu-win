@@ -463,7 +463,7 @@ export default {
     &-item
       display: flex
       align-items: center
-      text-align: center
+      // text-align: center
       padding: 20px 30px 26px
       font-size: 14px
       line-height: 40px
@@ -474,11 +474,13 @@ export default {
         font-size: 30px
         color: #333
         font-weight: bold
+        vertical-align: -4px
       .txt2
         padding-left: 30px
         font-size: 30px
         font-weight: bold
         color: #FB3F41
+        vertical-align: -4px
 
       .avatar
         position: relative
@@ -510,7 +512,7 @@ export default {
             background: #F18D5C
 
       .name
-        flex: 0 0 120px
+        flex: 0 0 150px
         padding: 0 50px 0 0px
         text-align: left
         font-weight: bold
@@ -520,18 +522,18 @@ export default {
         color: #333
         border-right: 1px solid #eee
       .yield-flex
-        flex: 0 0 250px
+        flex: 0 0 260px
         height: 40px
-        // padding: 0 20px
+        padding-left: 30px
         border-right: 1px solid #eee
       .accuracy-flex
-        flex: 0 0 250px
+        flex: 0 0 240px
         height: 40px
-        // padding: 0 30px
+        padding-left: 30px
         border-right: 1px solid #eee
       .profit-flex
-        flex: 0 0 230px
+        flex: 1
         height: 40px
-        // padding: 0 30px
+        padding-left: 30px
 
 </style>
