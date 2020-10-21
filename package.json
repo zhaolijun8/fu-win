@@ -16,9 +16,10 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "echarts": "^4.8.0",
+    "echarts": "^4.9.0",
     "element-ui": "^2.13.2",
     "moment": "^2.24.0",
+    "v-charts": "^1.19.0",
     "vue": "^2.6.10",
     "vue-awesome-swiper": "^4.1.1",
     "vue-router": "^3.0.6",
