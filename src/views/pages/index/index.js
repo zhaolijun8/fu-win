@@ -107,6 +107,18 @@ let Index = {
           pnum: "13",
           profit: "1314.09",
         },
+        {
+          url: "",
+          rate: "193.13%",
+          pnum: "13",
+          profit: "1314.09",
+        },
+        {
+          url: "",
+          rate: "193.13%",
+          pnum: "13",
+          profit: "1314.09",
+        },
       ],
       trandingRequest: {
         pageSize: 4,
@@ -119,6 +131,7 @@ let Index = {
         // spaceBetween: 0,
         // slidesPerGroup: 1,
         // loopFillGroupWithBlank: true,
+        // loop:true,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -127,6 +140,20 @@ let Index = {
         parallax:true,
         preventLinksPropagation: false,
         swiperSlides:[],
+      },
+      swiperTopOption: {
+        slidesPerView: 4,
+        spaceBetween: 15,
+        slidesPerGroup: 4,
+        loopFillGroupWithBlank: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        grabCursor:true,
+        parallax:true,
+        preventLinksPropagation: false,
+        // swiperSlides:[],
       },
       
     };

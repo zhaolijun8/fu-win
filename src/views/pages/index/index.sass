@@ -288,28 +288,54 @@
                 td
                     background: #F4F9FF
 
+.swiper-top
+    // position: relative
 .swiper-button-prev, .swiper-button-next
-    width: 50px 
-    height: 50px 
+    position: absolute
+    bottom: 132px
+    right: 100px
+    width: 62px
+    height: 62px
+    top: auto 
+    left: auto
+    outline: none
+    &:after
+        content: ''
+        width: 62px
+        height: 62px
+        display: block
+        border-radius: 50%
+        overflow: hidden
+        
+   
 .swiper-button-prev
-    background: url(../../../assets/images/arrow_l.svg) no-repat;
+    right: 200px
+    &:after 
+        background: url(../../../assets/images/arrow_bl.svg) no-repeat center center
     &.swiper-button-disabled
-        background: url(../../../assets/images/arrow_r.svg) no-repat;
+        &:after 
+            background: url(../../../assets/images/arrow_bl.svg)  no-repeat center center
 
 .swiper-button-next
-    background: url(../../../assets/images/arrow_r.svg) no-repat;
+    &:after 
+        content: ''
+        background: url(../../../assets/images/arrow_r.svg) no-repeat center center
     &.swiper-button-disabled
-        background: url(../../../assets/images/arrow_l.svg) no-repat;
-.list-btn
-    float: right
-    margin-right: 98px
-.left-btn,.right-btn
-    width: 60px
-    height: 60px
-    border-radius: 50%
-    display: inline-block
-.left-btn
-    margin-right: 30px
-    background: url('../../../assets/images/arrow_bl.svg') no-repeat center center
-.right-btn
-    background: url('../../../assets/images/arrow_r.svg') no-repeat center center
+        &:after
+            background: url(../../../assets/images/arrow_r.svg) no-repeat center center
+.module-top-list 
+    .swiper-button-prev, .swiper-button-next
+        bottom: 40px
+    .swiper-button-prev
+        right: 190px 
+// .list-btn
+//     float: right
+//     margin-right: 98px
+// .left-btn,.right-btn
+//     border-radius: 50%
+//     display: inline-block
+// .left-btn
+//     margin-right: 30px
+//     background: url('../../../assets/images/arrow_bl.svg') no-repeat center center
+// .right-btn
+//     background: url('../../../assets/images/arrow_r.svg') no-repeat center center

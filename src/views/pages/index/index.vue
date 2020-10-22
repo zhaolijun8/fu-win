@@ -3,12 +3,11 @@
     BaseLayout
       .e-container
         .index-header
-          img(src="../../../assets/images/index_1.png" width="100%")
-          //- swiper(class="swiper" :options="swiperOption" ref="mySwiper" style="height: 800px")
-          //-   swiper-slide(v-for="(i,index) in 2" :key="index")
-          //-       img(src="../../../assets/images/index_1.png" width="100%")
-          //-   .swiper-button-prev(slot="button-prev")
-          //-   .swiper-button-next(slot="button-next")
+          swiper(class="swiper swiper-top" :options="swiperOption" ref="mySwiper" style="max-height: 800px")
+            swiper-slide(v-for="(i,index) in 2" :key="index")
+                img(src="../../../assets/images/index_1.png" width="100%")
+            .swiper-button-prev(slot="button-prev")
+            .swiper-button-next(slot="button-next")
         .index-trading.swad1
           .index-trading-box.bole-trade
             .index-trade
@@ -54,46 +53,26 @@
                 .module-top-head-link 
                   router-link(to='/trading_strategy') 查看总排行榜 >>
               .module-top-list
-                //- .bg
-                .module-top-list-item(
-                  v-for="(item,index) in heroList"
-                )
-                  .avatar 
-                    img(:src="item.url == ''? avatar : item.url" width="100%")
-                    .ranknum(
-                      :class="`color_${index+1}`"
-                    ) {{'0'+(index+1)}}
-                  .name 辣妹子
-                  .number 收益率
-                    span {{item.rate}}
-                  .modulebt
-                    .bleft {{item.pnum}}
-                      span 亏盈点数
-                    .bright {{item.profit}}
-                      span 盈利（元）
-              .list-btn
-                .left-btn 
-                .right-btn
-                //- swiper(class="swiper" :options="swiperOption" ref="mySwiper" style="height: 800px")
-                //-   swiper-slide(v-for="(i,index) in 5" :key="index")
-                //-        .module-top-list-item(
-                //-           v-for="(item,index) in heroList"
-                //-         )
-                //-           .avatar 
-                //-             img(:src="item.url == ''? avatar : item.url" width="100%")
-                //-             .ranknum(
-                //-               :class="`color_${index+1}`"
-                //-             ) {{'0'+(index+1)}}
-                //-           .name 辣妹子
-                //-           .number 收益率
-                //-             span {{item.rate}}
-                //-           .modulebt
-                //-             .bleft {{item.pnum}}
-                //-               span 亏盈点数
-                //-             .bright {{item.profit}}
-                //-               span 盈利（元）
-                //-   .swiper-button-prev(slot="button-prev")
-                //-   .swiper-button-next(slot="button-next")
+               
+              
+                swiper(class="swiper" :options="swiperTopOption" ref="mySwiper" style="height: 330px")
+                  swiper-slide.module-top-list-item(v-for="(item,index) in heroList" :key="index")
+                     
+                    .avatar 
+                      img(:src="item.url == ''? avatar : item.url" width="100%")
+                      .ranknum(
+                        :class="`color_${index+1}`"
+                      ) {{'0'+(index+1)}}
+                    .name 辣妹子
+                    .number 收益率
+                      span {{item.rate}}
+                    .modulebt
+                      .bleft {{item.pnum}}
+                        span 亏盈点数
+                      .bright {{item.profit}}
+                        span 盈利（元）
+                .swiper-button-prev(slot="button-prev")
+                .swiper-button-next(slot="button-next")
                      
         .index-trading
           //- 广告位
