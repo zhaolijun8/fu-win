@@ -181,7 +181,7 @@
             .index-part-list
               .index-part-list-item(v-for="(i,index) in 10")
                 //- router-link()
-                  img()
+                img(src="../../../assets/images/part_demo.png")
       
 </template>
 
@@ -212,17 +212,22 @@
       margin: 0 auto
     &-part
       width: 1500px
-      margin: 0 auto
+      margin: 0 auto 30px
       &-list 
         display: flex
         align-items: center
         flex-flow: wrap
         justify-content: center
+        margin-left: -50px
+        margin-right: -50px
         &-item 
           flex: 0 0 220px
           height: 100px
-          background: #666
-          margin: 0 50px 100px 0
+          display: flex 
+          justify-content: center
+          align-items: center
+          // background: #666
+          margin: 0 50px 50px
 
 
 
