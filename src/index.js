@@ -4,13 +4,14 @@ import router from './router/router'
 import store from './store/store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import VeRing from 'v-charts/lib/ring.common'
+// import VeRing from 'v-charts/lib/ring.common'
+import VeLine from 'v-charts/lib/line'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 import 'swiper/css/swiper.css'
 // import 'swiper/swiper-bundle.css'
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
-Vue.component(VeRing.name, VeRing) //引入环形图表
+Vue.component(VeLine.name, VeLine) //引入环形图表
 Vue.use(ElementUI)
 // 基础样式
 import './assets/styles/global.sass'

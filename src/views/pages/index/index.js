@@ -142,9 +142,10 @@ let Index = {
         swiperSlides:[],
       },
       swiperTopOption: {
+        width: 1190,
         slidesPerView: 4,
         spaceBetween: 15,
-        slidesPerGroup: 4,
+        slidesPerGroup: 1,
         loopFillGroupWithBlank: true,
         navigation: {
           nextEl: ".swiper-button-next",

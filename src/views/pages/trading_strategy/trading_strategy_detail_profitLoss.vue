@@ -6,6 +6,28 @@
               <span>（按日统计）</span>
             //- <div class="trading-profitLoss-box-title"><span></span>（按日统计）</div>
             <div id="profitCharts" ref="profitCharts" style="width: 1100px;margin:0 auto;height:400px;"></div>
+            .static-table
+                el-table(:data="tableData"
+                    width="100%"
+                    align="center"
+                    show-summary
+                    :span-method="arraySpanMethod"
+                    :summary-method="getSummaries")
+                    el-table-column(prop="January" label="1月" width="75" align="center")
+                    el-table-column(prop="February" label="2月" width="75" align="center")
+                    el-table-column(prop="March" label="3月" width="75" align="center")
+                    el-table-column(prop="April" label="4月" width="75" align="center")
+                    el-table-column(prop="May" label="5月" width="75" align="center")
+                    el-table-column(prop="June" label="6月" width="75" align="center")
+                    el-table-column(prop="July" label="7月" width="75" align="center")
+                    el-table-column(prop="August" label="8月" width="75" align="center")
+                    el-table-column(prop="September" label="9月" width="75" align="center")
+                    el-table-column(prop="October" label="10月" width="75" align="center")
+                    el-table-column(prop="November" label="11月" width="75" align="center")
+                    el-table-column(prop="December" label="12月" width="75" align="center")
+                    el-table-column(prop="YTD" label="YTD" align="center" )
+                .total-static 
+
         .trading-detail-content-box
             .trading-detail-content-title
               .trading-detail-content-title-name.summary 盈亏分析
@@ -36,6 +58,7 @@ export default {
     },
     data() {
         return {
+            totalNum:'99.99%',
             orderFlowData:[],
             userId: '',
             mtAccId: '',
@@ -43,7 +66,38 @@ export default {
             winList: [],
             profitList: [],
             incomeList: [],
-            lossList: []
+            lossList: [],
+            tableData:[{
+                January:'1.34%',
+                February:'1.34%',
+                March:'- -',
+                April:'1.34%',
+                May:'1.34%',
+                June:'1.34%',
+                July:'1.34%',
+                August:'1.34%',
+                September:'1.34%',
+                October:'1.34%',
+                November:'1.34%',
+                December:'1.34%',
+                YTD:"91.41%",
+
+            },{
+                January:'1.34%',
+                February:'1.34%',
+                March:'- -',
+                April:'1.34%',
+                May:'1.34%',
+                June:'1.34%',
+                July:'1.34%',
+                August:'1.34%',
+                September:'1.34%',
+                October:'1.34%',
+                November:'1.34%',
+                December:'1.34%',      
+                YTD:"91.41%",
+            }
+            ],
         }
     },
     mounted() {
@@ -54,6 +108,26 @@ export default {
         this.setProfitCharts()
     },
     methods: {
+        arraySpanMethod({data, row, column, rowIndex, columnIndex }) {
+            // console.log(data.length)
+        },
+        getSummaries(param){
+
+            const { columns, data } = param;
+            const sums = [];
+            console.log(param);
+
+            columns.forEach((column, index) => {
+                if (index === 11) {
+                    sums[index] = '历史总计';
+                    return;
+                }
+                if(column.property == 'YTD'){
+                    sums[index] = this.totalNum
+                }
+            });
+            return sums;
+        },
         getprofitLossData() {
             if(this.userId === '' || this.mtAccId === '' ){
                 return
@@ -263,4 +337,44 @@ export default {
 
       &-label
         color: #666
+.static-table
+    width: 980px
+    margin: 50px auto 
+    /deep/ 
+        .el-table
+            border: 1px solid #ccc
+            border-top: 0 none 
+            th 
+                line-height: 14px
+                &:last-child
+                    border-left: 1px solid #ccc
+                .cell
+                    color: #333
+            .cell
+                padding: 0
+                font-size: 12px;
+                font-weight: 400;
+                color: #409EFF;
+                line-height: 17px;
+            td,th.is-leaf
+                border-bottom: 1px solid #ccc
+            th,td 
+                &:last-child
+                    border-left: 1px solid #ccc
+                    
+        .el-table__footer
+            th,td 
+                background: transparent
+                .cell
+                    color: #333 
+                    font-weight: 500
+                &:last-child
+                    .cell
+                        font-weight: 400;
+                        color: #409EFF;
+        .el-table__footer-wrapper
+            .el-table__footer
+                td,.is-leaf 
+                    border-top: 1px solid #ccc
+                    border-bottom: transparent;
 </style>

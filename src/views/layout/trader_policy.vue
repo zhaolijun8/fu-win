@@ -2,17 +2,18 @@
     .trader-pilicy
         .trader-policy-quer 
             .trader-policy-quer-desc
-                .ption 50%
+                //- .ption 50%
                 .tt 当前仓位
-            ve-ring.ve-ring(               
-                :data="ringList"
-                :colors="veRing.colors"
-                :tooltip-visible="false"
-                :settings="veRing.settings"
-                :legend="veRing.legend"
-                :extend="veRing.chartExtend"
-                width="120px"
-                height="120px")
+            //- ve-ring.ve-ring(               
+            //-     :data="ringList"
+            //-     :colors="veRing.colors"
+            //-     :tooltip-visible="false"
+            //-     :settings="veRing.settings"
+            //-     :legend="veRing.legend"
+            //-     :extend="veRing.chartExtend"
+            //-     width="120px"
+            //-     height="120px")
+            el-progress.ve-ring(type="circle" :percentage="50" :width="120" color="#1138FF")
         .trader-policy-data 
             .trader-policy-data-item 
                 span.title 交易标的：
@@ -33,34 +34,34 @@
 export default {
     data(){
         return{
-            ringList: {
-                columns: ["当前仓位", "仓位总量"],
-                rows: [
-                    { '当前仓位': '1', '仓位总量': 1000 },
-                    { '当前仓位': '2', '仓位总量': 1000 },
-                ]
-            },
-            veRing: {
-                colors: ["#1138FF", "#EEE"],
-                chartExtend: {
-                    //配置项
-                    legend: {show:false},
-                    series: {
-                        center: ["50%", "50%"],
-                    },
-                },
-                settings: {
-                label: {
-                    show: false,
-                },
-                hoverAnimation: false,
-                radius: ["50", "55"],
-                },
-                grid: {
-                left: 0,
-                bottom: 0,
-                },
-            },
+            // ringList: {
+            //     columns: ["当前仓位", "仓位总量"],
+            //     rows: [
+            //         { '当前仓位': '1', '仓位总量': 1000 },
+            //         { '当前仓位': '2', '仓位总量': 1000 },
+            //     ]
+            // },
+            // veRing: {
+            //     colors: ["#1138FF", "#EEE"],
+            //     chartExtend: {
+            //         //配置项
+            //         legend: {show:false},
+            //         series: {
+            //             center: ["50%", "50%"],
+            //         },
+            //     },
+            //     settings: {
+            //     label: {
+            //         show: false,
+            //     },
+            //     hoverAnimation: false,
+            //     radius: ["50", "55"],
+            //     },
+            //     grid: {
+            //     left: 0,
+            //     bottom: 0,
+            //     },
+            // },
         }
     }
 }
@@ -78,7 +79,7 @@ export default {
                 position: absolute;
                 left: 0
                 right: 0
-                top: 30px
+                top: 110px
             .ption 
                 font-size: 28px;
                 font-weight: 500;
@@ -99,5 +100,12 @@ export default {
                     color: #999
     .ve-ring 
         margin: 40px auto
+    
+    /deep/ .el-progress__text
+            margin-top: -10px
+            font-size: 28px !important;
+            font-weight: 500;
+            color: #1138FF;
+            line-height: 40px;
 
 </style>

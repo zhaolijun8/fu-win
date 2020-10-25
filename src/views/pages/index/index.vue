@@ -5,7 +5,12 @@
         .index-header
           swiper(class="swiper swiper-top" :options="swiperOption" ref="mySwiper" style="max-height: 800px")
             swiper-slide(v-for="(i,index) in 2" :key="index")
-                img(src="../../../assets/images/index_1.png" width="100%")
+                .swiper-img 
+                  img(src="../../../assets/images/index_1.png" width="100%" class="swiper-img")
+                .inner 
+                  p.title(data-swiper-parallax="-2000") Bole Trade 交易社区
+                  p.msg(data-swiper-parallax="-3000") 复制跟单，免费跟随技术牛人做教育
+                  p.btn(data-swiper-parallax="-4500") 专注技术的外汇跟单社区
             .swiper-button-prev(slot="button-prev")
             .swiper-button-next(slot="button-next")
         .index-trading.swad1
@@ -55,22 +60,22 @@
               .module-top-list
                
               
-                swiper(class="swiper" :options="swiperTopOption" ref="mySwiper" style="height: 330px")
-                  swiper-slide.module-top-list-item(v-for="(item,index) in heroList" :key="index")
-                     
-                    .avatar 
-                      img(:src="item.url == ''? avatar : item.url" width="100%")
-                      .ranknum(
-                        :class="`color_${index+1}`"
-                      ) {{'0'+(index+1)}}
-                    .name 辣妹子
-                    .number 收益率
-                      span {{item.rate}}
-                    .modulebt
-                      .bleft {{item.pnum}}
-                        span 亏盈点数
-                      .bright {{item.profit}}
-                        span 盈利（元）
+                swiper(class="swiper" :options="swiperTopOption" ref="mySwiper")
+                  swiper-slide.module-top-list-item(v-for="(item,index) in heroList" :key="index") 
+                    .swiper-slider-a                   
+                      .avatar 
+                        img(:src="item.url == ''? avatar : item.url" width="100%")
+                        .ranknum(
+                          :class="`color_${index+1}`"
+                        ) {{'0'+(index+1)}}
+                      .name 辣妹子
+                      .number 收益率
+                        span {{item.rate}}
+                      .modulebt
+                        .bleft {{item.pnum}}
+                          span 亏盈点数
+                        .bright {{item.profit}}
+                          span 盈利（元）
                 .swiper-button-prev(slot="button-prev")
                 .swiper-button-next(slot="button-next")
                      

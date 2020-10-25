@@ -194,18 +194,20 @@
                 color: #fff
     &-list
         display: flex
-        margin: 80px 0 0 190px
+        margin: 72px 0px 0 190px
         padding-bottom: 40px
         &-item
-            margin: 0 15px
-            padding-top: 30px
-            width: 275px
-            background: #ffffff
-            box-shadow: 0 3px 8px rgba(0,0,0,0.2)
-            text-align: center
-            font-size: 16px
-            border-radius: 6px
-            overflow: hidden
+            width: 290px !important
+            .swiper-slider-a
+                width: 275px
+                margin: 8px 15px
+                padding-top: 30px
+                background: #ffffff
+                box-shadow: 0 3px 8px rgba(0,0,0,0.2)
+                text-align: center
+                font-size: 16px
+                border-radius: 6px
+                overflow: hidden
             .avatar
                 position: relative
                 width: 90px
@@ -243,6 +245,7 @@
                 color: #666666
                 span 
                     display: block
+                    margin-bottom: 28px
                     font-size: 36px
                     font-weight: 500
                     color: #1138FF
@@ -262,7 +265,8 @@
                         display: block
                         color: #333
 
-
+.swiper-wrapper
+    margin: 0 20px
 .small
     font-size: 12px
     width: 450px
@@ -289,7 +293,53 @@
                     background: #F4F9FF
 
 .swiper-top
-    // position: relative
+    position: relative
+    .swiper-img
+        position: relative
+        &:after 
+            content: '';
+            display: block;
+            width: 50%;
+            height: 100%
+            position: absolute;
+            top: 0
+            left: 0
+            background: linear-gradient(to right, rgba(17, 56, 255, 1) 10%, rgba(17, 56, 255, 1) 0%,rgba(17, 56, 255, 0) )
+    .inner 
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        height: 100%
+        z-index: 10
+        width: 1500px
+        margin: 0 auto
+        display: flex 
+        justify-content: center
+        flex-direction: column
+        .title 
+
+            font-size: 50px;
+            font-weight: normal;
+            color: #FFFFFF;
+            line-height: 70px;
+        .msg
+            margin-bottom: 20px
+            font-size: 50px;
+            font-weight: 400;
+            color: #FFFFFF;
+            line-height: 70px;
+        .btn 
+            width: 470px
+            text-align: center
+            padding: 11px 0
+            font-size: 34px
+            font-weight: 500;
+            color: #1138FF;
+            line-height: 48px;
+            background: #FFFFFF;
+            border-radius: 35px;
+            border: 1px solid #FFFFFF;
 .swiper-button-prev, .swiper-button-next
     position: absolute
     bottom: 132px
