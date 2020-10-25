@@ -124,9 +124,10 @@
         },
         methods: {
             initData(){
+
                 let date = new Date();
                 let month = date.getMonth() > 10 ? date.getMonth() : "0"+date.getMonth()
-                this.date = date.getFullYear()+'-'+ month +'-'+date.getDate();
+                this.date = date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate();
             }
         },
         created(){

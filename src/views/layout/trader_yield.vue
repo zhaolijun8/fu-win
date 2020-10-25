@@ -39,7 +39,7 @@ export default {
                 id:4,
                 value:'全部'
             }],
-             chartData: {
+            chartData: {
                 columns: ["策略收益",'收益'],
                 rows: [
                     { '策略收益': '2020-10-01','收益': '200'},
