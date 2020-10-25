@@ -2,17 +2,7 @@
     .trader-pilicy
         .trader-policy-quer 
             .trader-policy-quer-desc
-                //- .ption 50%
                 .tt 当前仓位
-            //- ve-ring.ve-ring(               
-            //-     :data="ringList"
-            //-     :colors="veRing.colors"
-            //-     :tooltip-visible="false"
-            //-     :settings="veRing.settings"
-            //-     :legend="veRing.legend"
-            //-     :extend="veRing.chartExtend"
-            //-     width="120px"
-            //-     height="120px")
             el-progress.ve-ring(type="circle" :percentage="50" :width="120" color="#1138FF")
         .trader-policy-data 
             .trader-policy-data-item 
@@ -34,34 +24,6 @@
 export default {
     data(){
         return{
-            // ringList: {
-            //     columns: ["当前仓位", "仓位总量"],
-            //     rows: [
-            //         { '当前仓位': '1', '仓位总量': 1000 },
-            //         { '当前仓位': '2', '仓位总量': 1000 },
-            //     ]
-            // },
-            // veRing: {
-            //     colors: ["#1138FF", "#EEE"],
-            //     chartExtend: {
-            //         //配置项
-            //         legend: {show:false},
-            //         series: {
-            //             center: ["50%", "50%"],
-            //         },
-            //     },
-            //     settings: {
-            //     label: {
-            //         show: false,
-            //     },
-            //     hoverAnimation: false,
-            //     radius: ["50", "55"],
-            //     },
-            //     grid: {
-            //     left: 0,
-            //     bottom: 0,
-            //     },
-            // },
         }
     }
 }
