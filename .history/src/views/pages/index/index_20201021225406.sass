@@ -1,0 +1,311 @@
+.index 
+    &-trading
+        &-doubt
+
+            display: flex
+    &-doubt
+
+        &-left  
+            flex: 0 0 640px
+            color: #333
+            .doubt
+                &-tab
+                    padding: 40px 50px 40px 50px
+                    display: flex
+                    align-items: center
+                    cursor: pointer
+                    .eq
+                        
+                        font-size: 50px
+                        line-height: 58px
+                    .problem
+                        flex: 1
+                        margin: 0 40px 0 24px
+                    .tt
+                        font-size: 16px
+                        line-height: 22px
+                        margin-bottom: 9px
+                        font-weight: bold
+                    .analysis
+                        font-size: 14px
+                        line-height: 20px
+                    .jt
+                        flex: 0 0 40px
+                        // margin-right: 70px
+
+                    &.active,&:hover
+                        color: #fff
+                        background: #1138FF
+                        box-shadow: 0 0 10px rgba(0,0,0,0.2)
+        &-right  
+            position: relative  
+            // display: flex
+            width: 580px
+            height: 486px
+            margin: 70px auto 0
+
+            .topL
+                position: absolute
+                left: 0
+                top: 90px
+            .topR
+                position: absolute
+                right: 0
+                bottom: 90px
+            .tt            
+                font-size: 30px
+                line-height: 42px
+                margin-bottom: 9px
+                font-weight: bold
+                margin-bottom: 20px
+            .analysis
+                font-size: 14px
+                line-height: 20px
+            .doubt-detail
+                margin: 170px 20px 0
+.bole-trade 
+    width: 1500px
+    margin: 0 auto 
+    position: relative
+    z-index: 0
+    margin-bottom: 70px
+.index-trading.swad1
+    position: relative
+    width: 100%
+    z-index: 0
+    &:before
+        position: absolute
+        content: ''
+        display: block
+        height: 580px 
+        width: 100%
+        z-index: -1
+        background: #fff
+.module-list
+    padding: 0px 200px 50px
+    display: flex
+
+    &-item
+      margin: 0 30px
+      display: flex
+      flex: 0 0 220px
+      align-items: center
+      flex-direction: column
+      text-align: center
+
+      &-img
+          display: flex
+          align-items: center
+          justify-content: center
+          width: 100px
+          height: 100px
+
+      &-num
+        color: #333
+        font-size: 14px
+        line-height: 20px
+        text-align: left
+
+      &-text
+        margin: 30px 0 11px
+        color: #333
+        font-size: 16px
+        line-height: 22px
+        font-weight: 500
+    &-two
+        display: flex
+        padding-bottom: 70px 
+        &-item
+            width: 360px
+            height: 360px
+            margin: 0 10px
+            border-radius: 5px 5px 0 0
+            overflow: hidden
+            position: relative
+            &-img
+                &:hover 
+                    opacity: 0.9
+            &-info
+                position: absolute
+                left: 0
+                width: 100%
+                bottom: 0
+                padding: 20px 0
+                color: #fff
+                text-align: center
+                background: rgba(17, 56, 255, 0.9)
+                .s1
+                    font-size: 14px
+                    line-height: 20px
+                    margin-bottom: 5px
+                .s2
+                    font-size: 50px
+                    line-height: 58px
+                    font-weight: bold
+.module-top
+    width: 1483px
+    margin: 0 auto
+    background: url("../../../assets/images/index_2.png") 0 0/cover no-repeat
+    overflow: hidden
+    position: relative
+    z-index: 1
+    &:before 
+        content: ''
+        display: block
+        width: 100%
+        height: 100%
+        content: ''
+        display: block;
+        position: absolute
+        top: 131px
+        left: 311px
+        z-index: -1
+        background: #fff
+        border-radius: 94px 0px 0px 0px;
+    &-head
+        padding: 50px 70px 0
+        color: #fff
+        &-title
+            font-size: 36px
+            font-weight: 600
+            line-height: 50px
+            display: inline-block
+            &:before 
+                content: ''
+                display: inline-block
+                width: 46px
+                height: 34px
+                margin-right: 10px
+                background: url("../../../assets/images/double_icon.svg") no-repeat
+            span 
+                display: block
+                padding-left: 56px
+                font-size: 20px
+                line-height: 28px
+                font-weight: normal
+                
+        &-link
+            float: right
+            margin-top: 12px
+            font-size: 16px
+            line-height: 22px
+            a
+                color: #fff
+    &-list
+        display: flex
+        margin: 80px 0 0 40px
+        padding-bottom: 140px
+        &-item
+            margin: 0 15px
+            padding-top: 30px
+            width: 275px
+            background: #ffffff
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2)
+            text-align: center
+            font-size: 16px
+            border-radius: 6px
+            overflow: hidden
+            .avatar
+                position: relative
+                width: 90px
+                height: 90px
+                margin: 0 auto 25px
+                border-radius: 50%
+                border: 2px solid #fff
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3)
+                .ranknum
+                    position: absolute
+                    left: 24px
+                    top: 70px
+                    width: 40px
+                    height: 40px
+                    border-radius: 50%
+                    border: 2px solid #ffffff
+                    font-size: 18px
+                    font-weight: 500 
+                    text-align: center
+                    background: #1138FF
+                    color: #fff
+                    line-height: 36px
+                    &.color_1
+                        background: #FABC20
+                    &.color_2
+                        background: #BCBDBE
+                    &.color_3
+                        background: #F18D5C
+
+
+            .name
+                margin-bottom: 12px
+                font-weight: bold
+            .number
+                color: #666666
+                span 
+                    display: block
+                    font-size: 36px
+                    font-weight: 500
+                    color: #1138FF
+            .modulebt
+                display: flex
+                padding: 17px 0
+                background: #f8f8f8
+                .bleft
+                    border-right: 1px solid #f2f2f2
+                .bleft,.bright
+                    flex: 1
+                    color: #1138FF
+                    font-size: 16px
+                    font-weight: 600
+                    span 
+                        margin-top: 6px
+                        display: block
+                        color: #333
+
+
+.small
+    font-size: 12px
+    width: 450px
+    line-height: 20px
+
+// .trade-table
+/deep/
+    .el-table 
+        thead
+            th
+                padding: 18px 0
+                background: #1138FF
+                .cell   
+                    color: #fff
+
+        .cell
+            color: #333
+            font-size: 16px
+
+    .el-table--striped 
+        .el-table__body 
+            tr.el-table__row--striped 
+                td
+                    background: #F4F9FF
+
+.swiper-button-prev, .swiper-button-next
+    width: 50px 
+    height: 50px 
+.swiper-button-prev
+    background: url(../../../assets/images/arrow_l.svg) no-repat;
+    &.swiper-button-disabled
+        background: url(../../../assets/images/arrow_r.svg) no-repat;
+
+.swiper-button-next
+    background: url(../../../assets/images/arrow_r.svg) no-repat;
+    &.swiper-button-disabled
+        background: url(../../../assets/images/arrow_l.svg) no-repat;
+.list-btn
+
+.left-btn,.right-btn
+    width: 70px
+    height: 70px
+    display: inline-block
+.left-btn
+    background: url('../../../assets/images/arrow_l.svg') no-repeat center center
+.right-btn
+    background: url('../../../assets/images/arrow_r.svg') no-repeat center center
