@@ -16,7 +16,9 @@
             .trading-filter-item-all(
                 :class="checkAllClass('followtype')",
                 @click="checkClear('followtype')"
-            ) 跟随收益率
+            ) 跟随收益率              
+              i.el-icon-sort-down(v-if="followSort == 0")
+              i.el-icon-sort-up(v-else)
             .trading-filter-item-attr(
                 v-for="s in followtype"
                 @click="checkFilter('followtype', s)"
@@ -30,6 +32,7 @@ export default {
             tabSelected: 0,
             followSelected: null,
             jySelected: null,
+            followSort:0
         }
     },
     props:{
@@ -121,6 +124,7 @@ export default {
           break;
         case "followtype":
           this.followSelected = null;
+          this.followSort = !this.followSort
           break;
       }
 

@@ -24,12 +24,29 @@
         line-height: 20px
         background: #ffffff
         &-item
-            // dis
+            display: inline-flex
+            width: 115px
             padding: 0 25px
             color: #333
             cursor: pointer
+            flex-direction: row
+            &-label
+            &-sort 
+                display: none;
+                flex-direction: column
+                font-size: 7px
+                color: #A5B2F4
+                i:first-child 
+                    margin-top: 1px;
+                i:last-child 
+                    margin-top: -5px;
+                .sort 
+                    color:#1138FF
+                
         &-item.active
             color: #1138FF
+            .quant-filter-item-sort 
+                display: flex;
         
     &-uploader
         /deep/ 

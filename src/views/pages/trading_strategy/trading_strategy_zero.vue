@@ -17,7 +17,9 @@
                 .trading-filter-item-all(
                     :class="checkAllClass('subfee')",
                     @click="checkClear('subfee')"
-                ) 绝对收益率
+                ) 绝对收益率 
+                  i.el-icon-sort-down(v-if="subSort == 0")
+                  i.el-icon-sort-up(v-else)
                 .trading-filter-item-attr(
                     v-for="s in subfee"
                     @click="checkFilter('subfee', s)"
@@ -31,6 +33,7 @@ export default {
             tabSelected: 0,
             subfeeSelected: null,
             acounttypeSelected: null,
+            subSort:0
         }
     },
     props:{
@@ -119,8 +122,9 @@ export default {
       switch (type) {
         case "subfee":
           this.subfeeSelected = null;
+          this.subSort = !this.subSort;
           break;
-        case "propot":
+        case "acounttype":
           this.acounttypeSelected = null;
           break;
       }

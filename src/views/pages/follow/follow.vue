@@ -47,6 +47,7 @@
                             span 历史持仓
                             el-date-picker(
                             v-model="date"
+                            default-value="date"
                             type="date"
                             size="small"
                             placeholder="选择日期")
@@ -123,15 +124,10 @@
         traderYield
         },
         methods: {
-            initData(){
 
-                let date = new Date();
-                let month = date.getMonth() > 10 ? date.getMonth() : "0"+date.getMonth()
-                this.date = date.getFullYear()+'-'+ month +'-'+date.getDate();
-            }
         },
         created(){
-            this.initData();
+            this.date = new Date();
         }
     }
 </script>

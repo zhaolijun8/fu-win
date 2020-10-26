@@ -18,11 +18,15 @@
                             .trade-descript(@click="JumpTo" 
                             style="cursor:pointer") 常见问题 >
                     .quant-filter 累计收益   
-                        span.quant-filter-item(
+                        div.quant-filter-item(
                             v-for="(list,index) in filterList"
                             :class="{active: active == index}"
                             @click="filterActive(index)"
-                        ) {{list.text}}
+                        ) 
+                            .quant-filter-item-label {{list.text}}
+                            .quant-filter-item-sort()
+                                <i class="el-icon-caret-top" :class="{'sort': quantSort == 1}"></i>
+                                <i class="el-icon-caret-bottom" :class="{'sort': quantSort == 0}"></i>
                     
                     .quant-canvas
                         .quant-canvas-list
@@ -81,6 +85,7 @@ export default {
             avatar,
             uploadUrl:'', //上传的地址
             active:1,
+            quantSort:0,
             filterList:[
                 {
                     val:0,
@@ -114,6 +119,7 @@ export default {
         },
         filterActive(eq){
             this.active = eq
+            this.quantSort = !this.quantSort;
         }
     }
 }
