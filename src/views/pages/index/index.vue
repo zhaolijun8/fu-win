@@ -3,7 +3,7 @@
     BaseLayout
       .e-container
         .index-header
-          swiper(class="swiper swiper-top" :options="swiperOption" ref="mySwiper" style="max-height: 800px")
+          swiper(class="swiper swiper-top" :options="swiperTopOption" ref="mySwiper" style="max-height: 800px")
             swiper-slide(v-for="(i,index) in 2" :key="index")
                 .swiper-img 
                   img(src="../../../assets/images/index_1.png" width="100%" class="swiper-img")
@@ -60,7 +60,7 @@
               .module-top-list
                
               
-                swiper(class="swiper" :options="swiperTopOption" ref="mySwiper")
+                swiper(class="swiper" :options="swiperOption" ref="mySwiper")
                   swiper-slide.module-top-list-item(v-for="(item,index) in heroList" :key="index") 
                     .swiper-slider-a                   
                       .avatar 
@@ -76,8 +76,8 @@
                           span 亏盈点数
                         .bright {{item.profit}}
                           span 盈利（元）
-                .swiper-button-prev(slot="button-prev")
-                .swiper-button-next(slot="button-next")
+                .swiper-button-prev-module(slot="button-prev")
+                .swiper-button-next-module(slot="button-next")
                      
         .index-trading
           //- 广告位

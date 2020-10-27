@@ -27,8 +27,12 @@
                         margin-bottom: 9px
                         font-weight: bold
                     .analysis
+                        max-width: 380px
                         font-size: 14px
                         line-height: 20px
+                        white-space: nowrap
+                        text-overflow: ellipsis
+                        overflow: hidden
                     .jt
                         flex: 0 0 40px
                         // margin-right: 70px
@@ -340,7 +344,7 @@
             background: #FFFFFF;
             border-radius: 35px;
             border: 1px solid #FFFFFF;
-.swiper-button-prev, .swiper-button-next
+.swiper-button-prev, .swiper-button-next,.swiper-button-prev-module,.swiper-button-next-module
     position: absolute
     bottom: 132px
     right: 100px
@@ -358,7 +362,7 @@
         overflow: hidden
         
    
-.swiper-button-prev
+.swiper-button-prev,.swiper-button-prev-module
     right: 200px
     &:after 
         background: url(../../../assets/images/arrow_bl.svg) no-repeat center center
@@ -366,7 +370,7 @@
         &:after 
             background: url(../../../assets/images/arrow_bl.svg)  no-repeat center center
 
-.swiper-button-next
+.swiper-button-next,.swiper-button-next-module
     &:after 
         content: ''
         background: url(../../../assets/images/arrow_r.svg) no-repeat center center
@@ -374,9 +378,9 @@
         &:after
             background: url(../../../assets/images/arrow_r.svg) no-repeat center center
 .module-top-list 
-    .swiper-button-prev, .swiper-button-next
+    .swiper-button-prev-module, .swiper-button-next-module
         bottom: 40px
-    .swiper-button-prev
+    .swiper-button-prev-module
         right: 190px 
 // .list-btn
 //     float: right

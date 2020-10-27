@@ -126,12 +126,7 @@ let Index = {
       },
       userInfo: null,
       doubtEq: 0,
-      swiperOption: {
-        // slidesPerView: 1,
-        // spaceBetween: 0,
-        // slidesPerGroup: 1,
-        // loopFillGroupWithBlank: true,
-        // loop:true,
+      swiperTopOption: {
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -140,23 +135,23 @@ let Index = {
         parallax:true,
         preventLinksPropagation: false,
         swiperSlides:[],
+        autoplay: {
+          delay: 3000,         
+          // stopOnLastSlide: false, //当切换到最后一个slide时是否自动停止切换，false：不停止；true:停止         
+          disableOnInteraction: false, //用户操作swiper之后，是否禁止autoplay。         
+          // reverseDirection: true, //开启反向自动轮播。         
+          // waitForTransition: true //等待过渡完毕。自动切换会在slide过渡完毕后才开始计时。        
+        }, 
       },
-      swiperTopOption: {
+      swiperOption: {
         width: 1190,
         slidesPerView: 4,
         spaceBetween: 15,
         slidesPerGroup: 1,
-        loopFillGroupWithBlank: true,
-        autoplay: {
-          delay: 3000,         
-          // stopOnLastSlide: false, //当切换到最后一个slide时是否自动停止切换，false：不停止；true:停止         
-          // disableOnInteraction: false, //用户操作swiper之后，是否禁止autoplay。         
-          // reverseDirection: true, //开启反向自动轮播。         
-          // waitForTransition: true //等待过渡完毕。自动切换会在slide过渡完毕后才开始计时。        
-        },          
+        loopFillGroupWithBlank: true,         
         navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: ".swiper-button-next-module",
+          prevEl: ".swiper-button-prev-module",
         },
         grabCursor:true,
         parallax:true,
