@@ -29,7 +29,7 @@
                                 <i class="el-icon-caret-bottom" :class="{'sort': quantSort == 0}"></i>
                     
                     .quant-canvas
-                        .quant-canvas-list
+                        .quant-canvas-list(v-for="i in 3")
                             .quant-canvas-title 
                                 span 稳健，回测少
                                 .author 策略作者：
@@ -45,8 +45,9 @@
                                             span.legend-symbol
                                             span.legend-text 泸深300
                                     .quant-canvas-img
+                                        traderYield
                                         //- router-link()
-                                        img(src="https://image.joinquant.com/backtest_1b31d87a7ca4775a171fcffdb59a69af.png?date=3c6d5daf2bb9702fdfd3d91cc7c8dac1")
+                                        //- img(src="https://image.joinquant.com/backtest_1b31d87a7ca4775a171fcffdb59a69af.png?date=3c6d5daf2bb9702fdfd3d91cc7c8dac1")
                                 .quant-canvas-right
                                     .quant-canvas-income 
                                         label 累计收益
@@ -78,7 +79,9 @@
 </template>
 <script>
 import BaseLayout from '../../layout/base_layout.vue'
+import traderYield from '../../layout/trader_yield.vue'
 import avatar from '../../../assets/images/avatar-default.svg'
+
 export default {
     data() {
         return {
@@ -111,7 +114,8 @@ export default {
         }
     },
     components: {
-        BaseLayout
+        BaseLayout,
+        traderYield
     },
     methods: {
         JumpTo(){

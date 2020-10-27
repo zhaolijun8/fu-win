@@ -1,14 +1,8 @@
 <template lang="pug">
 .trader-yield
-  .filter-list 累计收益
-    .label(
-      v-for="(i, index) in filterLabel",
-      @click="filterHandler(i)",
-      :class="{ checked: filterCheckId == index }"
-    ) {{ i.value }}
     .veLine 
-      .title 策略收益
-      ve-line(
+        .title 策略收益
+        ve-line(
         :data="chartData",
         :colors="veLine.colors",
         :tooltip="veLine.tooltip",
@@ -17,7 +11,7 @@
         :yAxis="veLine.yAxis",
         :grid="veLine.grid",
         :extend="veLine.chartExtend"
-      )
+    )
 </template>
 <script>
 let yAxisData = ["-20", "0", "10", "20", "30", "40", "50", "0", "70", "80"];
@@ -25,28 +19,6 @@ export default {
   data() {
     return {
       filterCheckId: 0,
-      filterLabel: [
-        {
-          id: 0,
-          value: "1个星期",
-        },
-        {
-          id: 1,
-          value: "1个月",
-        },
-        {
-          id: 2,
-          value: "6个月",
-        },
-        {
-          id: 3,
-          value: "1年",
-        },
-        {
-          id: 4,
-          value: "全部",
-        },
-      ],
       chartData: {
         columns: ["策略收益", "收益", "中证500"],
         rows: [
@@ -60,7 +32,7 @@ export default {
         ],
       },
       veLine: {
-        colors: ["#1138FF", "#FB3F41"],
+        colors: ["#B4C8FF", "#FB3F41"],
         chartExtend: {
           //配置项
             legend: {
@@ -76,15 +48,12 @@ export default {
                     color: "#333",
                 },
             },
-            // series: {
-            //     name: '策略收益',
-            //     type: 'line',
-            //     areaStyle: {},
-            //     color: "#E0EFFF",
-            //     lineStyle: {
-            //         color: "#9AB0FF"
-            //     }
-            // },
+            series: {
+                type: 'line',
+                areaStyle: {
+                    color:['#E0EFFF']
+                }
+            },
             xAxis: {
                 type: "category",
                 boundaryGap: false,
@@ -125,9 +94,6 @@ export default {
     };
   },
   methods: {
-    filterHandler(item) {
-      this.filterCheckId = item.id;
-    },
   },
 };
 </script>
@@ -144,26 +110,5 @@ export default {
         font-size: 12px
         letter-spacing: 2px
         transform: rotate(90deg)
-.trader-yield
-    .filter-list
-        padding: 10px 0
-        font-size: 12px
-        font-weight: 400
-        color: #666666
-        line-height: 17px
-        .label
-            &:first-child
-                margin-left: 30px
-            margin-right: 15px
-            cursor: pointer
-            color: #333
-
-            // height: 26px;
-            padding: 4px 14px
-            display: inline-block
-            border-radius: 13px
-            border: 1px solid transparent
-            &.checked
-                color: #1138FF
-                border: 1px solid #A5B2F4
+// .trader-yield
 </style>

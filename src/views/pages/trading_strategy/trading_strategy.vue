@@ -469,6 +469,8 @@ export default {
       line-height: 40px
       color: #999
       border-bottom: 1px solid #eee
+      &:hover
+        background: #F4F9FF
       .txt 
         padding-left: 30px
         font-size: 30px

@@ -52,6 +52,8 @@ export default {
       font-size: 14px
       color: #999
       border-bottom: 1px solid #eee
+      &:hover
+        background: #F4F9FF
       .txt,.txt2 
         // padding-left: 30px
         margin-top: 10px

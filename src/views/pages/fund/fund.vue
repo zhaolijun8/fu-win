@@ -65,6 +65,12 @@
                     .trader-policy-r
                         .trander-tt 
                             span.title 模拟交易收益率
+                        .filter-list 累计收益
+                            .label(
+                                v-for="(i, index) in filterLabel",
+                                @click="filterHandler(i)",
+                                :class="{ checked: filterCheckId == index }"
+                            ) {{ i.value }}
                         traderYield
 
 
@@ -101,7 +107,30 @@
                 month: '',
                 tabSelected: 0,
                 notcert:false,//未认证
-                tabs
+                tabs,
+                filterCheckId:0,
+                filterLabel: [
+                    {
+                    id: 0,
+                    value: "1个星期",
+                    },
+                    {
+                    id: 1,
+                    value: "1个月",
+                    },
+                    {
+                    id: 2,
+                    value: "6个月",
+                    },
+                    {
+                    id: 3,
+                    value: "1年",
+                    },
+                    {
+                    id: 4,
+                    value: "全部",
+                    },
+                ],
             }
         },
         components: {
@@ -118,6 +147,9 @@
                 },
                 selectTabHandler(val) {
                 this.tabSelected = val
+            }, 
+            filterHandler(item) {
+                this.filterCheckId = item.id;
             },
         },
         created() {

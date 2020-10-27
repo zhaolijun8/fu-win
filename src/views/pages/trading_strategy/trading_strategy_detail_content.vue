@@ -125,7 +125,7 @@ const chartsRadarData = {
     {
       type: 'radar',
       areaStyle: {
-        color: '#409EFF'
+        color: '#1138FF'
       },
       data: [
         {
