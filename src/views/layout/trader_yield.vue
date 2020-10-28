@@ -1,6 +1,6 @@
 <template lang="pug">
 .trader-yield
-    .veLine 
+    .veLine-box 
         .title 策略收益
         ve-line(
         :data="chartData",
@@ -98,7 +98,7 @@ export default {
 };
 </script>
 <style lang="sass" scoped>
-.veLine
+.veLine-box
     margin: 20px 30px 20px 20px
     width: 740px
     position: relative
@@ -110,5 +110,7 @@ export default {
         font-size: 12px
         letter-spacing: 2px
         transform: rotate(90deg)
+    .ve-line
+        margin-top: -60px    
 // .trader-yield
 </style>
