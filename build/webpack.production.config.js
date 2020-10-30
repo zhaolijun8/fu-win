@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 // const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -19,7 +19,7 @@ let config = merge(baseConfig, {
   },
   optimization: {
     minimizer: [
-      new UglifyJsPlugin(),
+      // new UglifyJsPlugin(),
       new OptimizeCSSAssetsPlugin()
     ]
   },
