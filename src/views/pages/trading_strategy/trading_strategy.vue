@@ -53,7 +53,10 @@
               .profit-flex 获利
                 span.txt2 {{item.profit}}
               .canvas-flex 
-                img(:src="item.canvasurl != '' ? item.canvasurl : canvasUrl")
+                //- img(:src="item.canvasurl != '' ? item.canvasurl : canvasUrl")
+                tranding-veline(
+                  :chartData="item.chartData"
+                )
           el-pagination(
             background
             layout="prev, pager, next"
@@ -74,6 +77,7 @@ import TradingZero from "./trading_strategy_zero.vue";
 import TradingItem from "./trading_strategy_item.vue";
 import TradingfollowTab from './trading_strategy_follow_tab.vue'
 import trandingFollows from './tranding_strategy_follows.vue'
+import trandingVeline from '../../layout/trading_veline.vue'
 import E from "../../../utils";
 
 import avatar from '../../../assets/images/avatar-default.svg'
@@ -240,14 +244,36 @@ export default {
           yield:'111.11%',
           accuracy:'11.11%',
           profit:'11.11',
-          canvasurl:''
+          chartData: {
+            columns: ["日期", "收益"],
+            rows: [
+              { "日期": "2020-10-01", "收益": "4.99"},
+              { "日期": "2020-10-02", "收益": "13.86"},
+              { "日期": "2020-10-03", "收益": "8" },
+              { "日期": "2020-10-04", "收益": "7"},
+              { "日期": "2020-10-05", "收益": "12"},
+              { "日期": "2020-10-06", "收益": "80"},
+              { "日期": "2020-10-07", "收益": "40"},
+            ],
+          },
         },{
           url:'',
           name:'张三',
           yield:'111.11%',
           accuracy:'11.11%',
           profit:'11.11',
-          canvasurl:''
+          chartData: {
+            columns: ["日期", "收益"],
+            rows: [
+              { "日期": "2020-10-01", "收益": "4.99"},
+              { "日期": "2020-10-02", "收益": "13.86"},
+              { "日期": "2020-10-03", "收益": "8" },
+              { "日期": "2020-10-04", "收益": "7"},
+              { "日期": "2020-10-05", "收益": "12"},
+              { "日期": "2020-10-06", "收益": "20"},
+              { "日期": "2020-10-07", "收益": "40"},
+            ],
+          },
         }],
         totalNum:100,
       },
@@ -278,6 +304,7 @@ export default {
     TradingZero,
     TradingfollowTab,
     trandingFollows,
+    trandingVeline,
   },
   created() {
     if (

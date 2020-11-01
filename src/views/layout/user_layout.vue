@@ -33,7 +33,7 @@ export default {
     display: flex
     flex-direction: column
     align-items: center
-    position: fixed
+    // position: fixed
     top: 0
     left: 0
     right: 0
@@ -41,18 +41,21 @@ export default {
     background-color: #f2f2f2
 
   &-header
-    flex: 2
+    // flex: 2
     width: 100%
     display: flex
     padding: 0 60px
     align-items: center
+    height: 70px
+    margin-bottom: 20px
 
   &-content
     flex: 8
-    width: 780px
+    width: 1000px
     background-color: #fff
 
   &-footer
+    padding: 20px 0
     flex: 2
     display: flex
     flex-direction: column

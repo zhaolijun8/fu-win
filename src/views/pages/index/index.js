@@ -6,9 +6,9 @@ import _config from "../../../base_config";
 
 import avatar from "../../../assets/images/avatar-default.svg";
 // import partImg_1 from '../../../assets/images/partImg_1.jpg'
+import demoImg from '../../../assets/images/index_1.png';
 
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-
 let Index = {
   components: {
     BaseLayout,
@@ -19,6 +19,7 @@ let Index = {
   },
   data() {
     return {
+      demoImg:demoImg,
       avatar,
       partList: [
         {
@@ -126,6 +127,17 @@ let Index = {
       },
       userInfo: null,
       doubtEq: 0,
+      swiperData:[{
+        url:'', //图片地址
+        title:"Bole Trade 交易社区1",
+        desc:'复制跟单，免费跟随技术牛人做教育',
+        txt:'专注技术的外汇跟单社区',
+      },{
+        url:'',
+        title:"Bole Trade 交易社区2",
+        desc:'复制跟单，免费跟随技术牛人做教育2222',
+        txt:'专注技术的外汇跟单社区2',
+      }],
       swiperTopOption: {
         navigation: {
           nextEl: ".swiper-button-next",

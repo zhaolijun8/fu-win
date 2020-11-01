@@ -200,6 +200,7 @@ export default {
       margin-bottom: 0
 
     input
+      margin-left: 10px
       width: 85%
       height: 100%
       background-color: #f2f2f270

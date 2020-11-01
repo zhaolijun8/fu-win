@@ -4,13 +4,13 @@
       .e-container
         .index-header
           swiper(class="swiper swiper-top" :options="swiperTopOption" ref="mySwiper" style="max-height: 800px")
-            swiper-slide(v-for="(i,index) in 2" :key="index")
+            swiper-slide(v-for="(i,index) in swiperData" :key="index")
                 .swiper-img 
-                  img(src="../../../assets/images/index_1.png" width="100%" class="swiper-img")
+                  img(:src="i.url == '' ? demoImg : i.url" width="100%" class="swiper-img")
                 .inner 
-                  p.title(data-swiper-parallax="-2000") Bole Trade 交易社区
-                  p.msg(data-swiper-parallax="-3000") 复制跟单，免费跟随技术牛人做教育
-                  p.btn(data-swiper-parallax="-4500") 专注技术的外汇跟单社区
+                  p.title(data-swiper-parallax="-2000") {{i.title}}
+                  p.msg(data-swiper-parallax="-3000") {{i.desc}} 
+                  p.btn(data-swiper-parallax="-4500") {{i.txt}}
             .swiper-button-prev(slot="button-prev")
             .swiper-button-next(slot="button-next")
         .index-trading.swad1
