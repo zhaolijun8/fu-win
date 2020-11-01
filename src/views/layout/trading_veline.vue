@@ -1,8 +1,6 @@
 <template lang="pug">
-.trader-yield
-    .veLine 
-        .title 策略收益
-        ve-line(
+.veLine-box-1 
+    ve-line(
         :data="chartData",
         :colors="veLine.colors",
         :tooltip="veLine.tooltip",
@@ -11,79 +9,60 @@
         :yAxis="veLine.yAxis",
         :grid="veLine.grid",
         :extend="veLine.chartExtend"
+        :legend-visible="false"
+        width="170px"
+        height="220px"
     )
 </template>
 <script>
-let yAxisData = ["-20", "0", "10", "20", "30", "40", "50", "0", "70", "80"];
+// let yAxisData = ["-20", "0", "10", "20", "30", "40", "50", "0", "70", "80"];
+        
 export default {
     props:['chartData'],
   data() {
     return {
       filterCheckId: 0,
       veLine: {
-        colors: ["#B4C8FF", "#FB3F41"],
+        colors: ["#6481ff"],
         chartExtend: {
           //配置项
-            legend: {
-                data: ["策略收益", "收益", "中证500"],
-                right: 0,
-                color: "#1138FF",
-                barBorderRadius: 1,
-                itemWidth: 13,
-                itemHeight: 13,
-                icon: "rect",
-                borderColor: "#1138FF",
-                textStyle: {
-                    color: "#333",
-                },
-            },
             series: {
                 type: 'line',
+                smooth: true,
+                symbol: 'none',
+                sampling: 'average',
                 areaStyle: {
                     color:['#E0EFFF']
                 }
             },
             xAxis: {
                 type: "category",
+                // show:false,
+                // color: '#c00',
+                offset:20,
                 boundaryGap: false,
-                // offset:20,
                 splitLine: {
-                    show: true,
-                    interval: 0,
                     lineStyle:{
+                        show:true,
                         color:"#eee"
                     }
                 },
-                axisLabel:{
-                    rotate: 0
-                }
+
             },
             yAxis: {
+                // show:false,
                 type: "value",
-                position: "right",
-                data: yAxisData,
+                offset:20,
+                // data: yAxisData,
                 splitLine: {
-                    show: true,
                     lineStyle:{
+                        show:true,
                         color:"#eee"
                     }
                 },
-                axisLabel: {
-                    formatter: "{value} %",
-                    interval: 0,
-                },
-            },
-            grid: {
-                show: true,
-            },
-            settings: {
-                label: {
-                    show: false,
-                },
-                hoverAnimation: false,
-                radius: ["50", "55"],
             },
             tooltip: {
+                show:false,
                 trigger: "axis",
                 axisPointer: {
                     type: "cross",
@@ -94,21 +73,34 @@ export default {
     };
   },
   methods: {
+
   },
 };
 </script>
 <style lang="sass" scoped>
-.veLine
-    margin: 20px 30px 20px 20px
-    width: 740px
+.veLine-box-1
+    // border: 1px solid red
+    // margin: 20px 30px 20px 20px
+    width: 128px
+    // width: 400px
+    height: 83px
     position: relative
+    overflow: hidden
     .title
         position: absolute
         right: -45px
-        top: 45%
+        top: 40%
         color: #333
         font-size: 12px
         letter-spacing: 2px
         transform: rotate(90deg)
+    .ve-line
+        // margin-top: 0px
+        // margin-left: 0px 
+        left: -32px
+        bottom: 60px
+        // display: flex
+        // justify-content: center
+        // align-items: center
 // .trader-yield
 </style>

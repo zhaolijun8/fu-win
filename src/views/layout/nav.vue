@@ -1,7 +1,7 @@
 <template lang="pug">
   #e-nav
     .nav-container(
-      :class="transparentClass"
+      :class="{'statusClass' : status == true}"
     )
       .nav-content
         navLogo
@@ -26,7 +26,8 @@ export default {
   data () {
     return {
       logo,
-      loginShow:false
+      loginShow:false,
+      status:false,
     }
   },
   props: {
@@ -55,11 +56,28 @@ export default {
   methods:{
     loginLayer(res){
       this.loginShow = res
-    }
+    },
+    listenerFunction(e) {
+      document.addEventListener('scroll', this.handleScroll, true);
+      this.$once('hook:beforeDestroy', function() {
+        document.removeEventListener("scroll");
+      })
+    },
+    handleScroll(){
+      if(window.pageYOffset > 100){
+        if(this.status == false){
+          this.status = true
+        }
+      }else{
+        if(this.status == true){
+          this.status = false
+        }
+      }
+    },
   },
   mounted() {
-
-  }
+    this.listenerFunction();
+  },
 }
 </script>
 
@@ -75,7 +93,10 @@ export default {
     padding: 0 80px 0 120px
     z-index: 200
     background-color: #fff
-
+    &.statusClass
+      background-color: #1138FF
+      /*background-color: transparent*/
+      box-shadow: none
     &.transparent
       background-color: #010001
       /*background-color: transparent*/
@@ -99,7 +120,13 @@ export default {
 #e-nav
 
   /deep/
-
+    .nav-container.statusClass
+      .menu-item,.logo_msg 
+        color: #fff
+        &.active
+          color: #409EFF
+      .register
+        color: #fff
     .nav-container.transparent
 
       .menu-item

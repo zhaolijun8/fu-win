@@ -15,8 +15,10 @@
                             .legend-box
                                 span.legend-symbol
                                 span.legend-text 泸深300
-                        .quant-canvas-img                                      
-                            img(width="100%" src="https://image.joinquant.com/backtest_1b31d87a7ca4775a171fcffdb59a69af.png?date=3c6d5daf2bb9702fdfd3d91cc7c8dac1")
+                        .quant-canvas-img
+                            traderYieldSmall(
+                                :chart-data="chartData")                                  
+                            //- img(width="100%" src="https://image.joinquant.com/backtest_1b31d87a7ca4775a171fcffdb59a69af.png?date=3c6d5daf2bb9702fdfd3d91cc7c8dac1")
                         .follow-moduler-top-item
                             .quant-item-list 年化收益
                                 .label.clo 139%
@@ -43,7 +45,8 @@
                                 @click="filterHandler(i)",
                                 :class="{ checked: filterCheckId == index }"
                             ) {{ i.value }}
-                        traderYield
+                        traderYield(
+                            :chart-data="chartData")
 
                 .follow-posit
                     .trander-tt 
@@ -104,6 +107,7 @@
     import Trader from '../../layout/trader.vue'
     import traderPolicy from '../../layout/trader_policy.vue'
     import traderYield from '../../layout/trader_yield.vue'
+    import traderYieldSmall from '../../layout/trader_yield_small.vue'
     import avatar from '../../../assets/images/avatar-default.svg'
     export default {
         data() {
@@ -145,13 +149,26 @@
                     value: "全部",
                     },
                 ],
+                chartData: {
+                    columns: ["策略收益", "收益", "中证500"],
+                    rows: [
+                    { 策略收益: "2020-10-01", 收益: "4.99", 中证500: "4.99" },
+                    { 策略收益: "2020-10-02", 收益: "13.86", 中证500: "4.99" },
+                    { 策略收益: "2020-10-03", 收益: "8", 中证500: "4.99" },
+                    { 策略收益: "2020-10-04", 收益: "7", 中证500: "4.99" },
+                    { 策略收益: "2020-10-05", 收益: "12", 中证500: "10" },
+                    { 策略收益: "2020-10-06", 收益: "80", 中证500: "4.99" },
+                    { 策略收益: "2020-10-07", 收益: "40", 中证500: "4.99" },
+                    ],
+                },
             }
         },
         components: {
         BaseLayout,
         Trader,
         traderPolicy,
-        traderYield
+        traderYield,
+        traderYieldSmall
         },
         methods: {
 

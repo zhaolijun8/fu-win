@@ -29,7 +29,7 @@
                                 <i class="el-icon-caret-bottom" :class="{'sort': quantSort == 0}"></i>
                     
                     .quant-canvas
-                        .quant-canvas-list(v-for="i in 3")
+                        .quant-canvas-list(v-for="i in quantList")
                             .quant-canvas-title 
                                 span 稳健，回测少
                                 .author 策略作者：
@@ -45,26 +45,26 @@
                                             span.legend-symbol
                                             span.legend-text 泸深300
                                     .quant-canvas-img
-                                        traderYield
-                                        //- router-link()
-                                        //- img(src="https://image.joinquant.com/backtest_1b31d87a7ca4775a171fcffdb59a69af.png?date=3c6d5daf2bb9702fdfd3d91cc7c8dac1")
+                                        traderYield(
+                                            class="quant-qt-trader"
+                                            :chart-data="i.chartData")
                                 .quant-canvas-right
                                     .quant-canvas-income 
                                         label 累计收益
-                                        .balue 111.13%
+                                        .balue {{i.income}}
                                     .quant-canvas-attrs
                                         .quant-canvas-attrs-a 
                                             label 最近一个月
-                                            .balue 93.13%
+                                            .balue {{i.monthNum}}
                                         .quant-canvas-attrs-a 
                                             label 最近三个月
-                                            .balue 93.13%
+                                            .balue {{i.threeNum}}
                                         .quant-canvas-attrs-a 
                                             label 最近六个月
-                                            .balue 93.13%
+                                            .balue {{i.halfNum}}
                                         .quant-canvas-attrs-a 
                                             label 适合资金
-                                            .balue 93.13%
+                                            .balue {{i.fitNum}}
 
                                     .quant-canvas-total 3999元/月
                                         span （剩余数量：349）
@@ -76,7 +76,7 @@
 
 
                     
-</template>
+</template> 
 <script>
 import BaseLayout from '../../layout/base_layout.vue'
 import traderYield from '../../layout/trader_yield.vue'
@@ -89,6 +89,7 @@ export default {
             uploadUrl:'', //上传的地址
             active:1,
             quantSort:0,
+            chartWidth:'700px',
             filterList:[
                 {
                     val:0,
@@ -110,7 +111,64 @@ export default {
                     val:5,
                     text:'剩余数量',
                 }
-            ]
+            ],
+            quantList:[
+                {
+                    income:'110.13%',
+                    monthNum:'93.13%',
+                    threeNum:'83.13%',
+                    halfNum:'9.13%',
+                    fitNum:"9.13%",
+                    chartData: {
+                        columns: ["策略收益", "收益", "中证500"],
+                        rows: [
+                        { 策略收益: "2020-10-01", 收益: "4.99", 中证500: "4.99" },
+                        { 策略收益: "2020-10-02", 收益: "13.86", 中证500: "4.99" },
+                        { 策略收益: "2020-10-03", 收益: "8", 中证500: "4.99" },
+                        { 策略收益: "2020-10-04", 收益: "7", 中证500: "4.99" },
+                        { 策略收益: "2020-10-05", 收益: "12", 中证500: "10" },
+                        { 策略收益: "2020-10-06", 收益: "80", 中证500: "4.99" },
+                        { 策略收益: "2020-10-07", 收益: "40", 中证500: "4.99" },
+                        ],
+                    },
+                },{
+                    income:'110.13%',
+                    monthNum:'93.13%',
+                    threeNum:'83.13%',
+                    halfNum:'9.13%',
+                    fitNum:"9.13%",
+                    chartData: {
+                        columns: ["策略收益", "收益", "中证500"],
+                        rows: [
+                        { 策略收益: "2020-10-01", 收益: "4.99", 中证500: "4.99" },
+                        { 策略收益: "2020-10-02", 收益: "13.86", 中证500: "4.99" },
+                        { 策略收益: "2020-10-03", 收益: "8", 中证500: "4.99" },
+                        { 策略收益: "2020-10-04", 收益: "7", 中证500: "4.99" },
+                        { 策略收益: "2020-10-05", 收益: "12", 中证500: "10" },
+                        { 策略收益: "2020-10-06", 收益: "80", 中证500: "4.99" },
+                        { 策略收益: "2020-10-07", 收益: "40", 中证500: "4.99" },
+                        ],
+                    },
+                },{
+                    income:'110.13%',
+                    monthNum:'93.13%',
+                    threeNum:'83.13%',
+                    halfNum:'9.13%',
+                    fitNum:"9.13%",
+                    chartData: {
+                        columns: ["策略收益", "收益", "中证500"],
+                        rows: [
+                        { 策略收益: "2020-10-01", 收益: "4.99", 中证500: "4.99" },
+                        { 策略收益: "2020-10-02", 收益: "13.86", 中证500: "4.99" },
+                        { 策略收益: "2020-10-03", 收益: "8", 中证500: "4.99" },
+                        { 策略收益: "2020-10-04", 收益: "7", 中证500: "4.99" },
+                        { 策略收益: "2020-10-05", 收益: "12", 中证500: "10" },
+                        { 策略收益: "2020-10-06", 收益: "80", 中证500: "4.99" },
+                        { 策略收益: "2020-10-07", 收益: "40", 中证500: "4.99" },
+                        ],
+                    },
+                }
+            ],
         }
     },
     components: {

@@ -4,8 +4,8 @@
       router-link.registe-login(
         to="/user/login"
       ) 登录
+      .registe-title Hi, 欢迎加入我们
       .registe-content
-        .registe-title Hi, 欢迎加入我们
         .registe-item 邀请码:
           input(
             type="text"
@@ -216,16 +216,18 @@ export default {
   &-title
     font-size: 24px
     margin-bottom: 30px
-
+    text-align: center
   &-item
     height: 48px
     border-radius: 2px
     margin-bottom: 12px
+    color: #666
 
     &::last-child
       margin-bottom: 0
 
     input
+      margin-left: 10px
       width: 85%
       height: 100%
       background-color: #f2f2f270

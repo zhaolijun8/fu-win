@@ -92,13 +92,14 @@ export default {
   &-title
     font-size: 24px
     margin-bottom: 30px
+    text-align: center
 
   &-item
     height: 48px
     border: 1px solid #ebebeb
     border-radius: 2px
     margin-bottom: 12px
-
+    color: #666
     &::last-child
       margin-bottom: 0
 
