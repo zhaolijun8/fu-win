@@ -19,7 +19,7 @@
 import navMenu from './nav_menu.vue'
 import NavUser from './nav_user.vue'
 import NavLogo from './nav_logo.vue'
-import SignBox from './sign_box.vue'
+import SignBox from '../pages/user/sign_box.vue'
 import logo from '../../assets/images/logo_index.svg'
 
 export default {

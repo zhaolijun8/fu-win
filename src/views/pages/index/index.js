@@ -129,12 +129,12 @@ let Index = {
       doubtEq: 0,
       swiperData:[{
         url:'', //图片地址
-        title:"Bole Trade 交易社区1",
+        title:"Bole Trade 交易社区111",
         desc:'复制跟单，免费跟随技术牛人做教育',
         txt:'专注技术的外汇跟单社区',
       },{
         url:'',
-        title:"Bole Trade 交易社区2",
+        title:"Bole Trade 交易社区222",
         desc:'复制跟单，免费跟随技术牛人做教育2222',
         txt:'专注技术的外汇跟单社区2',
       }],
