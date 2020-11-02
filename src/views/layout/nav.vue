@@ -58,9 +58,9 @@ export default {
       this.loginShow = res
     },
     listenerFunction(e) {
-      document.addEventListener('scroll', this.handleScroll, true);
+      document.addEventListener('scroll', this.handleScroll, false);
       this.$once('hook:beforeDestroy', function() {
-        document.removeEventListener("scroll");
+        document.removeEventListener("scroll", this.handleScroll, false);
       })
     },
     handleScroll(){
