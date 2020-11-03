@@ -39,6 +39,7 @@
  
 <script>
 import E from "../../../utils"
+import commonRequest from "../../common/commonRequest";
 import moment from "moment";
 
 export default {
@@ -139,8 +140,7 @@ export default {
             let data = {
                 params
             }
-            return E.handleRequest(E.api().post('report/order/queryOrderFlow', data))
-                .then(res => {
+            commonRequest.queryOrderFlow(data, res => {
                     if(res.data !== undefined&&res.data !== null&&res.data.content !== undefined&&res.data.content !== null){
                         this.orderFlowData = res.data.content.data
                         let size = this.orderFlowData.length-1

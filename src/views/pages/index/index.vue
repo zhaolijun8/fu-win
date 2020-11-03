@@ -5,11 +5,11 @@
         .index-header
           swiper(class="swiper swiper-top" :options="swiperTopOption" ref="mySwiper" style="max-height: 800px")
             swiper-slide(v-for="(i,index) in swiperData" :key="index")
-                .swiper-img 
+                .swiper-img
                   img(:src="i.url == '' ? demoImg : i.url" width="100%" class="swiper-img")
-                .inner 
+                .inner
                   p.title(data-swiper-parallax="-2000") {{i.title}}
-                  p.msg(data-swiper-parallax="-3000") {{i.desc}} 
+                  p.msg(data-swiper-parallax="-3000") {{i.desc}}
                   p.btn(data-swiper-parallax="-4500") {{i.txt}}
             .swiper-button-prev(slot="button-prev")
             .swiper-button-next(slot="button-next")
@@ -55,33 +55,32 @@
               .module-top-head
                 .module-top-head-title 每周英雄榜TOP10
                   span 数英雄人物还看今朝
-                .module-top-head-link 
+                .module-top-head-link
                   router-link(to='/trading_strategy') 查看总排行榜 >>
               .module-top-list
-               
-              
                 swiper(class="swiper" :options="swiperOption" ref="mySwiper")
-                  swiper-slide.module-top-list-item(v-for="(item,index) in heroList" :key="index") 
-                    .swiper-slider-a                   
-                      .avatar 
-                        img(:src="item.url == ''? avatar : item.url" width="100%")
-                        .ranknum(
-                          :class="`color_${index+1}`"
-                        ) {{'0'+(index+1)}}
-                      .name 辣妹子
-                      .number 收益率
-                        span {{item.rate}}
-                      .modulebt
-                        .bleft {{item.pnum}}
-                          span 亏盈点数
-                        .bright {{item.profit}}
-                          span 盈利（元）
+                  swiper-slide.module-top-list-item(v-for="(item,index) in heroList" :key="index")
+                    .swiper-slider-a
+                        router-link(:to="{ path: '/trading_strategy/detail/'+item.signalId}")
+                          .avatar
+                            img(:src="item.avatarUrl == ''? avatar : item.avatarUrl" width="100%")
+                            .ranknum(
+                              :class="`color_${index+1}`"
+                            ) {{'0'+(index+1)}}
+                          .name {{item.signalName}}
+                          .number 收益率
+                            span {{getPersent(item.orderIncomeRate)}}
+                          .modulebt
+                            .bleft {{getPersent(item.orderWinRate)}}
+                              span 交易胜率
+                            .bright {{item.orderIncome}}
+                              span 盈利（$）
                 .swiper-button-prev-module(slot="button-prev")
                 .swiper-button-next-module(slot="button-next")
-                     
+
         .index-trading
           //- 广告位
-          img(src="../../../assets/images/demo.png")
+          //-img(src="../../../assets/images/demo.png")
         .index-trading
           .index-trading-box
             .index-trade
@@ -92,62 +91,69 @@
               .module-list-two-item-img
                 img(src="../../../assets/images/trad_1.png")
               .module-list-two-item-info
-                .s1 累计跟单量（手）
-                .s2 134.931
+                .s1 跟单用户量（人）
+                .s2 {{yesterDayTrade.id * 25 }}
             .module-list-two-item
               .module-list-two-item-img
                 img(src="../../../assets/images/trad_2.png")
               .module-list-two-item-info
-                .s1 跟单用户量（人）
-                .s2 134.931
+                .s1 累计跟单量（手）
+                .s2 {{yesterDayTrade.orderLots * 25 }}
             .module-list-two-item
               .module-list-two-item-img
                 img(src="../../../assets/images/trad_3.png")
               .module-list-two-item-info
-                .s1 跟随获利（美元）
-                .s2 134.931
+                .s1 累计跟单量（笔）
+                .s2 {{yesterDayTrade.orderCount * 25 }}
             .module-list-two-item
               .module-list-two-item-img
                 img(src="../../../assets/images/trad_4.png")
               .module-list-two-item-info
-                .s1 总跟随资金（美元）
-                .s2 134.931
+                .s1 累计收益金额（美元）
+                .s2 {{yesterDayTrade.orderIncome * 25 }}$
         .index-trading.swad
           .index-trading-box
             .index-trade
               .trade-title 平台实时交易动态
                   .trade-descript.small 这是交易员实时交易订单，您可以拥有多个账户，同时进行自主交易和复制跟单交易，也可以使用存有10000美元的模拟账户，零风险参与跟单。
-          .index-child-box 
+          .index-child-box
             el-table.trade-table(
               :data="dynamicList"
               stripe
               style="width: 100%"
             )
-              el-table-column( 
-                prop="info"
+              el-table-column(
+                prop="signalId"
                 align="center"
-                label="基本信息"
+                label="信号源ID"
                 width="180")
               el-table-column(
-                prop="variet"
+                prop="orderSymbol"
                 align="center"
-                label="品种"
+                label="交易品种"
                 width="180")
               el-table-column(
-                prop="number"
+                prop="orderLots"
                 align="center"
-                label="人数")
+                label="交易手数")
               el-table-column(
-                prop="opera"
+                prop="orderTradeOperation"
                 align="center"
-                label="操作")
+                :formatter="getOperationFormat"
+                label="交易类型")
               el-table-column(
-                prop="profit"
+                prop="orderType"
+                align="center"
+                :formatter="getTypeFormat"
+                label="交易类别")
+              el-table-column(
+                prop="orderProfit"
                 align="center"
                 label="获利（元）")
               el-table-column(
-                prop="time"
+                prop="createDate"
                 align="center"
+                :formatter="getDateTimeFormat"
                 label="时间")
         .index-trading.swad
           .index-trading-box
@@ -161,9 +167,9 @@
                   v-for="(item,index) in questionList"
                   :class="{active: doubtEq == index}"
                   @mouseover="doubtFunc(index)"
-                ) 
+                )
                   .eq {{'0'+(index+1)}}
-                  .problem 
+                  .problem
                     .tt {{item.question}}
                     .analysis {{item.answer}}
                   img.jt(src="../../../assets/images/arrow_go.svg")
@@ -173,10 +179,10 @@
                 .doubt-detail(
                   v-for="(item,index) in questionList"
                   v-if="doubtEq == index"
-                ) 
+                )
                   .tt {{item.question}}
                   .analysis {{item.answer}}
-        
+
         .index-trading
           .index-trading-box
             .index-trade
@@ -187,7 +193,7 @@
               .index-part-list-item(v-for="(i,index) in 10")
                 //- router-link()
                 img(src="../../../assets/images/part_demo.png")
-      
+
 </template>
 
 <script>

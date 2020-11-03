@@ -29,6 +29,7 @@
             :info="item",
             type="trading"
           )
+
         .trading-section
           .trade-title 交易英雄榜
             .trade-descript 数英雄人物还看今朝
@@ -36,32 +37,37 @@
           i.el-icon-close(@click="show = !show")
           .trading-name-txt 提示：如发现广告或虚假账号，或对账号统计数据有疑问请联系右侧客服QQ进行举报或处理。
         //- )
-        TradingZero(:subfee="subFee"
-          :acounttype="acountType"
-          @filter="acountfilterHandler")
+        TradingZero(
+            :subfee="subFee"
+            :acounttype="acountType"
+            @filter="acountfilterHandler")
         .tranding-zero
           .tranding-zero-list
             .tranding-zero-list-item(v-for="(item, index) in heroList.list")
               .avatar 
-                img(:src="item.url == '' ? avatar : item.url", width="100%")
+                img(:src="item.avatarUrl == '' ? avatar : item.avatarUrl", width="100%")
                 .ranknum(:class="`color_${index + 1}`") {{ '0' + (index + 1) }}
-              .name {{item.name}}
+              .name {{item.signalName}}
               .yield-flex 收益率
-                span.txt {{item.yield}}
+                span.txt {{getPersent(item.orderIncomeRate)}}
               .accuracy-flex 准确率
-                span.txt {{item.accuracy}}
+                span.txt {{getPersent(item.orderWinRate)}}
               .profit-flex 获利
-                span.txt2 {{item.profit}}
+                span.txt2 {{item.orderProfit}}
               .canvas-flex 
                 //- img(:src="item.canvasurl != '' ? item.canvasurl : canvasUrl")
                 tranding-veline(
                   :chartData="item.chartData"
                 )
-          el-pagination(
-            background
-            layout="prev, pager, next"
-            :total="heroList.totalNum"
-          )
+            el-pagination(
+                background
+                 @current-change="currentfilterHandler"
+                layout="prev, pager, next"
+                :current-page="heroList.page.pageNo"
+                :total="heroList.page.total"
+                :page-size="heroList.page.pageSize"
+                :page-count="heroList.page.totalPages"
+              )
       div(v-show="tradingTab==1")
         trandingFollows(
           :followlist="followListData"
@@ -82,6 +88,9 @@ import E from "../../../utils";
 
 import avatar from '../../../assets/images/avatar-default.svg'
 import canvasUrl from '../../../assets/images/canvas-default.png'
+import commonRequest from "../../common/commonRequest";
+import commonAction from "../../common/commonAction";
+import moment from "moment";
 const filterLevel = [
   {
     label: "S",
@@ -275,7 +284,8 @@ export default {
             ],
           },
         }],
-        totalNum:100,
+        page: {total: 0, totalPages: 0, pageNo: 0, pageSize: 0},
+        show:0
       },
       followListData:{
         list:[{
@@ -317,42 +327,45 @@ export default {
     this.getTradingList();
     this.getFollowList();
     this.getBrokerList();
+    this.getHeroList();
   },
   methods: {
     // 交易员列表
     getTradingList() {
-      let params = this.trandingRequest;
-      const storage = window.localStorage;
-      const projKey = storage.getItem("projKey");
-      if (projKey !== undefined && projKey !== null) {
-        params.projKey = projKey;
-      } else {
-        params.projKey = 0;
-      }
+      let params = this.trandingRequest
+        const storage = window.localStorage
+        const projInfo = storage.getItem('projInfo')
+        if (projInfo !== undefined && projInfo !== null) {
+            this.projInfo = JSON.parse(projInfo)
+            params.projKey = this.projInfo.projKey
+        }else {
+            params.projKey = 0
+        }
       let pageInfoHelper = {
         pageSize: 8,
-        pageNo: 1,
-      };
+        pageNo: 1
+      }
       let data = {
         params,
         pageInfoHelper,
-      };
+      }
       return E.handleRequest(
         E.api().post("signal/querySignalUsersPermit", data)
       ).then((res) => {
         this.tradingList = res.data.content.data;
-      });
+      })
     },
     // 跟随大师列表
     getFollowList() {
-      let params = {};
-      const storage = window.localStorage;
-      const projKey = storage.getItem("projKey");
-      if (projKey !== undefined && projKey !== null) {
-        params.projKey = projKey;
-      } else {
-        params.projKey = 0;
-      }
+        let params = {}
+        const storage = window.localStorage
+        const projInfo = storage.getItem('projInfo')
+        if (projInfo !== undefined && projInfo !== null) {
+            this.projInfo = JSON.parse(projInfo)
+            params.projKey = this.projInfo.projKey
+        }else {
+            params.projKey = 0
+        }
       let pageInfoHelper = {
         pageSize: 4,
         pageNo: 1,
@@ -403,25 +416,100 @@ export default {
         }
       });
     },
+      // 交易英雄榜
+      getHeroList() {
+          let params = {}
+          const storage = window.localStorage
+          const projInfo = storage.getItem('projInfo')
+          if (projInfo !== undefined && projInfo !== null) {
+              this.projInfo = JSON.parse(projInfo)
+              params.projKey = this.projInfo.projKey
+          }else {
+              params.projKey = 0
+          }
+          let pageInfoHelper = {
+              pageSize: 3,
+              pageNo: 1
+          }
+          let data = {
+              params,
+              pageInfoHelper
+          }
+          commonRequest.querySignalOrderSumPermit(data,res => {
+              if(res.data.content === null ||res.data.content===undefined ||res.data.content===''){
+                  this.$message.warning('无历史交易订单！')
+                  return
+              }
+              console.log(res.data)
+              this.heroList.list = res.data.content.data
+              this.heroList.page = res.data.page
+              this.getProfitList()
+          })
+      },
+      //获取信号源近一个月的收益情况
+    getProfitList(){
+        for(let i=0;i<this.heroList.list.length;i++){
+            this.heroList.list[i].chartData = []
+            this.heroList.list[i].chartData.rows = []
+            this.heroList.list[i].chartData.columns = ["tradeDate", "orderIncome"];
+
+            let endDate = commonAction.getDay(new Date())
+            // let beginDate=commonAction.getPreMonth(endDate)
+            let beginDate="2019-01-01"
+            let params = {
+                userId: this.heroList.list[i].userId,
+                mtAccId: this.heroList.list[i].mtAccId,
+                tradeDate: [beginDate, endDate]
+            }
+            let pageInfoHelper = {
+                pageSize: 30,
+                pageNo: 1
+            }
+            let data = {
+                params,
+                pageInfoHelper
+            }
+            commonRequest.queryOrderFlow(data, res => {
+                if(res.data !== undefined&&res.data !== null&&res.data.content !== undefined&&res.data.content !== null){
+                    let result = res.data.content.data
+                    let income = 0
+                    for ( let a=0 ; a<result.length; a++) {
+                        result[a].orderIncome = result[a].orderIncome + income
+                    }
+                    this.heroList.list[i].chartData.rows = result
+                }
+                this.heroList.show = this.heroList.show+1
+            })
+        }
+    },
+    getPersent: function(value) {
+        return commonAction.getPersent(value)
+    },
     // 筛选列表
     filterHandler(data) {
       this.trandingRequest = data;
       this.getTradingList();
     },
     traderfilterHandler(data) {
+        console.log(data)
       this.tradersRequest = data; 
       //
       // this.getTradingList();
     },
     acountfilterHandler(data){
+        console.log(data)
       this.acountRequest = data
     },
     tradingTabHandler(data){
+        console.log(data)
       this.tradingTab = data
     },
     followFilterHandler(data){
-      
-    }
+        console.log(data)
+    },
+      currentfilterHandler(data){
+          console.log(data)
+      }
 
   },
 };
@@ -500,13 +588,13 @@ export default {
         background: #F4F9FF
       .txt 
         padding-left: 30px
-        font-size: 30px
+        font-size: 25px
         color: #333
         font-weight: bold
         vertical-align: -4px
       .txt2
         padding-left: 30px
-        font-size: 30px
+        font-size: 25px
         font-weight: bold
         color: #FB3F41
         vertical-align: -4px

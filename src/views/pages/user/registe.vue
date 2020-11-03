@@ -81,7 +81,8 @@
           .registe-agreement-context {{context}}
 </template>
 <script>
-import E from '../../../utils'
+import commonRequest from "../../common/commonRequest";
+import commonAction from "../../common/commonAction";
 
 export default {
   data() {
@@ -105,35 +106,6 @@ export default {
     agreementHandler() {
       this.agreementShow = !this.agreementShow
     },
-    validPhone: function (value){ // 手机号验证
-          if (!value) {
-              this.$message.warning('请输入电话号码')
-          } else {
-              var reg = /^1[3|4|5|7|6|8][0-9]\d{8}$/
-              var reg2 = /^((0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/
-              if (reg2.test(value) || reg.test(value)) {
-                  return true
-              }
-              return false
-          }
-      },
-      validEmail: function (value){
-          if (!value) {
-              this.$message.warning('请正确填写邮箱')
-          } else {
-              if (value !== '') {
-                  var reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
-                  if (reg.test(value)) {
-                      return true
-                  }
-              }
-              return false
-          }
-      },
-      introducerDecode: function(value) {
-          let Base64 = require('js-base64').Base64
-          return Base64.decode(value)  //
-      },
     registeHandler() {
       if (this.request.username === '') {
         this.$message.warning('请输入姓名')
@@ -167,18 +139,17 @@ export default {
         this.$message.warning('两次输入的密码不一致')
         return false
       }
-      if(!this.validPhone(this.request.mobile)){
+      if(!commonAction.validPhone(this.request.mobile)){
           this.$message.warning('请输入正确格式的手机号')
           return false
       }
-      if(!this.validEmail(this.request.email)){
+      if(!commonAction.validEmail(this.request.email)){
           this.$message.warning('请输入正确格式的邮箱')
           return false
        }
         let params = this.request
-        params.introducer = this.introducerDecode(this.request.introducer)
-      E.handleRequest(E.api().post('admin/registered', params))
-        .then(res => {
+        params.introducer = commonAction.base64Decode(this.request.introducer)
+        commonRequest.registered( params,res => {
           if (res.data.code && res.data.code !== 0) {
             this.$message.warning(res.data.message)
           } else {
