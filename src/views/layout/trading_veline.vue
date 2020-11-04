@@ -50,8 +50,9 @@ export default {
 
             },
             yAxis: {
-                // show:false,
+                show:false,
                 type: "value",
+                align: 'left',
                 offset:20,
                 // data: yAxisData,
                 splitLine: {

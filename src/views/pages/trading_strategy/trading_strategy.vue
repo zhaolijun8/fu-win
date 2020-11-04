@@ -440,7 +440,6 @@ export default {
                   this.$message.warning('无历史交易订单！')
                   return
               }
-              console.log(res.data)
               this.heroList.list = res.data.content.data
               this.heroList.page = res.data.page
               this.getProfitList()
@@ -449,10 +448,6 @@ export default {
       //获取信号源近一个月的收益情况
     getProfitList(){
         for(let i=0;i<this.heroList.list.length;i++){
-            this.heroList.list[i].chartData = []
-            this.heroList.list[i].chartData.rows = []
-            this.heroList.list[i].chartData.columns = ["tradeDate", "orderIncome"];
-
             let endDate = commonAction.getDay(new Date())
             // let beginDate=commonAction.getPreMonth(endDate)
             let beginDate="2019-01-01"
@@ -473,12 +468,15 @@ export default {
                 if(res.data !== undefined&&res.data !== null&&res.data.content !== undefined&&res.data.content !== null){
                     let result = res.data.content.data
                     let income = 0
-                    for ( let a=0 ; a<result.length; a++) {
-                        result[a].orderIncome = result[a].orderIncome + income
+                    for ( let a=0 ; a<result.length-1; a++) {
+                        income = income + result[a].orderIncome
+                        result[a+1].orderIncome = result[a+1].orderIncome + income
                     }
-                    this.heroList.list[i].chartData.rows = result
+                    this.heroList.list[i].chartData = []
+                    this.heroList.list[i].chartData.rows = []
+                    this.heroList.list[i].chartData.columns = ["tradeDate", "orderIncome"];
+                    this.heroList.list[i].chartData.rows.push(result)
                 }
-                this.heroList.show = this.heroList.show+1
             })
         }
     },
