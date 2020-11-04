@@ -40,7 +40,7 @@
         TradingZero(
             :subfee="subFee"
             :acounttype="acountType"
-            @filter="acountfilterHandler")
+            @filter="subFeefilterHandler")
         .tranding-zero
           .tranding-zero-list
             .tranding-zero-list-item(v-for="(item, index) in heroList.list")
@@ -53,7 +53,7 @@
               .accuracy-flex 准确率
                 span.txt {{getPersent(item.orderWinRate)}}
               .profit-flex 获利
-                span.txt2 {{item.orderProfit}}
+                span.txt2 {{item.orderIncome}}
               .canvas-flex 
                 //- img(:src="item.canvasurl != '' ? item.canvasurl : canvasUrl")
                 tranding-veline(
@@ -61,7 +61,7 @@
                 )
             el-pagination(
                 background
-                 @current-change="currentfilterHandler"
+                 @current-change="herofilterHandler"
                 layout="prev, pager, next"
                 :current-page="heroList.page.pageNo"
                 :total="heroList.page.total"
@@ -90,7 +90,6 @@ import avatar from '../../../assets/images/avatar-default.svg'
 import canvasUrl from '../../../assets/images/canvas-default.png'
 import commonRequest from "../../common/commonRequest";
 import commonAction from "../../common/commonAction";
-import moment from "moment";
 const filterLevel = [
   {
     label: "S",
@@ -180,13 +179,13 @@ const acountType = [
 ];
 const subFee = [
   {
-    label: "获利金额",
-    value: "0",
-  },
-  {
     label: "准确率",
-    value: "1",
+    value: "orderWinRate",
   },
+    {
+        label: "获利金额",
+        value: "orderIncome",
+    },
 ];
 const jytype = [
   {
@@ -246,44 +245,9 @@ export default {
       followType,
       filterBroker: [],
       show: true,
+      heroOrderBy: 'orderIncomeRate',
       heroList:{
-        list:[{
-          url:'',
-          name:'张三',
-          yield:'111.11%',
-          accuracy:'11.11%',
-          profit:'11.11',
-          chartData: {
-            columns: ["日期", "收益"],
-            rows: [
-              { "日期": "2020-10-01", "收益": "4.99"},
-              { "日期": "2020-10-02", "收益": "13.86"},
-              { "日期": "2020-10-03", "收益": "8" },
-              { "日期": "2020-10-04", "收益": "7"},
-              { "日期": "2020-10-05", "收益": "12"},
-              { "日期": "2020-10-06", "收益": "80"},
-              { "日期": "2020-10-07", "收益": "40"},
-            ],
-          },
-        },{
-          url:'',
-          name:'张三',
-          yield:'111.11%',
-          accuracy:'11.11%',
-          profit:'11.11',
-          chartData: {
-            columns: ["日期", "收益"],
-            rows: [
-              { "日期": "2020-10-01", "收益": "4.99"},
-              { "日期": "2020-10-02", "收益": "13.86"},
-              { "日期": "2020-10-03", "收益": "8" },
-              { "日期": "2020-10-04", "收益": "7"},
-              { "日期": "2020-10-05", "收益": "12"},
-              { "日期": "2020-10-06", "收益": "20"},
-              { "日期": "2020-10-07", "收益": "40"},
-            ],
-          },
-        }],
+        list:[],
         page: {total: 0, totalPages: 0, pageNo: 0, pageSize: 0},
         show:0
       },
@@ -417,7 +381,10 @@ export default {
       });
     },
       // 交易英雄榜
-      getHeroList() {
+      getHeroList(pageNo) {
+        if(pageNo == undefined || pageNo ==null||pageNo==''){
+            pageNo=1
+        }
           let params = {}
           const storage = window.localStorage
           const projInfo = storage.getItem('projInfo')
@@ -427,33 +394,36 @@ export default {
           }else {
               params.projKey = 0
           }
+          params.orderBy=this.heroOrderBy
           let pageInfoHelper = {
               pageSize: 3,
-              pageNo: 1
+              pageNo: pageNo
           }
           let data = {
               params,
               pageInfoHelper
           }
+        console.log(data)
           commonRequest.querySignalOrderSumPermit(data,res => {
+              console.log(res)
               if(res.data.content === null ||res.data.content===undefined ||res.data.content===''){
                   this.$message.warning('无历史交易订单！')
                   return
               }
               this.heroList.list = res.data.content.data
               this.heroList.page = res.data.page
-              this.getProfitList()
+              this.getProfitList(res.data.content.data)
           })
       },
       //获取信号源近一个月的收益情况
-    getProfitList(){
-        for(let i=0;i<this.heroList.list.length;i++){
+    getProfitList(contentData){
+        for(let i=0;i<contentData.length;i++){
             let endDate = commonAction.getDay(new Date())
             // let beginDate=commonAction.getPreMonth(endDate)
             let beginDate="2019-01-01"
             let params = {
-                userId: this.heroList.list[i].userId,
-                mtAccId: this.heroList.list[i].mtAccId,
+                userId: contentData[i].userId,
+                mtAccId: contentData[i].mtAccId,
                 tradeDate: [beginDate, endDate]
             }
             let pageInfoHelper = {
@@ -472,13 +442,15 @@ export default {
                         income = income + result[a].orderIncome
                         result[a+1].orderIncome = result[a+1].orderIncome + income
                     }
-                    this.heroList.list[i].chartData = []
-                    this.heroList.list[i].chartData.rows = []
-                    this.heroList.list[i].chartData.columns = ["tradeDate", "orderIncome"];
-                    this.heroList.list[i].chartData.rows.push(result)
+                    contentData[i].chartData = {}
+                    contentData[i].chartData.columns = ["tradeDate", "orderIncome"]
+                    contentData[i].chartData.rows = result
                 }
             })
         }
+        this.heroList.list = contentData
+        this.heroList.show = 1
+        console.log(this.heroList)
     },
     getPersent: function(value) {
         return commonAction.getPersent(value)
@@ -494,10 +466,6 @@ export default {
       //
       // this.getTradingList();
     },
-    acountfilterHandler(data){
-        console.log(data)
-      this.acountRequest = data
-    },
     tradingTabHandler(data){
         console.log(data)
       this.tradingTab = data
@@ -505,8 +473,20 @@ export default {
     followFilterHandler(data){
         console.log(data)
     },
-      currentfilterHandler(data){
+      acountfilterHandler(data){
           console.log(data)
+          // this.getHeroList()
+      },
+      subFeefilterHandler(data){
+        if(data.subfee==undefined||data.subfee=={}||data.subfee==null){
+            this.heroOrderBy ='orderIncomeRate'
+        }else if(data.subfee!=undefined&& data.subfee!=null ){
+            this.heroOrderBy = data.subfee
+        }
+        this.getHeroList()
+      },
+      herofilterHandler(data){
+          this.getHeroList(data)
       }
 
   },

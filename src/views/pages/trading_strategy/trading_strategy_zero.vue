@@ -2,7 +2,7 @@
     .trading-ous-tab
         .trading-filter-content
             .trading-filter-item
-                .trading-filter-item-label 账户类型
+                .trading-filter-item-label 活跃度
                 .trading-filter-item-all(
                     :class="checkAllClass('acounttype')",
                     @click="checkClear('acounttype')"
@@ -13,11 +13,11 @@
                     :class="checkClass('acounttype', a)"
                 ) {{a.label}}
             .trading-filter-item
-                .trading-filter-item-label 订阅费
+                .trading-filter-item-label 价值排序
                 .trading-filter-item-all(
                     :class="checkAllClass('subfee')",
                     @click="checkClear('subfee')"
-                ) 绝对收益率 
+                ) 收益率
                   i.el-icon-sort-down(v-if="subSort == 0")
                   i.el-icon-sort-up(v-else)
                 .trading-filter-item-attr(
@@ -66,13 +66,11 @@ export default {
           }
           break;
       }
-
       return res;
     },
     // 全部按钮样式
     checkAllClass(type) {
       let res = null;
-
       switch (type) {
         case "subfee":
           if (this.subfeeSelected === null) {
@@ -85,19 +83,16 @@ export default {
           }
           break;
       }
-
       return res;
     },
     // 处理筛选数据
     formatFilter() {
-      const obj = {};
-
+      let obj = {};
       if (this.subfeeSelected !== null) {
-        obj.brokerName = this.subfeeSelected.value;
+        obj.subfee = this.subfeeSelected.value;
       }
-
       if (this.acounttypeSelected !== null) {
-        obj.brokerName = this.acounttypeSelected.value;
+        obj.acounttype = this.acounttypeSelected.value;
       }
 
       return obj;
@@ -122,7 +117,7 @@ export default {
       switch (type) {
         case "subfee":
           this.subfeeSelected = null;
-          this.subSort = !this.subSort;
+          // this.subSort = !this.subSort;
           break;
         case "acounttype":
           this.acounttypeSelected = null;

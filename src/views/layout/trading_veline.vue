@@ -37,7 +37,7 @@ export default {
             },
             xAxis: {
                 type: "category",
-                // show:false,
+                show:false,
                 // color: '#c00',
                 offset:20,
                 boundaryGap: false,
@@ -74,7 +74,6 @@ export default {
     };
   },
   methods: {
-
   },
 };
 </script>
