@@ -92,11 +92,11 @@ export default {
       const obj = {};
 
       if (this.jySelected !== null) {
-        obj.brokerName = this.jySelected.value;
+        obj.tradeWeek = this.jySelected.value;
       }
 
       if (this.followSelected !== null) {
-        obj.brokerName = this.followSelected.value;
+        obj.groupBy = this.followSelected.value;
       }
 
       return obj;
@@ -124,7 +124,7 @@ export default {
           break;
         case "followtype":
           this.followSelected = null;
-          this.followSort = !this.followSort
+          // this.followSort = !this.followSort
           break;
       }
 
