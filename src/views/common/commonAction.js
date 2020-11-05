@@ -82,6 +82,12 @@ commonAction.getTimeBetweenNow = (date) => {
     let s1 = date1.getTime()
     var total = (s2 - s1)/1000
 
+    var week = parseInt(total / (7*24*60*60));//计算周数
+    if(week>0){
+        diff = diff + week + '周'
+        return diff
+    }
+
     var day = parseInt(total / (24*60*60));//计算bai整数天数
     if(day>0){
         diff = diff + day + '天'
@@ -107,7 +113,7 @@ commonAction.getTimeBetweenNow = (date) => {
     diff = diff + '刚刚'
     return  diff
 },
-// 获取昨日的开始结束时间
+// 获取时间
 commonAction.getDateTime = (date) => {
     return moment(date).format("YYYY-MM-DD HH:mm:ss")
 },
@@ -169,6 +175,16 @@ commonAction.getPreMonth = (date) => {
     var t2 = year2 + '-' + month2 + '-' + day2;
     return t2;
 }
+// 获取今日 相隔AddDayCount 日期
+commonAction.getDateStr = (AddDayCount) => {
+    var dd = new Date();
+    dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期
+    var y = dd.getFullYear();
+    var m = dd.getMonth()+1;//获取当前月份的日期
+    var d = dd.getDate();
+    return y+'-'+(m<10?'0'+m:m)+'-'+d;
+}
+
 // 根据页面控制点 查询控制内容
 commonAction.getControlContent = (projKey, controlType, controlPoint,controlAction,controlState) => {
     let params = {

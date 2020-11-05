@@ -38,6 +38,10 @@ export default {
     querySignalUsersPermit(params, callback) {
         E.handleRequest(E.api().post('signal/querySignalUsersPermit', params)).then(callback)
     },
+    //查询权限信号源跟随者
+    queryProjectFollowUsers(params, callback) {
+        E.handleRequest(E.api().post('signal/queryProjectFollowUsers', params)).then(callback)
+    },
 
     //------------------订单
     //获取信号源交易订单
@@ -50,6 +54,10 @@ export default {
     querySignalOrderSumPermit(params, callback) {
         E.handleRequest(E.api().post('report/order/querySignalOrderSumPermit', params)).then(callback)
     },
+    //获取权限跟随用户 交易汇总信息
+    queryFollowOrderSumPermit(params, callback) {
+        E.handleRequest(E.api().post('report/order/queryFollowOrderSumPermit', params)).then(callback)
+    },
     //根据日期 获取交易流水 并汇总
     getOrderSumGroupBetween(params, callback) {
         E.handleRequest(E.api().post('report/order/getOrderSumGroupBetween', params)).then(callback)
@@ -57,7 +65,14 @@ export default {
     //根据条件 获取交易流水
     queryOrderFlow(params, callback) {
         E.handleRequest(E.api().post('report/order/queryOrderFlow', params)).then(callback)
-    }
+    },
+
+    //-------------------公共
+    //查询经纪商
+    queryBroker(params, callback) {
+        E.handleRequest(E.api().post('comServer/queryBroker', params)).then(callback)
+    },
+
 
 }
 

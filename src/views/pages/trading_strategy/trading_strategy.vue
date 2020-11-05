@@ -11,7 +11,7 @@
       //- )
       TradingTab(
         :fee="filterFee",
-        :rate="filterProfitRate",
+        :broker="filterProfitRate",
         :propot="filterPropot"
         @filter="traderfilterHandler"
         @followFilter="followFilterHandler"
@@ -44,8 +44,9 @@
         .tranding-zero
           .tranding-zero-list
             .tranding-zero-list-item(v-for="(item, index) in heroList.list")
-              .avatar 
-                img(:src="item.avatarUrl == '' ? avatar : item.avatarUrl", width="100%")
+              .avatar
+                router-link(:to="{ path: '/trading_strategy/detail/'+item.signalId}")
+                    img(:src="item.avatarUrl == '' ? avatar : item.avatarUrl", width="100%")
                 .ranknum(:class="`color_${index + 1}`") {{ '0' + (index + 1) }}
               .name {{item.signalName}}
               .yield-flex 收益率
@@ -54,7 +55,7 @@
                 span.txt {{getPersent(item.orderWinRate)}}
               .profit-flex 获利
                 span.txt2 {{item.orderIncome}}
-              .canvas-flex 
+              .canvas-flex
                 //- img(:src="item.canvasurl != '' ? item.canvasurl : canvasUrl")
                 tranding-veline(
                   :chartData="item.chartData"
@@ -138,6 +139,30 @@ const filterProfitRate = [
     label: "大于30",
     value: "0.3,1",
   },
+    {
+        label: "10-20",
+        value: "0.1,0.2",
+    },
+    {
+        label: "20-30",
+        value: "0.2,0.3",
+    },
+    {
+        label: "10-20",
+        value: "0.1,0.2",
+    },
+    {
+        label: "20-30",
+        value: "0.2,0.3",
+    },
+    {
+        label: "10-20",
+        value: "0.1,0.2",
+    },
+    {
+        label: "20-30",
+        value: "0.2,0.3",
+    },
 ];
 const filterFee = [
   {
@@ -151,20 +176,20 @@ const filterFee = [
 ];
 const filterPropot = [
   {
-    label: "小于10",
-    value: "0,0.1",
+    label: "小于15",
+    value: "0,0.15",
   },
   {
-    label: "10-50",
-    value: "0.1,0.5",
+    label: "15-30",
+    value: "0.15,0.3",
   },
   {
-    label: "50-100",
+    label: "30-50",
+    value: "0.3,0.5",
+  },
+  {
+    label: "50以上",
     value: "0.5,1",
-  },
-  {
-    label: "100以上",
-    value: "1",
   },
 ];
 const acountType = [
@@ -226,8 +251,11 @@ export default {
         pageNo: 1,
       },
       tradersRequest:{},
-      acountRequest:{},
-      followList: [],
+      followRequest:{
+          pageSize: 10,
+          pageNo: 1
+      },
+      followList: {},
       followRequest: {
         pageSize: 4,
         pageNo: 1,
@@ -267,7 +295,7 @@ export default {
           week:'11.11',
           num:'12'
         }],
-        totalNum:100,
+        page: {total: 0, totalPages: 0, pageNo: 0, pageSize: 0}
       }
     };
   },
@@ -313,15 +341,16 @@ export default {
         params,
         pageInfoHelper,
       }
-      return E.handleRequest(
-        E.api().post("signal/querySignalUsersPermit", data)
-      ).then((res) => {
+      commonRequest.querySignalUsersPermit(data,(res) => {
         this.tradingList = res.data.content.data;
       })
     },
     // 跟随大师列表
-    getFollowList() {
-        let params = {}
+    getFollowList(pageNo) {
+        if(pageNo == undefined || pageNo ==null||pageNo==''){
+            pageNo=1
+        }
+        let params = this.followRequest
         const storage = window.localStorage
         const projInfo = storage.getItem('projInfo')
         if (projInfo !== undefined && projInfo !== null) {
@@ -331,29 +360,28 @@ export default {
             params.projKey = 0
         }
       let pageInfoHelper = {
-        pageSize: 4,
-        pageNo: 1,
+        pageSize: 10,
+        pageNo: pageNo,
       };
       let data = {
         params,
         pageInfoHelper,
       };
-      return E.handleRequest(
-        E.api().post("signal/queryProjectFollowUsers", data)
-      ).then((res) => {
-        this.followList = res.data.content.data;
+      commonRequest.queryFollowOrderSumPermit( data,(res) => {
+        this.followListData.list = res.data.content.data
+          this.followListData.page = res.data.page
       });
     },
     // 经销商列表
     getBrokerList() {
-      return E.handleRequest(E.api().post("comServer/queryBroker", {})).then(
-        (res) => {
+        commonRequest.queryBroker({},(res) => {
           this.brokerList = res.data.content.data;
           this.brokerList.forEach((item) => {
             const obj = {};
             obj.value = item.brokerName;
             obj.label = item.brokerName;
             this.filterBroker.push(obj);
+              this.filterProfitRate.push(obj);
           });
         }
       );
@@ -365,7 +393,7 @@ export default {
       let data = {
         params,
       };
-      E.handleRequest(E.api().post("admin/tokenLogin", data)).then((res) => {
+      commonRequest.tokenLogin(data,(res) => {
         if (res.data.status !== 0) {
           this.$message.warning(res.data.msg);
         } else {
@@ -403,9 +431,7 @@ export default {
               params,
               pageInfoHelper
           }
-        console.log(data)
           commonRequest.querySignalOrderSumPermit(data,res => {
-              console.log(res)
               if(res.data.content === null ||res.data.content===undefined ||res.data.content===''){
                   this.$message.warning('无历史交易订单！')
                   return
@@ -450,7 +476,23 @@ export default {
         }
         this.heroList.list = contentData
         this.heroList.show = 1
-        console.log(this.heroList)
+    },
+    getFollowFilterDate:function(value){
+        if(value==0){
+            return commonAction.getDateStr(-90)+','+commonAction.getDay(new Date())
+        }
+        if(value==1){
+            return commonAction.getDateStr(-180)+','+commonAction.getDay(new Date())
+        }
+        if(value==2){
+            return commonAction.getDateStr(-365)+','+commonAction.getDay(new Date())
+        }
+        if(value==3){
+            return commonAction.getDateStr(-730)+','+commonAction.getDay(new Date())
+        }
+        if(value==4){
+            return '2000-01-01,'+commonAction.getDateStr(-730)
+        }
     },
     getPersent: function(value) {
         return commonAction.getPersent(value)
@@ -461,22 +503,25 @@ export default {
       this.getTradingList();
     },
     traderfilterHandler(data) {
-        console.log(data)
-      this.tradersRequest = data; 
-      //
-      // this.getTradingList();
+        this.trandingRequest = data;
+      this.getTradingList();
     },
     tradingTabHandler(data){
-        console.log(data)
       this.tradingTab = data
     },
     followFilterHandler(data){
-        console.log(data)
+        if(data.groupBy==undefined||data.groupBy=={}||data.groupBy==null){
+            this.followRequest.orderBy = 'orderIncomeRate'
+        }else {
+            this.followRequest.orderBy = data.groupBy
+        }
+        if(data.tradeWeek!=undefined&&data.tradeWeek!={}&&data.tradeWeek!=null){
+            this.followRequest.beginDate = this.getFollowFilterDate(data.tradeWeek)
+        }else {
+            this.followRequest.beginDate = ''
+        }
+        this.getFollowList()
     },
-      acountfilterHandler(data){
-          console.log(data)
-          // this.getHeroList()
-      },
       subFeefilterHandler(data){
         if(data.subfee==undefined||data.subfee=={}||data.subfee==null){
             this.heroOrderBy ='orderIncomeRate'
@@ -487,6 +532,9 @@ export default {
       },
       herofilterHandler(data){
           this.getHeroList(data)
+      },
+      followOrderListHandler(data){
+          this.getFollowList(data)
       }
 
   },
@@ -564,7 +612,8 @@ export default {
       border-bottom: 1px solid #eee
       &:hover
         background: #F4F9FF
-      .txt 
+      &-link
+      .txt
         padding-left: 30px
         font-size: 25px
         color: #333
