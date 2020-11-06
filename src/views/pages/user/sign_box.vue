@@ -8,7 +8,7 @@
                 img.bg-img(src="../../../assets/images/login_bg.jpg")
                 div.sign-box-left-desc 
                     h2 Bole Trade 交易社区
-                    span 复制跟单，免费跟随技术牛人做教育   
+                    span 复制跟单，轻松跟随技术牛人做交易
             .sign-box-right
                 .login-arrow
                 .sign-box-form(v-show="qrcodeStatus")

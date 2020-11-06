@@ -14,9 +14,9 @@
             .swiper-button-prev(slot="button-prev")
             .swiper-button-next(slot="button-next")
         .index-trading.swad1
-          .index-trading-box.bole-trade
+          .index-trading-box.AITOP-trade
             .index-trade
-              .trade-title   Bole Trade 的核心实力
+              .trade-title   AITOP Trade 的核心实力
                   .trade-descript 更高端/更合规/更专业
             .module-list
               .module-list-item
@@ -26,7 +26,7 @@
                   )
                 .module-list-item-info
                   .module-list-item-text 顶级交易团队
-                  .module-list-item-num 为全球会员筛选行业内最顶级交易团队，并且提前发布交易策略，确保会员所跟随的每个信号源都真实性，交易准确率高达70%。
+                  .module-list-item-num 为全球会员筛选行业内最顶级交易团队，确保会员所跟随的每个信号源都真实性。
               .module-list-item
                 .module-list-item-img
                   img(
@@ -84,7 +84,7 @@
         .index-trading
           .index-trading-box
             .index-trade
-              .trade-title  Bole Trade 今日成交数据
+              .trade-title  AITOP Trade 今日成交数据
                   .trade-descript 更高端/更合规/更专业
           .module-list-two
             .module-list-two-item
@@ -190,9 +190,27 @@
                   .trade-descript 强大源于汇聚
           .index-part
             .index-part-list
-              .index-part-list-item(v-for="(i,index) in 10")
+              .index-part-list-item
                 //- router-link()
-                img(src="../../../assets/images/part_demo.png")
+                img(src="../../../assets/images/brokerLogo/115534958.png" style="width:100%;height:64px")
+              .index-part-list-item
+                img(src="../../../assets/images/brokerLogo/TradeMax.png" style="width:100%;height:64px")
+              .index-part-list-item
+                img(src="../../../assets/images/brokerLogo/aihua.jpg" style="width:100%;height:64px")
+              .index-part-list-item
+                img(src="../../../assets/images/brokerLogo/cpt.png" style="width:100%;height:64px")
+              .index-part-list-item
+                img(src="../../../assets/images/brokerLogo/jiekai.jpg" style="width:100%;height:64px")
+              .index-part-list-item
+                img(src="../../../assets/images/brokerLogo/kvb.jpg" style="width:100%;height:64px")
+              .index-part-list-item
+                img(src="../../../assets/images/brokerLogo/ximeng.jpg" style="width:100%;height:64px")
+              .index-part-list-item
+                img(src="../../../assets/images/brokerLogo/xingji.png" style="width:100%;height:64px")
+              .index-part-list-item
+                img(src="../../../assets/images/brokerLogo/dooprime.png" style="width:100%;height:60px")
+              .index-part-list-item
+                img(src="../../../assets/images/brokerLogo/logo-stm.png" style="width:100%;height:60px")
 
 </template>
 
@@ -222,7 +240,7 @@
       width: 1500px
       margin: 0 auto
     &-part
-      width: 1500px
+      width: 1200px
       margin: 0 auto 30px
       &-list 
         display: flex
@@ -238,7 +256,7 @@
           justify-content: center
           align-items: center
           // background: #666
-          margin: 0 50px 50px
+          margin: 0 20px 20px
 
 
 

@@ -31,7 +31,7 @@
                     .quant-canvas
                         .quant-canvas-list(v-for="i in quantList")
                             .quant-canvas-title 
-                                span 稳健，回测少
+                                span 趋势追踪策略
                                 .author 策略作者：
                                     img.avatar(:src="avatar")
                                     .name {{i.name}}
@@ -43,7 +43,7 @@
                                             span.legend-text 策略收益                                       
                                         .legend-box
                                             span.legend-symbol
-                                            span.legend-text 泸深300
+                                            span.legend-text 基准收益
                                     .quant-canvas-img
                                         traderYield(
                                             class="quant-qt-trader"
