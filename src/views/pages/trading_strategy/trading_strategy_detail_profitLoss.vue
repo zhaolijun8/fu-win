@@ -38,7 +38,6 @@
 </template>
  
 <script>
-import E from "../../../utils"
 import commonRequest from "../../common/commonRequest";
 import moment from "moment";
 
@@ -116,7 +115,6 @@ export default {
 
             const { columns, data } = param;
             const sums = [];
-            console.log(param);
 
             columns.forEach((column, index) => {
                 if (index === 11) {
@@ -339,7 +337,7 @@ export default {
         color: #666
 .static-table
     width: 980px
-    margin: 50px auto 
+    margin: 10px auto 50px auto
     /deep/ 
         .el-table
             border: 1px solid #ccc

@@ -7,7 +7,7 @@
         :src="getLogoUrl"
         :style='logoStyle'
       )
-      div.logo_msg {{projName}} 交易社区
+      div.logo_msg {{projName}} 欢迎您
 </template>
 
 <script>

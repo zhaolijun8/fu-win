@@ -110,7 +110,7 @@
                 img(src="../../../assets/images/trad_4.png")
               .module-list-two-item-info
                 .s1 累计收益金额（美元）
-                .s2 {{yesterDayTrade.orderIncome * 25 }}$
+                .s2 {{yesterDayTrade.orderIncome * 25 }} $
         .index-trading.swad
           .index-trading-box
             .index-trade

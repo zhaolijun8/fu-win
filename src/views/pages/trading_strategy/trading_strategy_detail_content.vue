@@ -4,7 +4,7 @@
       .trading-detail-content-header
         .trading-detail-content-header-right
           .trading-detail-content-header-right-btn(
-            @click="followBook"
+            @click="followBook()"
           ) 免费订阅
         .trading-detail-content-header-title 交易员
         .trading-detail-content-header-body
@@ -234,21 +234,20 @@ export default {
               return;
           }
           // 判断跳转方向
-          const projInfo = window.localStorage.getItem('projInfo')
-          if (projInfo !== undefined && projInfo !== null) {
-              let projData = JSON.parse(projInfo)
-              let res = commonAction.getControlContent(projData.projKey,0,10,1,0)
-              console.log(res)
-          }
-          // console.log(userInfo)
-          // let userData = JSON.parse(userInfo)
-          // this.getProjectInfo(userData.userId)
-          // if (userData.token !==null) {
-          //     newUrl = this.crmUrl + '/login' + '?token='+userData.token
-          // }else {
-          //     this.$message.warning('获取用户信息失败！')
-          //     return;
+          // const projInfo = window.localStorage.getItem('projInfo')
+          // if (projInfo !== undefined && projInfo !== null) {
+          //     let projData = JSON.parse(projInfo)
+          //     let res = commonAction.getControlContent(projData.projKey,0,10,1,0)
+          //     console.log(res)
           // }
+          let userData = JSON.parse(userInfo)
+          this.getProjectInfo(userData.userId)
+          if (userData.token !==null) {
+              newUrl = this.crmUrl + '/login' + '?token='+userData.token
+          }else {
+              this.$message.warning('获取用户信息失败！')
+              return;
+          }
           window.open(newUrl)
       },
       // 所属项目工程信息
@@ -310,24 +309,23 @@ export default {
     background-color: #fff
 
     &-title
-      position: relative
       height: 50px
       line-height: 50px
       padding: 0 30px 0 43px
-      font-size: 14px
+      font-size: 16px
       color: #333
       font-weight: 600
       border-bottom: 1px solid #e9e9e9
-      &:before
-        position: absolute
-        content: ""
-        top: 18px
-        left: 30px
-        display: inline-block
-        width: 3px
-        height: 14px
-        background: #1138FF
-        border-radius: 2px
+      /*&:before*/
+      /*  position: absolute*/
+      /*  content: ""*/
+      /*  top: 18px*/
+      /*  left: 30px*/
+      /*  display: inline-block*/
+      /*  width: 3px*/
+      /*  height: 14px*/
+      /*  background: #1138FF*/
+      /*  border-radius: 2px*/
     &-right
       &-btn
         font-size: 14px

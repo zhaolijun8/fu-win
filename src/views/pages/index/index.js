@@ -264,14 +264,14 @@ let Index = {
     getProjectInfo(userId) {
       let params = {
         userId: userId, // 操作用户id
-      };
+      }
       let data = {
         params,
-      };
+      }
       return commonRequest.queryDetailByCondition(data,(res) => {
         if (
-          res.data.content.projCrmRealm !== null &&
-          res.data.content.projCrmRealm !== ""
+          res.data.content !== null &&
+          res.data.content !== ""
         ) {
           _config.CRM_URL = res.data.content.projCrmRealm;
           _config.PROJ_KEY = res.data.content.projKey;
