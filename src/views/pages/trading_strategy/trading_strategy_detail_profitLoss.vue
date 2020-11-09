@@ -7,26 +7,26 @@
             //- <div class="trading-profitLoss-box-title"><span></span>（按日统计）</div>
             <div id="profitCharts" ref="profitCharts" style="width: 1100px;margin:0 auto;height:400px;"></div>
             .static-table
-                el-table(:data="tableData"
-                    width="100%"
-                    align="center"
-                    show-summary
-                    :span-method="arraySpanMethod"
-                    :summary-method="getSummaries")
-                    el-table-column(prop="January" label="1月" width="75" align="center")
-                    el-table-column(prop="February" label="2月" width="75" align="center")
-                    el-table-column(prop="March" label="3月" width="75" align="center")
-                    el-table-column(prop="April" label="4月" width="75" align="center")
-                    el-table-column(prop="May" label="5月" width="75" align="center")
-                    el-table-column(prop="June" label="6月" width="75" align="center")
-                    el-table-column(prop="July" label="7月" width="75" align="center")
-                    el-table-column(prop="August" label="8月" width="75" align="center")
-                    el-table-column(prop="September" label="9月" width="75" align="center")
-                    el-table-column(prop="October" label="10月" width="75" align="center")
-                    el-table-column(prop="November" label="11月" width="75" align="center")
-                    el-table-column(prop="December" label="12月" width="75" align="center")
-                    el-table-column(prop="YTD" label="YTD" align="center" )
-                .total-static 
+             //-    el-table(:data="tableData"
+             //-        width="100%"
+             //-        align="center"
+             //-        show-summary
+             //-        :span-method="arraySpanMethod"
+             //-        :summary-method="getSummaries")
+             //-        el-table-column(prop="January" label="1月" width="75" align="center")
+             //-        el-table-column(prop="February" label="2月" width="75" align="center")
+             //-        el-table-column(prop="March" label="3月" width="75" align="center")
+             //-        el-table-column(prop="April" label="4月" width="75" align="center")
+             //-        el-table-column(prop="May" label="5月" width="75" align="center")
+             //-        el-table-column(prop="June" label="6月" width="75" align="center")
+             //-        el-table-column(prop="July" label="7月" width="75" align="center")
+             //-        el-table-column(prop="August" label="8月" width="75" align="center")
+             //-        el-table-column(prop="September" label="9月" width="75" align="center")
+             //-        el-table-column(prop="October" label="10月" width="75" align="center")
+             //-        el-table-column(prop="November" label="11月" width="75" align="center")
+             //-        el-table-column(prop="December" label="12月" width="75" align="center")
+             //-        el-table-column(prop="YTD" label="YTD" align="center" )
+             //-    .total-static
 
         .trading-detail-content-box
             .trading-detail-content-title

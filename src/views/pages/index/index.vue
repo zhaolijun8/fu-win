@@ -6,9 +6,9 @@
           swiper(class="swiper swiper-top" :options="swiperTopOption" ref="mySwiper" style="max-height: 800px")
             swiper-slide(v-for="(i,index) in swiperData" :key="index")
                 .swiper-img
-                  img(:src="i.url == '' ? demoImg : i.url" width="100%" class="swiper-img")
+                  img(:src="i.url == '' ? demoImg : getServerUrl(i.url)" width="100%" class="swiper-img")
                 .inner
-                  p.title(data-swiper-parallax="-2000") {{i.title}}
+                  p.title(data-swiper-parallax="-2000") {{_config.PROJ_INFO.projName}} {{i.title}}
                   p.msg(data-swiper-parallax="-3000") {{i.desc}}
                   p.btn(data-swiper-parallax="-4500") {{i.txt}}
             .swiper-button-prev(slot="button-prev")
@@ -16,7 +16,7 @@
         .index-trading.swad1
           .index-trading-box.AITOP-trade
             .index-trade
-              .trade-title   AITOP Trade 的核心实力
+              .trade-title   {{_config.PROJ_INFO.projName}} 核心实力
                   .trade-descript 更高端/更合规/更专业
             .module-list
               .module-list-item
@@ -33,7 +33,7 @@
                       src="../../../assets/images/bole_02.svg"
                   )
                 .module-list-item-info
-                  .module-list-item-text 合规安全的经济商
+                  .module-list-item-text 合规安全的经纪商
                   .module-list-item-num 为全球会员严格筛选合规安全的经纪商，保证交易订单在最公平最透明的交易环境中顺利成交。
               .module-list-item
                 .module-list-item-img
@@ -84,7 +84,7 @@
         .index-trading
           .index-trading-box
             .index-trade
-              .trade-title  AITOP Trade 今日成交数据
+              .trade-title  {{_config.PROJ_INFO.projName}} 今日成交数据
                   .trade-descript 更高端/更合规/更专业
           .module-list-two
             .module-list-two-item

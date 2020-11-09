@@ -124,14 +124,24 @@ let Index = {
       doubtEq: 0,
       swiperData:[{
         url:'', //图片地址
-        title:"AITOP Trade 交易社区111",
-        desc:'复制跟单，免费跟随技术牛人做教育',
+        title:"交易社区",
+        desc:'复制跟单，免费跟随技术牛人做交易',
         txt:'专注技术的外汇跟单社区',
       },{
-        url:'',
-        title:"AITOP Trade 交易社区222",
-        desc:'复制跟单，免费跟随技术牛人做教育2222',
-        txt:'专注技术的外汇跟单社区2',
+        url:'\\upload\\image\\banner\\b003.jpg',
+        title:"交易社区",
+        desc:'复制跟单，免费跟随技术牛人做交易',
+        txt:'专注技术的外汇跟单社区',
+      },{
+        url:'\\upload\\image\\banner\\b006.jpg',
+        title:"交易社区",
+        desc:'复制跟单，免费跟随技术牛人做交易',
+        txt:'专注技术的外汇跟单社区',
+      },{
+        url:'\\upload\\image\\banner\\b008.jpg',
+        title:"交易社区",
+        desc:'复制跟单，免费跟随技术牛人做交易',
+        txt:'专注技术的外汇跟单社区',
       }],
       swiperTopOption: {
         navigation: {
@@ -183,6 +193,7 @@ let Index = {
     }
     const storage = window.localStorage;
     const userInfo = storage.getItem("follow_user_info");
+    console.log(userInfo)
     if (userInfo !== null) {
       this.userInfo = JSON.parse(userInfo);
       this.getProjectInfo(this.userInfo.userId);
@@ -274,7 +285,8 @@ let Index = {
           res.data.content !== ""
         ) {
           _config.CRM_URL = res.data.content.projCrmRealm;
-          _config.PROJ_KEY = res.data.content.projKey;
+          _config.PROJ_INFO = res.data.content;
+          console.log(_config.PROJ_INFO)
           const storage = window.localStorage;
           storage.setItem('projInfo', JSON.stringify(res.data.content))
         }
@@ -295,8 +307,10 @@ let Index = {
           res.data.content.projCrmRealm !== null &&
           res.data.content.projCrmRealm !== ""
         ) {
+          console.log()
           _config.CRM_URL = res.data.content.projCrmRealm;
-          _config.PROJ_KEY = res.data.content.projKey;
+          _config.PROJ_INFO = res.data.content;
+          console.log(_config.PROJ_INFO)
           const storage = window.localStorage;
           storage.setItem('projInfo', JSON.stringify(res.data.content))
         }
@@ -368,6 +382,9 @@ let Index = {
     getPersent: function(value) {
       return commonAction.getPersent(value)
     },
+    getServerUrl: function (url) {
+       return commonAction.getServerUrl(url)
+    }
   },
 };
 

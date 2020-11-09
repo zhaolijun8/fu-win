@@ -1,5 +1,6 @@
 import commonRequest from "./commonRequest";
 import moment from "moment";
+import base_config from "../../base_config";
 
 const commonAction = {}
 
@@ -183,6 +184,10 @@ commonAction.getDateStr = (AddDayCount) => {
     var m = dd.getMonth()+1;//获取当前月份的日期
     var d = dd.getDate();
     return y+'-'+(m<10?'0'+m:m)+'-'+d;
+}
+// 获取server Base url
+commonAction.getServerUrl = (url) => {
+    return base_config.BASE_URL+url;
 }
 
 // 根据页面控制点 查询控制内容

@@ -7,7 +7,7 @@
             .sign-box-left
                 img.bg-img(src="../../../assets/images/login_bg.jpg")
                 div.sign-box-left-desc 
-                    h2 Bole Trade 交易社区
+                    h2 {{_config.PROJ_INFO.projName}} 交易社区
                     span 复制跟单，轻松跟随技术牛人做交易
             .sign-box-right
                 .login-arrow
