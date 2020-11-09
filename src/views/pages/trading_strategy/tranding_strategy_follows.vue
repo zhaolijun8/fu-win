@@ -3,21 +3,32 @@
           .tranding-follow-list
             .tranding-follow-list-item(v-for="(item, index) in followlist.list")
               .avatar 
-                img(:src="item.url == '' ? avatar : item.url", width="100%")
-              .name {{item.name}}
-                span.desc qqq
+                img(:src="item.avatarUrl == '' ? avatar : item.avatarUrl", width="100%")
+              .name {{item.refName}}
+                span.desc {{getDay(item.beginDate)}}
               .yield-flex 收益率
-                span.txt {{item.yield}}
+                span.txt {{getPersent(item.orderIncomeRate)}}
               .accuracy-flex 跟随收益
-                span.txt {{item.accuracy}}
+                span.txt {{item.orderIncome}}
               .profit-flex 交易周期
-                span.txt2 {{item.week}}
+                span.txt2 {{getWeek(item.beginDate)}}
               .profit-flex 跟随笔数
-                span.txt2 {{item.num}}
+                span.txt2 {{item.orderCount}}
               .btn-flex 
                 span.txt3(@click="followBtn") 关注
+
+            el-pagination(
+                background
+                 @current-change="followOrderListHandler"
+                layout="prev, pager, next"
+                :current-page="followlist.page.pageNo"
+                :total="followlist.page.total"
+                :page-size="followlist.page.pageSize"
+                :page-count="followlist.page.totalPages"
+              )
 </template>
 <script>
+    import commonAction from "../../common/commonAction";
 export default {
     data(){
         return{
@@ -35,7 +46,19 @@ export default {
     methods:{
       followBtn(){
         this.$router.go('/'); 
-      }
+      },
+        followOrderListHandler(data){
+            this.$parent.followOrderListHandler(data)
+        },
+        getWeek: function(date){
+          return commonAction.getTimeBetweenNow(date)
+        },
+        getDay:function(date){
+          return commonAction.getDay(date)
+        },
+        getPersent: function (data) {
+          return commonAction.getPersent(data)
+        }
     }
 }
 </script>
@@ -43,6 +66,10 @@ export default {
 .tranding-follow
   background: #fff
   margin-bottom: 20px
+  .el-pagination
+    padding: 30px 0
+    text-align: center
+
   &-list
     &-item
       display: flex
@@ -58,7 +85,7 @@ export default {
         // padding-left: 30px
         margin-top: 10px
         line-height: 20px
-        font-size: 30px
+        font-size: 25px
         color: #1138FF
         font-weight: bold
         display: block

@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import E from '../../../utils'
+import commonRequest from "../../common/commonRequest";
 
 export default {
   data() {
@@ -46,9 +46,7 @@ export default {
         this.$message.warning('请输入密码')
         return false
       }
-
-      E.handleRequest(E.api().post('admin/login', this.request))
-        .then(res => {
+        commonRequest.login(this.request, res => {
           if (res.data.code && res.data.code !== 0) {
             this.$message.warning(res.data.message)
           } else {

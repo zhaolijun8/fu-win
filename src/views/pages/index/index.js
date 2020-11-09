@@ -1,14 +1,17 @@
 import BaseLayout from "../../layout/base_layout.vue";
 import TradingItem from "../trading_strategy/trading_strategy_item.vue";
 import questionItem from "../index/question.vue";
-import E from "../../../utils";
+import commonRequest from "../../common/commonRequest";
 import _config from "../../../base_config";
 
 import avatar from "../../../assets/images/avatar-default.svg";
 // import partImg_1 from '../../../assets/images/partImg_1.jpg'
 import demoImg from '../../../assets/images/index_1.png';
+import moment from "moment";
 
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
+import da from "element-ui/src/locale/lang/da";
+import commonAction from "../../common/commonAction";
 let Index = {
   components: {
     BaseLayout,
@@ -27,6 +30,31 @@ let Index = {
         },
       ],
       tradingList: [],
+      yesterDayTrade:{},
+      orderType: [
+        {
+          value: 0,
+          label: 'buy'
+        },
+        {
+          value: 1,
+          label: 'sell'
+        }
+      ],
+      orderTradeOperation: [
+        {
+          value: 0,
+          label: 'open'
+        },
+        {
+          value: 1,
+          label: 'close'
+        },
+        {
+          value: 2,
+          label: 'modify'
+        }
+      ],
       questionList: [
         {
           question: "社区平台是外汇经纪商吗？",
@@ -49,40 +77,7 @@ let Index = {
             "所有达人的交易都是真实存在，很多都是操盘经验丰富的投资专家操盘。每个策略下单数据都是其MT4真实账户的实盘交易数据。且社区平台绝不隐藏达人持仓信息，用户可以实时追踪查看比对，确保数据真实！",
         },
       ],
-      dynamicList: [
-        {
-          info: "这里是基本的信息",
-          variet: "比特币",
-          number: "1212",
-          opera: "买入",
-          profit: "3419.13",
-          time: "2020-03-14",
-        },
-        {
-          info: "这里是基本的信息",
-          variet: "比特币",
-          number: "1212",
-          opera: "买入",
-          profit: "3419.13",
-          time: "2020-03-14",
-        },
-        {
-          info: "这里是基本的信息",
-          variet: "比特币",
-          number: "1212",
-          opera: "买入",
-          profit: "3419.13",
-          time: "2020-03-14",
-        },
-        {
-          info: "这里是基本的信息",
-          variet: "比特币",
-          number: "1212",
-          opera: "买入",
-          profit: "3419.13",
-          time: "2020-03-14",
-        },
-      ],
+      dynamicList: [],
       heroList: [
         {
           url: "",
@@ -129,14 +124,24 @@ let Index = {
       doubtEq: 0,
       swiperData:[{
         url:'', //图片地址
-        title:"Bole Trade 交易社区1",
-        desc:'复制跟单，免费跟随技术牛人做教育',
+        title:"交易社区",
+        desc:'复制跟单，免费跟随技术牛人做交易',
         txt:'专注技术的外汇跟单社区',
       },{
-        url:'',
-        title:"Bole Trade 交易社区2",
-        desc:'复制跟单，免费跟随技术牛人做教育2222',
-        txt:'专注技术的外汇跟单社区2',
+        url:'\\upload\\image\\banner\\b003.jpg',
+        title:"交易社区",
+        desc:'复制跟单，免费跟随技术牛人做交易',
+        txt:'专注技术的外汇跟单社区',
+      },{
+        url:'\\upload\\image\\banner\\b006.jpg',
+        title:"交易社区",
+        desc:'复制跟单，免费跟随技术牛人做交易',
+        txt:'专注技术的外汇跟单社区',
+      },{
+        url:'\\upload\\image\\banner\\b008.jpg',
+        title:"交易社区",
+        desc:'复制跟单，免费跟随技术牛人做交易',
+        txt:'专注技术的外汇跟单社区',
       }],
       swiperTopOption: {
         navigation: {
@@ -188,6 +193,7 @@ let Index = {
     }
     const storage = window.localStorage;
     const userInfo = storage.getItem("follow_user_info");
+    console.log(userInfo)
     if (userInfo !== null) {
       this.userInfo = JSON.parse(userInfo);
       this.getProjectInfo(this.userInfo.userId);
@@ -196,11 +202,28 @@ let Index = {
       let hostname = document.location.hostname;
       this.getProjectInfoByUrl(hostname);
     }
+    this.getOrderHistoryData()
+    this.getHeroList()
+    this.getOrderTradeYesterDay()
   },
   methods: {
     doubtFunc(eq) {
       this.doubtEq = eq;
     },
+    // 获取时间
+    getDateTimeFormat: function(row, column, cellValue, index) {
+      if (cellValue === undefined || cellValue ==='' || cellValue === null)
+        return
+      let createTime= moment(cellValue).format("YYYY-MM-DD HH:mm:ss")
+      return commonAction.getTimeBetweenNow(createTime)+'以前'
+    },
+    getOperationFormat: function(row, column, cellValue, index) {
+      return commonAction.getDicValue(cellValue,this.orderTradeOperation)
+    },
+    getTypeFormat: function(row, column, cellValue, index) {
+      return commonAction.getDicValue(cellValue,this.orderType)
+    },
+
     getTokenLogin(token) {
       let params = {
         token,
@@ -208,7 +231,7 @@ let Index = {
       let data = {
         params,
       };
-      E.handleRequest(E.api().post("admin/tokenLogin", data)).then((res) => {
+      commonRequest.tokenLogin(data,(res) => {
         if (res.data.status !== 0) {
           this.$message.warning(res.data.msg);
           window.localStorage.removeItem("follow_user_info");
@@ -227,13 +250,14 @@ let Index = {
     },
     // 交易员列表
     getTradingList() {
-      let params = {};
-      const storage = window.localStorage;
-      const projKey = storage.getItem("projKey");
-      if (projKey !== undefined && projKey !== null) {
-        params.projKey = projKey;
-      } else {
-        params.projKey = 0;
+      let params = {}
+      const storage = window.localStorage
+      const projInfo = storage.getItem('projInfo')
+      if (projInfo !== undefined && projInfo !== null) {
+        this.projInfo = JSON.parse(projInfo)
+        params.projKey = this.projInfo.projKey
+      }else {
+        params.projKey = 0
       }
       let pageInfoHelper = {
         pageSize: 4,
@@ -243,9 +267,7 @@ let Index = {
         params,
         pageInfoHelper,
       };
-      return E.handleRequest(
-        E.api().post("signal/querySignalUsersPermit", data)
-      ).then((res) => {
+      commonRequest.querySignalUsersPermit(data,(res) => {
         this.tradingList = res.data.content.data;
       });
     },
@@ -253,21 +275,20 @@ let Index = {
     getProjectInfo(userId) {
       let params = {
         userId: userId, // 操作用户id
-      };
+      }
       let data = {
         params,
-      };
-      return E.handleRequest(
-        E.api().post("/permission/project/queryDetailByCondition", data)
-      ).then((res) => {
+      }
+      return commonRequest.queryDetailByCondition(data,(res) => {
         if (
-          res.data.content.projCrmRealm !== null &&
-          res.data.content.projCrmRealm !== ""
+          res.data.content !== null &&
+          res.data.content !== ""
         ) {
           _config.CRM_URL = res.data.content.projCrmRealm;
-          _config.PROJ_KEY = res.data.content.projKey;
+          _config.PROJ_INFO = res.data.content;
+          console.log(_config.PROJ_INFO)
           const storage = window.localStorage;
-          storage.setItem("projKey", res.data.content.projKey);
+          storage.setItem('projInfo', JSON.stringify(res.data.content))
         }
         this.getTradingList();
       });
@@ -280,22 +301,90 @@ let Index = {
       let data = {
         params,
       };
-      return E.handleRequest(
-        E.api().post("/permission/project/queryProjectByUrl", data)
-      ).then((res) => {
+      commonRequest.queryProjectByUrl(data,(res) => {
         if (
           res.data.content != null &&
           res.data.content.projCrmRealm !== null &&
           res.data.content.projCrmRealm !== ""
         ) {
+          console.log()
           _config.CRM_URL = res.data.content.projCrmRealm;
-          _config.PROJ_KEY = res.data.content.projKey;
+          _config.PROJ_INFO = res.data.content;
+          console.log(_config.PROJ_INFO)
           const storage = window.localStorage;
-          storage.setItem("projKey", res.data.content.projKey);
+          storage.setItem('projInfo', JSON.stringify(res.data.content))
         }
         this.getTradingList();
       });
     },
+    // 订单列表
+    getOrderHistoryData() {
+      let params = {}
+      params.orderTradeOperation = '0,1'
+      let pageInfoHelper = {
+        pageSize: 10,
+        pageNo: 1
+      }
+      let data = {
+        params,
+        pageInfoHelper
+      }
+      commonRequest.queryUserSignalOrder(data,res => {
+            if(res.data.content === null ||res.data.content===undefined ||res.data.content===''){
+              this.$message.warning('无历史交易订单！')
+            }else {
+              this.dynamicList = res.data.content.data
+            }
+          })
+    },
+    getOrderTradeYesterDay(){
+      let params = {
+        dimension:'DAY'
+      }
+      let data = {
+        params
+      }
+      commonRequest.getOrderSumGroupBetween(data,res => {
+        if(res.data.content === null ||res.data.content===undefined ||res.data.content===''){
+          this.$message.warning('无历史交易订单！')
+        }else {
+          this.yesterDayTrade = res.data.content
+        }
+      })
+    },
+    // 交易英雄榜
+    getHeroList() {
+      let params = {}
+      const storage = window.localStorage
+      const projInfo = storage.getItem('projInfo')
+      if (projInfo !== undefined && projInfo !== null) {
+        this.projInfo = JSON.parse(projInfo)
+        params.projKey = this.projInfo.projKey
+      }else {
+        params.projKey = 0
+      }
+      let pageInfoHelper = {
+        pageSize: 10,
+        pageNo: 1
+      }
+      let data = {
+        params,
+        pageInfoHelper
+      }
+      commonRequest.querySignalOrderSumPermit(data,res => {
+        if(res.data.content === null ||res.data.content===undefined ||res.data.content===''){
+          this.$message.warning('无历史交易订单！')
+        }else {
+          this.heroList = res.data.content.data
+        }
+      })
+    },
+    getPersent: function(value) {
+      return commonAction.getPersent(value)
+    },
+    getServerUrl: function (url) {
+       return commonAction.getServerUrl(url)
+    }
   },
 };
 

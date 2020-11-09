@@ -19,7 +19,7 @@
 import navMenu from './nav_menu.vue'
 import NavUser from './nav_user.vue'
 import NavLogo from './nav_logo.vue'
-import SignBox from './sign_box.vue'
+import SignBox from '../pages/user/sign_box.vue'
 import logo from '../../assets/images/logo_index.svg'
 
 export default {
@@ -94,9 +94,10 @@ export default {
     z-index: 200
     background-color: #fff
     &.statusClass
-      background-color: #1138FF
+      box-shadow: 0 1px 0 0 #e6e6e6
+      /*background-color: #1138FF*/
       /*background-color: transparent*/
-      box-shadow: none
+      /*box-shadow: none*/
     &.transparent
       background-color: #010001
       /*background-color: transparent*/
@@ -120,13 +121,13 @@ export default {
 #e-nav
 
   /deep/
-    .nav-container.statusClass
-      .menu-item,.logo_msg 
-        color: #fff
-        &.active
-          color: #409EFF
-      .register
-        color: #fff
+    /*.nav-container.statusClass*/
+    /*  .menu-item,.logo_msg*/
+    /*    color: #fff*/
+    /*    &.active*/
+    /*      color: #409EFF*/
+    /*  .register*/
+    /*    color: #fff*/
     .nav-container.transparent
 
       .menu-item

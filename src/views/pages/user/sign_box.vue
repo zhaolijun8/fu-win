@@ -5,10 +5,10 @@
         )
         .sign-box
             .sign-box-left
-                img.bg-img(src="../../assets/images/login_bg.jpg")
+                img.bg-img(src="../../../assets/images/login_bg.jpg")
                 div.sign-box-left-desc 
-                    h2 Bole Trade 交易社区
-                    span 复制跟单，免费跟随技术牛人做教育   
+                    h2 {{_config.PROJ_INFO.projName}} 交易社区
+                    span 复制跟单，轻松跟随技术牛人做交易
             .sign-box-right
                 .login-arrow
                 .sign-box-form(v-show="qrcodeStatus")
@@ -16,14 +16,14 @@
                         <el-tabs v-model="activeName" @tab-click="handleClick">
                             <el-tab-pane label="密码登录" name="first">
                                 .sign-box-item
-                                    img(src="../../assets/images/login_name.svg")
+                                    img(src="../../../assets/images/login_name.svg")
                                     input(
                                         type="text"
                                         placeholder='用户名'
                                         v-model="request.username"
                                     )
                                 .sign-box-item
-                                    img(src="../../assets/images/login_pwd.svg")
+                                    img(src="../../../assets/images/login_pwd.svg")
                                     input(
                                         type="password"
                                         placeholder='密码'
@@ -41,14 +41,14 @@
                             </el-tab-pane>
                             <el-tab-pane label="短信码登录" name="second">
                                 .sign-box-item
-                                    img(src="../../assets/images/login_name.svg")
+                                    img(src="../../../assets/images/login_name.svg")
                                     input(
                                         type="text"
                                         placeholder='手机号'
                                         v-model="request.iphone"
                                     )
                                 .sign-box-item
-                                    img(src="../../assets/images/login_pwd.svg")
+                                    img(src="../../../assets/images/login_pwd.svg")
                                     input(
                                         type="text"
                                         placeholder='请输入验证码'
@@ -85,7 +85,7 @@
                 .qrcode-main(v-show="!qrcodeStatus")
                     .qrcode-main-img
                         img(
-                            src="../../assets/images/ewm.png"
+                            src="../../../assets/images/ewm.png"
                             width="200px"
                             height="200px"
                         )
@@ -98,7 +98,7 @@
 </template>
 
 <script>
-import E from '../../utils'
+import commonRequest from "../../common/commonRequest";
 export default {
   data() {
     return {
@@ -137,8 +137,7 @@ export default {
         return false
       }
 
-      E.handleRequest(E.api().post('admin/login', this.request))
-        .then(res => {
+        commonRequest.login(this.request, res => {
           if (res.data.code && res.data.code !== 0) {
             this.$message.warning(res.data.message)
           } else {
@@ -202,7 +201,7 @@ export default {
             width: 57px
             height: 57px
             display: inline-block
-            background: url(../../assets/images/ewm.png) 0 0/cover no-repeat
+            background: url(../../../assets/images/ewm.png) 0 0/cover no-repeat
             &::after
                 content: ''
                 position: absolute

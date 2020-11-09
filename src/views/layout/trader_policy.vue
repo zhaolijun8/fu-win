@@ -3,20 +3,20 @@
         .trader-policy-quer 
             .trader-policy-quer-desc
                 .tt 当前仓位
-            el-progress.ve-ring(type="circle" :percentage="50" :width="120" color="#1138FF")
+            el-progress.ve-ring(type="circle" :percentage="45" :width="120" color="#1138FF")
         .trader-policy-data 
             .trader-policy-data-item 
                 span.title 交易标的：
                 span.val 主板上市股票
             .trader-policy-data-item 
                 span.title 交易时间：
-                span.val 2019-07-09
+                span.val 2018-02-09
             .trader-policy-data-item 
                 span.title 交易频率：
                 span.val 1-5次/周
             .trader-policy-data-item 
                 span.title 开始时间：
-                span.val 2019-07-09
+                span.val 2018-03-09
 
 
 </template>

@@ -7,26 +7,26 @@
             //- <div class="trading-profitLoss-box-title"><span></span>（按日统计）</div>
             <div id="profitCharts" ref="profitCharts" style="width: 1100px;margin:0 auto;height:400px;"></div>
             .static-table
-                el-table(:data="tableData"
-                    width="100%"
-                    align="center"
-                    show-summary
-                    :span-method="arraySpanMethod"
-                    :summary-method="getSummaries")
-                    el-table-column(prop="January" label="1月" width="75" align="center")
-                    el-table-column(prop="February" label="2月" width="75" align="center")
-                    el-table-column(prop="March" label="3月" width="75" align="center")
-                    el-table-column(prop="April" label="4月" width="75" align="center")
-                    el-table-column(prop="May" label="5月" width="75" align="center")
-                    el-table-column(prop="June" label="6月" width="75" align="center")
-                    el-table-column(prop="July" label="7月" width="75" align="center")
-                    el-table-column(prop="August" label="8月" width="75" align="center")
-                    el-table-column(prop="September" label="9月" width="75" align="center")
-                    el-table-column(prop="October" label="10月" width="75" align="center")
-                    el-table-column(prop="November" label="11月" width="75" align="center")
-                    el-table-column(prop="December" label="12月" width="75" align="center")
-                    el-table-column(prop="YTD" label="YTD" align="center" )
-                .total-static 
+             //-    el-table(:data="tableData"
+             //-        width="100%"
+             //-        align="center"
+             //-        show-summary
+             //-        :span-method="arraySpanMethod"
+             //-        :summary-method="getSummaries")
+             //-        el-table-column(prop="January" label="1月" width="75" align="center")
+             //-        el-table-column(prop="February" label="2月" width="75" align="center")
+             //-        el-table-column(prop="March" label="3月" width="75" align="center")
+             //-        el-table-column(prop="April" label="4月" width="75" align="center")
+             //-        el-table-column(prop="May" label="5月" width="75" align="center")
+             //-        el-table-column(prop="June" label="6月" width="75" align="center")
+             //-        el-table-column(prop="July" label="7月" width="75" align="center")
+             //-        el-table-column(prop="August" label="8月" width="75" align="center")
+             //-        el-table-column(prop="September" label="9月" width="75" align="center")
+             //-        el-table-column(prop="October" label="10月" width="75" align="center")
+             //-        el-table-column(prop="November" label="11月" width="75" align="center")
+             //-        el-table-column(prop="December" label="12月" width="75" align="center")
+             //-        el-table-column(prop="YTD" label="YTD" align="center" )
+             //-    .total-static
 
         .trading-detail-content-box
             .trading-detail-content-title
@@ -38,7 +38,7 @@
 </template>
  
 <script>
-import E from "../../../utils"
+import commonRequest from "../../common/commonRequest";
 import moment from "moment";
 
 export default {
@@ -115,7 +115,6 @@ export default {
 
             const { columns, data } = param;
             const sums = [];
-            console.log(param);
 
             columns.forEach((column, index) => {
                 if (index === 11) {
@@ -139,8 +138,7 @@ export default {
             let data = {
                 params
             }
-            return E.handleRequest(E.api().post('report/order/queryOrderFlow', data))
-                .then(res => {
+            commonRequest.queryOrderFlow(data, res => {
                     if(res.data !== undefined&&res.data !== null&&res.data.content !== undefined&&res.data.content !== null){
                         this.orderFlowData = res.data.content.data
                         let size = this.orderFlowData.length-1
@@ -339,7 +337,7 @@ export default {
         color: #666
 .static-table
     width: 980px
-    margin: 50px auto 
+    margin: 10px auto 50px auto
     /deep/ 
         .el-table
             border: 1px solid #ccc

@@ -4,12 +4,14 @@
       to="/"
     )
       img.logo(
-        src="../../assets/images/fengxian.svg"
+        :src="getLogoUrl"
+        :style='logoStyle'
       )
-      div.logo_msg Bole Trade 交易社区
+      div.logo_msg {{projName}} 欢迎您
 </template>
 
 <script>
+import _config from "../../base_config";
 export default {
   props: {
     height: {
@@ -17,12 +19,29 @@ export default {
       default: 32
     }
   },
+    data() {
+        return {
+            logoUrl: '/upload/image/logo/fengxian.svg',
+            baseUrl: _config.BASE_URL,
+            projName: ''
+        }
+    },
   computed: {
     logoStyle() {
       return {
         height: `${this.height}px`
       }
-    }
+    },
+      getLogoUrl(){
+          const storage = window.localStorage
+          const projInfo = storage.getItem('projInfo')
+          if (projInfo !== undefined && projInfo !== null) {
+              this.projInfo = JSON.parse(projInfo)
+              this.projName = this.projInfo.projName
+              this.logoUrl = this.projInfo.projLogo
+          }
+          return this.baseUrl+this.logoUrl
+      }
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template lang="pug">
 .trading-ous-tab
-    .more(@click="jumpTo()") 查看更多 >
+    .more(@click="jumpTo()")
     span.trading-ous-tab-item(
     v-for="t in tabs",
     :class="tabActive(t.value)",
@@ -17,15 +17,16 @@
             @click="checkFilter('fee', f)"
             :class="checkClass('fee', f)") {{ f.label }}
         .trading-filter-item
-            .trading-filter-item-label 收益率
+            .trading-filter-item-label 经纪商
             .trading-filter-item-all(
-            :class="checkAllClass('rate')",
-            @click="checkClear('rate')"
+            :class="checkAllClass('broker')",
+            @click="checkClear('broker')"
             ) 不限
-            .trading-filter-item-attr(v-for="r in rate"
-            @click="checkFilter('rate', r)"
-            :class="checkClass('rate', r)") {{ r.label }}
-
+            .trading-filter-item-group.e-flex
+                .trading-filter-item-attr(v-for="r in brokerList"
+                @click="checkFilter('broker', r)"
+                :class="checkClass('broker', r)") {{ r.label }}
+                .more(@click="targetBroker()") {{brokerShow ? '<< 收起' : '更多 >>'}}
         .trading-filter-item
             .trading-filter-item-label 最大回撤比例
             .trading-filter-item-all(
@@ -56,31 +57,34 @@ const tabs = [
 ];
 const jytype = [
   {
-    label: "小于13周",
+    label: "3个月内",
     value: "0",
   },
   {
-    label: "13-26周",
+    label: "6个月内",
     value: "1",
   },{
-    label: "26-52周",
+    label: "1年内",
     value: "2",
   },{
-    label: "52周以上",
+    label: "2年内",
     value: "3",
-  },
+  },{
+    label: "2年以上",
+    value: "4",
+    }
 ];
 const followType = [
   {
     label: "跟随收益",
-    value: "0",
+    value: "orderIncome",
   },
   {
     label: "交易周期",
-    value: "1",
+    value: "beginDate",
   },{
     label: "跟随笔数",
-    value: "2",
+    value: "orderCount",
   },
 ];
 
@@ -93,6 +97,9 @@ export default {
       tabSelected: 0,
       feeSelected: null,
       rateSelected: null,
+        brokerShow: false,
+        brokerList: {},
+        brokerHeader: {},
       propotSelected: null
     };
   },
@@ -106,7 +113,24 @@ export default {
     propot: {
       type: Array,
     },
-  },
+    broker: {
+        type: Array
+    }
+},
+watch: {
+    broker: function(v1) {
+        for (let i = 0; i < 8; i++) {
+            this.brokerHeader[i] = this.broker[i]
+        }
+        this.setBroker()
+    }
+},
+mounted() {
+    for (let i = 0; i < 8; i++) {
+        this.brokerHeader[i] = this.broker[i]
+    }
+    this.setBroker()
+},
   components:{
       TradingfollowTab,
   },
@@ -135,7 +159,7 @@ export default {
             res = "active";
           }
           break;
-        case "rate":
+        case "broker":
           if (
             this.rateSelected !== null &&
             this.rateSelected.value === val.value
@@ -170,7 +194,7 @@ export default {
             res = "active";
           }
           break;
-        case "rate":
+        case "broker":
           if (this.rateSelected === null) {
             res = "active";
           }
@@ -184,11 +208,11 @@ export default {
       const obj = {};
 
       if (this.feeSelected !== null) {
-        obj.brokerName = this.feeSelected.value;
+        obj.followFee = this.feeSelected.value;
       }
 
       if (this.propotSelected !== null) {
-        obj.brokerName = this.propotSelected.value;
+        obj.historyWithdraw = this.propotSelected.value;
       }
 
       if (this.rateSelected !== null) {
@@ -206,7 +230,7 @@ export default {
         case "propot":
           this.propotSelected = val;
           break;
-        case "rate":
+        case "broker":
           this.rateSelected = val;
           break;
       }
@@ -224,7 +248,7 @@ export default {
         case "propot":
           this.propotSelected = null;
           break;
-        case "rate":
+        case "broker":
           this.rateSelected = null;
           break;
       }
@@ -243,9 +267,22 @@ export default {
 
       this.$emit("filter", request);
     },
-    followfilterHandler(){
-        this.$emit('followFilter');
-    }
+    followfilterHandler(data){
+        this.$emit('followFilter',data);
+    },
+      //切换展示状态
+      targetBroker() {
+          this.brokerShow = !this.brokerShow
+          this.setBroker()
+      },
+      setBroker(){
+          if(this.brokerShow){
+              //全部显示
+              this.brokerList = this.broker
+          }else {
+              this.brokerList = this.brokerHeader
+          }
+      },
   },
 };
 </script>

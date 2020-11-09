@@ -22,32 +22,32 @@
               span.label 激进
           .track-list
             .track-list-item 累计收益
-              .txt 14.19%
+              .txt 56.2%
             .track-list-item 胜率
-              .txt 14.19%
+              .txt 79.05%
             .track-list-item 盈亏比
-              .txt 114.19%
+              .txt 5.3
             .track-list-item 最大回撤
-              .txt 14.19%
+              .txt 20.0%
           .track-row 
             .track-row-item 近1月收益：
-              span.txt 14.19%
+              span.txt 3.25%
             .track-row-item 近3月收益：
-              span.txt 14.19%
+              span.txt 6.96%
             .track-row-item 近6月收益：
-              span.txt 14.19%
+              span.txt 7.3%
             .track-row-item 近1年收益：
-              span.txt 14.19%
+              span.txt 19.35%
         .trander-moduler-flex-r     
           .state 
             label 风险承担说明： 
-            span 这里是个说明这里是个说明这里是个说明这里是个说明 这里是个说明这里是个说明这里是个说明这里是个说明
+            span  本网站或独立信息提供者均不会对任何因信息错误、不完整、迟延、不精确或基于对本网站信息的依赖而产生的损失承担任何责任
           .state 
             label 资金要求：
-            span 这里是资金要求，这里是资金要求，这里是资金要求
+            span  20000 $
           .state 
             label 分成方式：
-            span 这里是成分方式，这里是成分方式
+            span  认证可见
           .opera 
             .btn1 立即订阅
             .btn2 免费咨询
@@ -60,7 +60,7 @@ export default {
       // avatar:
       traderInfo:{
         avatar:'',
-        title:'盈汇基金',
+        title:'智汇基金',
         desc:'这个人很神秘，什么都没有留下',
       },
       avatar,
