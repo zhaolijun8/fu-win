@@ -468,9 +468,10 @@ export default {
                         income = income + result[a].orderIncome
                         result[a+1].orderIncome = result[a+1].orderIncome + income
                     }
-                    contentData[i].chartData = {}
-                    contentData[i].chartData.columns = ["tradeDate", "orderIncome"]
-                    contentData[i].chartData.rows = result
+                    // contentData[i].chartData = {}
+                    // contentData[i].chartData.columns = ["tradeDate", "orderIncome"]
+                    // contentData[i].chartData.rows = result
+                    this.$set(contentData[i],'chartData',{columns: ["tradeDate", "orderIncome"],rows:result})
                 }
             })
         }
